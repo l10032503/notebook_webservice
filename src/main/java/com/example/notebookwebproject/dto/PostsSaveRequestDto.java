@@ -15,6 +15,11 @@ public class PostsSaveRequestDto {
     private String author;
 
     public Posts toEntity(){
-        return Posts.builder().title(title).content(content).author(author).build();
+
+        return Posts.builder()
+                .title(title)
+                .content(content)
+                .author(author)
+                .build();
     }
 }
