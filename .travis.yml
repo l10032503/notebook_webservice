@@ -19,7 +19,7 @@ cache:
 script: "./gradlew clean build"
 
 before_deploy:
-- zip -r noteboook_webservice *
+- zip -r noteboookwebproject *
 - mkdir -p deploy
 #- mv noteboook_webservice.zip deploy/noteboook_webservice.zip
 
@@ -40,10 +40,10 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   bucket: notebookwebservice
-  key: noteboook_webservice.zip
+  key: noteboookwebproject.zip
   bundle_type: zip
-  application: noteboook_webservice
-  deployment_group: noteboook_webservice_group
+  application: notebookapp
+  deployment_group: notebookgroup
   region: ap-northeast-2
   wait-until-deployed: true
   on:
