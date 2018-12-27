@@ -1,0 +1,8 @@
+---
+spring:
+  profiles: real-db
+  datasource:
+    url: jdbc:mariadb://notebookwebservice.cjmajxgzxql6.ap-northeast-2.rds.amazonaws.com:3306/notebookwebservice
+    username: l10032503
+    password: 20192019
+    driver-class-name: org.mariadb.jdbc.Driver
