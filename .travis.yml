@@ -25,9 +25,9 @@ notifications:
     - l10032503@gmail.com
 
 before_deploy:
-- zip -r springboot-webservice *
+- zip -r noteboook_webservice *
 - mkdir -p deploy
-- mv springboot-webservice.zip deploy/springboot-webservice.zip
+- mv noteboook_webservice.zip deploy/noteboook_webservice.zip
 
 deploy:
 - provider: s3
