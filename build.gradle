@@ -39,5 +39,8 @@ dependencies {
     compile 'org.webjars:handlebars:4.0.11-1'
     compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
     compile("org.mariadb.jdbc:mariadb-java-client")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
+    compile("org.mybatis:mybatis-spring")
+    compile("org.mybatis:mybatis")
     
 }

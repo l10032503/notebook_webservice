@@ -1,27 +1,16 @@
 spring:
   profiles:
     active: local
+
 ---
 spring:
   profiles: local
   datasource:
-    data: classpath:data-h2.sql
+      url: jdbc:mariadb://notebookwebservice.cjmajxgzxql6.ap-northeast-2.rds.amazonaws.com:3306/notebookdata
+      username: l10032503
+      password: 20192019
+      driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
-    h2:
-      console:
-        enabled: true
----
-spring:
-  profiles: set1
-server:
-  port: 8081
-
----
-spring:
-  profiles: set2
-
-server:
-  port: 8082
