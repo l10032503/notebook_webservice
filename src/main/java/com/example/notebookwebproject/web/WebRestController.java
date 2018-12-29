@@ -1,5 +1,7 @@
 package com.example.notebookwebproject.web;
 
+import com.example.notebookwebproject.SQLTEST.notebookdataTEST;
+import com.example.notebookwebproject.SQLTEST.notebookdataTESTMapper;
 import com.example.notebookwebproject.SQLTEST.sqlTEST;
 import com.example.notebookwebproject.SQLTEST.sqlTESTMapper;
 import com.example.notebookwebproject.domain.posts.PostsRepository;
@@ -23,6 +25,7 @@ public class WebRestController {
     private PostsRepository postsRepository;
     private Environment env;
     private sqlTESTMapper sqlTestMapper;
+    private notebookdataTESTMapper notebookdataTestMapper;
 
     @GetMapping("/hello")
     public String hello(){
@@ -45,6 +48,12 @@ public class WebRestController {
     public String sqlhello(@PathVariable String testname){
         sqlTEST sqlTest = sqlTestMapper.findsqlTEST(testname);
         return "Hello, " + sqlTest.getName();
+    }
+
+    @RequestMapping("/notebooktest/{ID}")
+    public String notebookdatahello(@PathVariable int ID){
+        notebookdataTEST notebookdataTest = notebookdataTestMapper.findnotebookdataID(ID);
+        return "Hello, " + notebookdataTest.getID() + ": " + notebookdataTest.getModel();
     }
 
 }
