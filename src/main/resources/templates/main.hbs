@@ -10,12 +10,13 @@
     <title>Notebook Recommend</title>
 
     <link rel='stylesheet' href='/webjars/bootstrap/3.3.6/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="/css/shop-homepage.css">
+    <link rel="stylesheet" href="../../resources/css/mainpage.css">
+
 </head>
 
 <body >
 <!-- Navigation -->
-<nav class="navbar navbar-inverse fixed-top">
+<nav class="navbar navbar-inverse">
     <div class="container">
         <a class="navbar-brand" href="#">Notebook Recommend</a>
     </div>
@@ -26,8 +27,7 @@
     <div class="row">
 
         <div class="col-lg-3">
-
-            <h1 class="my-4">Notebook Recommend</h1>
+            <h1 class="my-4">노트북 추천</h1>
             <div class="list-group">
                 <a href="#" class="list-group-item">챗봇</a>
                 <a href="#" class="list-group-item">질문</a>
@@ -41,110 +41,191 @@
 
             <div class="row">
 
-                <div class="row">
+                <div class="col-lg-12 ">
                     <form>
-
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Action <span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">전체</a></li>
+                                    <li><a href="#">모델명</a></li>
+                                    <li><a href="#">브랜드</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+                            <input type="text" class="form-control" aria-label="...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div><!-- /input-group -->
                     </form>
-                </div><!-- /.row -->
+                </div><!-- /.col-lg-6 -->
+
+                <div class ="col-md-12">
+                  <form>
+                        <table class="table  table-bordered table-striped">
+                            <tr>
+                                <TD nowrap>브랜드</TD>
+                                <TD>
+                                    <input TYPE="checkbox" name="brand" value = "samsung">삼성
+                                    <input type="checkbox" name="brand" value = "lh">LG
+                                    <input type="checkbox" name="brand" value = "apple">애플
+                                    <input type="checkbox" name="brand" value = "hp">HP
+                                    <input type="checkbox" name="brand" value = "dell">DELL
+                                    <input TYPE="checkbox" name="brand" value = "hansung">한성
+                                    <input type="checkbox" name="brand" value = "asus">ASUS
+                                    <input type="checkbox" name="brand" value = "lenova">레노바
+                                    <input type="checkbox" name="brand" value = "msi">MSI
+                                    <input type="checkbox" name="brand" value = "gigabyte">기가바이트
+                                </TD>
+                            </tr>
+                            <tr>
+                                <TD>RAM</TD>
+                                <TD>
+                                    <input TYPE="checkbox" name="ramsize" value = "twogb">2GB
+                                    <input type="checkbox" name="ramsize" value = "fourgb">4GB
+                                    <input type="checkbox" name="ramsize" value = "eightgb">8GB
+                                    <input type="checkbox" name="ramsize" value = "sixteengb">16GB
+                                </TD>
+                            </tr>
+                            <tr>
+                                <TD>가격</TD>
+                                <TD>
+                                    <input TYPE="checkbox" name="price" value = "part1">500,000 이하
+                                    <input TYPE="checkbox" name="price" value = "part2">500,000~1,000,000
+                                    <input TYPE="checkbox" name="price" value = "part3">1,000,000~1,500,000
+                                    <input TYPE="checkbox" name="price" value = "part4">1,500,000~2,000,000
+                                    <input TYPE="checkbox" name="price" value = "part5">2,000,000 이상
+                                </TD>
+                            </tr>
+                            <tr>
+                                <TD>CPU</TD>
+                                <TD>
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei37">코어i3-7세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei38">코어i3-8세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei55">코어i5-5세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei57">코어i5-7세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei58">코어i5-8세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei77">코어i7-7세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei78">코어i7-8세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei79">코어i7-9세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "corei98">코어i9-8세대
+                                    <input TYPE="checkbox" name="CPUKind" value = "coreM">코어M
+                                    <input TYPE="checkbox" name="CPUKind" value = "pentiumgold">펜티엄 골드
+                                    <input TYPE="checkbox" name="CPUKind" value = "celeron">셀러론
+                                    <input TYPE="checkbox" name="CPUKind" value = "ryzen3">라이젠 3
+                                    <input TYPE="checkbox" name="CPUKind" value = "ryzen7">라이젠 7
+                                    <input TYPE="checkbox" name="CPUKind" value = "xeon">제온
+                                </TD>
+                            </tr>
+                            <tr>
+                                <TD>크기</TD>
+                                <TD>
+                                    <input TYPE="checkbox" name="size" value = "thirteen">13.3인치
+                                    <input TYPE="checkbox" name="size" value = "fifteen">15인치
+                                    <input TYPE="checkbox" name="size" value = "fifteenfour">15.4인치
+                                    <input TYPE="checkbox" name="size" value = "fifteensix">15.6인치
+                                    <input TYPE="checkbox" name="size" value = "fourteen">14인치
+                                    <input TYPE="checkbox" name="size" value = "ten">10.9인치
+                                    <input TYPE="checkbox" name="size" value = "eleven">11.6인치
+                                    <input TYPE="checkbox" name="size" value = "twelve">12인치
+                                    <input TYPE="checkbox" name="size" value = "twelvefive">12.5인치
+                                    <input TYPE="checkbox" name="size" value = "seventeen">17.3인치
+                                </TD>
+                            </tr>
+                            <tr>
+                                <TD>무게</TD>
+                                <TD>
+                                    <input TYPE="checkbox" name="weight" value = "underone">1kg 이하
+                                    <input TYPE="checkbox" name="weight" value = "onetotwo">1kg~2kg
+                                    <input TYPE="checkbox" name="weight" value = "overtwo">2kg 이상
+                                </TD>
+                            </tr>
+                        </table>
+                  </form>
+                </div> <!-- 테이블 -->
+
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item One</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/700x400" class="img-responsive" alt="Responsive image">
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item Two</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/700x400" class="img-responsive" alt="Responsive image">
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item Three</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/700x400" class="img-responsive" alt="Responsive image">
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item Four</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/700x400" class="img-responsive" alt="Responsive image">
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item Five</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/700x400" class="img-responsive" alt="Responsive image">
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">Item Six</a>
-                            </h4>
-                            <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/700x400" class="img-responsive" alt="Responsive image">
+                        <div class="caption">
+                            <h3>Thumbnail label</h3>
+                            <p>...</p>
                         </div>
                     </div>
                 </div>
 
             </div>
             <!-- /.row -->
+            <div class="text-center">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
         </div>
         <!-- /.col-lg-9 -->
@@ -158,7 +239,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; 컴알못</p>
     </div>
     <!-- /.container -->
 </footer>
