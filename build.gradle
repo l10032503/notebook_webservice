@@ -35,7 +35,7 @@ dependencies {
 
     compile ('org.webjars:jquery:2.2.1')
     compile ('org.webjars:jquery-ui:1.11.4')
-    compile ('org.webjars:bootstrap:3.3.6')
+    compile 'org.webjars:bootstrap:4.2.1'
     compile 'org.webjars:handlebars:4.0.11-1'
     compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0'
     compile("org.mariadb.jdbc:mariadb-java-client")

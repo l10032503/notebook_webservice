@@ -12,4 +12,9 @@ public class WebController {
     public String main(){
         return "main";
     }
+
+    @GetMapping("/result")
+    public String result(){
+        return "result";
+    }
 }
