@@ -17,4 +17,9 @@ public class WebController {
     public String result(){
         return "result";
     }
+
+    @GetMapping("/query")
+    public String querypage(){
+        return "querypage";
+    }
 }

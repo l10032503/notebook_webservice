@@ -51,7 +51,7 @@
             <div class="list-group " >
                 <a href="#" class="list-group-item text-danger" style="font-size: large">설명</a>
                 <a href="#" class="list-group-item text-danger" style="font-size: large">챗봇</a>
-                <a href="#" class="list-group-item text-danger" style="font-size: large">질문</a>
+                <a href="http://localhost:8080/query" class="list-group-item text-danger" style="font-size: large">질문</a>
             </div>
         </div>
         <!-- /.col-lg-3 -->
@@ -111,7 +111,7 @@
                         <table class="table table-bordered">
                             <tr>
                                 <TH nowrap="nowrap">브랜드</TH>
-                                <TD nowrap="nowrap">
+                                <TD >
                                     <input TYPE="checkbox" name="brand" value = "samsung">삼성&nbsp&nbsp&nbsp&nbsp
                                     <input type="checkbox" name="brand" value = "lh">LG&nbsp&nbsp&nbsp&nbsp
                                     <input type="checkbox" name="brand" value = "apple">애플&nbsp&nbsp&nbsp&nbsp
@@ -146,21 +146,21 @@
                             <tr>
                                 <TH >CPU</TH>
                                 <TD style="word-wrap: break-word">
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei37">코어i3-7세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei38">코어i3-8세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei55">코어i5-5세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei57">코어i5-7세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei58">코어i5-8세대<br>
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei77">코어i7-7세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei78">코어i7-8세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei79">코어i7-9세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "corei98">코어i9-8세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "coreM">코어M&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "pentiumgold">펜티엄 골드<br>
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "celeron">셀러론&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "ryzen3">라이젠 3&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "ryzen7">라이젠 7&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-wrap: break-word" TYPE="checkbox" name="CPUKind" value = "xeon">제온&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei37">코어i3-7세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei38">코어i3-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei55">코어i5-5세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei57">코어i5-7세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei58">코어i5-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei77">코어i7-7세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei78">코어i7-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei79">코어i7-9세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei98">코어i9-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "coreM">코어M&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "pentiumgold">펜티엄 골드&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "celeron">셀러론&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "ryzen3">라이젠 3&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "ryzen7">라이젠 7&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "xeon">제온&nbsp&nbsp&nbsp&nbsp
                                 </TD>
                             </tr>
                             <tr>
@@ -188,10 +188,10 @@
                             </tr>
                         </table>
                       <div class="dropdown">
-                          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
-                              Dropdown link
-                          </a>
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Dropdown button
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                               <a class="dropdown-item" href="#">Action</a>
                               <a class="dropdown-item" href="#">Another action</a>
                               <a class="dropdown-item" href="#">Something else here</a>
@@ -318,6 +318,7 @@
 
     <script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
     <script type="text/javascript">
         $(function () {
           console.log("jQuery ready");
