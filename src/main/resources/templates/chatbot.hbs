@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <title>Notebook Recommend</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resources/css/mainpage.css">
+</head>
+
+<body id = mainpage-overrides>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-danger" href="#">노트북 추천</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Page Content -->
+<div class = "container mt-5" >
+
+    <div class="row">
+
+        <div class="col-lg-3 mt-4">
+            <div class="list-group " >
+                <a href="#" class="list-group-item text-danger" style="font-size: large">설명</a>
+                <a href="#" class="list-group-item text-danger" style="font-size: large">챗봇</a>
+                <a href="http://localhost:8080/query" class="list-group-item text-danger" style="font-size: large">질문</a>
+            </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+
+
+
+        <div class="col-lg-9">
+
+            <div class="row" style = "padding: 30px 0px 0px 0px;">
+
+                <script type="text/javascript">
+
+
+                    var accessToken ="9862922ef6c74d34821007ce322a471f";
+
+                    var baseUrl = "https://api.dialogflow.com/v1/";
+                    $(document).ready(function() {
+                        $("#input").keypress(function(event) {
+                            if (event.which == 13) {
+                                event.preventDefault();
+                                send();
+                                this.value = '';
+                            }
+                        });
+                        $("#rec").click(function(event) {
+                            switchRecognition();
+                        });
+                    });
+                    var recognition;
+                    function startRecognition() {
+                        recognition = new webkitSpeechRecognition();
+                        recognition.onstart = function(event) {
+                            updateRec();
+                        };
+                        recognition.onresult = function(event) {
+                            var text = "";
+                            for (var i = event.resultIndex; i < event.results.length; ++i) {
+                                text += event.results[i][0].transcript;
+                            }
+                            setInput(text);
+                            stopRecognition();
+                        };
+                        recognition.onend = function() {
+                            stopRecognition();
+                        };
+                        recognition.lang = "ko-KR";
+                        recognition.start();
+                    }
+                    function stopRecognition() {
+                        if (recognition) {
+                            recognition.stop();
+                            recognition = null;
+                        }
+                        updateRec();
+                    }
+                    function switchRecognition() {
+                        if (recognition) {
+                            stopRecognition();
+                        } else {
+                            startRecognition();
+                        }
+                    }
+                    function setInput(text) {
+                        $("#input").val(text);
+                        send();
+                    }
+                    function updateRec() {
+                        $("#rec").text(recognition ? "Stop" : "Speak");
+                    }
+                    function send() {
+                        var text = $("#input").val();
+                        conversation.push("나: " + text + '\r\n');
+                        $.ajax({
+                            type: "POST",
+                            url: baseUrl + "query?v=20150910",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            headers: {
+                                "Authorization": "Bearer " + accessToken
+                            },
+                            data: JSON.stringify({ query: text, lang: "ko", sessionId: "somerandomthing" }),
+                            success: function(data) {
+                                var respText = data.result.fulfillment.speech;
+                                console.log("Respuesta: " + respText);
+                                setResponse(respText);
+
+                            },
+                            error: function() {
+                                setResponse("Internal Server Error");
+                            }
+                        });
+                    }
+                    function setResponse(val) {
+                        //Edit "AI: " to change name
+                        conversation.push("AI: " + val + '\r\n');
+                        $("#response").text(conversation.join(""));
+                    }
+
+                    ////////////////////////////////FUNCTION TO CHANGE BACKGROUND COLOR//////////////////////////////////////////////
+                    function setResponseC(val) {
+                        //Edit "AI: " to change name
+                        $("#response").text(conversation.join(""));
+                        document.body.style.backgroundColor = val;
+
+                    }
+
+
+                    var conversation = [];
+                </script>
+
+                <style type="text/css">
+                    input { color: #000000; background-color: #FFFFFF; width: 500px; }
+                    button { color: #FFFFFF; background-color: #000000; width: 100px; }
+                    textarea { background-color: #CCCCCC; width: 100%;}
+                </style>
+
+                <div>
+                    <input id="input" type="text"> <button id="rec">CHAT</button>
+                    <p style="font-size:36px; color:#000000;">Chat Response</p>
+                    <textarea id="response" cols="40" rows="20"></textarea>
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 컴알못</p>
+    </div>
+    <!-- /.container -->
+</footer>
+<script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
