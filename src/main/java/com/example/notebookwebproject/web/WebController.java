@@ -22,4 +22,10 @@ public class WebController {
     public String querypage(){
         return "querypage";
     }
+
+    @GetMapping("/maintestpage")
+    public String testpage(){
+        return "testpage";
+    }
+
 }

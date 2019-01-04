@@ -14,7 +14,7 @@
 
 </head>
 
-<body id = mainpage-overrides>
+<body >
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -92,18 +92,19 @@
                     <form>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    전체
+                                </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">모델명</a>
+                                    <a class="dropdown-item" href="#">브랜드명</a>
                                     <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
+                                    <a class="dropdown-item" href="#">전체</a>
                                 </div>
                             </div>
                             <input type="text" class="form-control" aria-label="Text input with dropdown button">
                             <span class="input-group-btn">
-                                <button class="btn btn-outline-secondary" type="button">Go!</button>
+                                <button class="btn btn-outline-secondary" type="button">검색</button>
                             </span>
                         </div>
                     </form>
@@ -141,7 +142,7 @@
                                 <TD>
                                     <input TYPE="checkbox" name="price" value = "part1">500,000원 이하&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="price" value = "part2">500,000원 ~ 1,000,000원&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="price" value = "part3">1,000,000원 ~ 1,500,000원<br>
+                                    <input TYPE="checkbox" name="price" value = "part3">1,000,000원 ~ 1,500,000원&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="price" value = "part4">1,500,000원 ~ 2,000,000원&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="price" value = "part5">2,000,000원 이상&nbsp&nbsp&nbsp&nbsp
                                 </TD>
@@ -175,7 +176,7 @@
                                     <input TYPE="checkbox" name="size" value = "fifteensix">15.6인치&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="size" value = "fourteen">14인치&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="size" value = "ten">10.9인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "eleven">11.6인치<br>
+                                    <input TYPE="checkbox" name="size" value = "eleven">11.6인치&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="size" value = "twelve">12인치&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="size" value = "twelvefive">12.5인치&nbsp&nbsp&nbsp&nbsp
                                     <input TYPE="checkbox" name="size" value = "seventeen">17.3인치&nbsp&nbsp&nbsp&nbsp
@@ -192,14 +193,14 @@
                         </table>
                       <div class="dropdown">
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown button
+                              정렬순서
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
+                              <a class="dropdown-item" href="#">가격순</a>
+                              <a class="dropdown-item" href="#">출시일순</a>
+                              <a class="dropdown-item" href="#">성능순</a>
                           </div>
-                          <button type="button" class="btn btn-danger float-right">Primary</button>
+                          <button type="button" class="btn btn-danger float-right">조건검색</button>
                       </div>
                   </form>
                 </div> <!-- 테이블 -->
@@ -212,7 +213,7 @@
                                 <a href="#" >Item One</a>
                             </h4>
                             <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <p class="card-text">설명1</p>
                         </div>
                     </div>
                 </div>
@@ -225,7 +226,7 @@
                                 <a href="#">Item Two</a>
                             </h4>
                             <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                            <p class="card-text">설명2</p>
                         </div>
                     </div>
                 </div>
@@ -238,7 +239,7 @@
                                 <a href="#">Item Three</a>
                             </h4>
                             <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <p class="card-text">설명3</p>
                         </div>
                     </div>
                 </div>
@@ -251,7 +252,7 @@
                                 <a href="#">Item Four</a>
                             </h4>
                             <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <p class="card-text">설명4</p>
                         </div>
                     </div>
                 </div>
@@ -264,7 +265,7 @@
                                 <a href="#">Item Five</a>
                             </h4>
                             <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                            <p class="card-text">설명5</p>
                         </div>
                     </div>
                 </div>
@@ -277,7 +278,7 @@
                                 <a href="#">Item Six</a>
                             </h4>
                             <h5>$24.99</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                            <p class="card-text">설명6</p>
                         </div>
                     </div>
                 </div>
