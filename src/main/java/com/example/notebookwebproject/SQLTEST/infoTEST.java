@@ -1,8 +1,9 @@
 package com.example.notebookwebproject.SQLTEST;
 
 public class infoTEST {
-    private int ID, Price, Weight;
-    private String Model, ImgURLf, ImgURLb;
+    private int ID, Price, Weight, MemorySize;
+    private String Model, ImgURLf, ImgURLb, CPUKind, CPUManufact;
+    private float SizeINT;
 
     public String getModel(){
         return Model;
@@ -70,5 +71,36 @@ public class infoTEST {
     }
 
 
+    public String getCPUManufact(){return CPUManufact;}
+    public void setCPUManufact(String CPUManufact) {this.CPUManufact = CPUManufact;}
+
+    public String getCPUKind(){return CPUKind;}
+    public void setCPUKind(String CPUKind) {this.CPUKind = CPUKind;}
+
+    public int getRAMSize(){return MemorySize;}
+    public void setRAMSize(int RAMSize) {this.MemorySize = MemorySize;}
+    public String getRAMGB(){
+        String RAMGB = "";
+
+        RAMGB = "RAM " + String.valueOf(MemorySize) + "GB";
+
+        return RAMGB;
+    }
+
+    public float getSizeINT(){return SizeINT;}
+    public void setSizeINT(float SizeINT) {this.SizeINT = SizeINT;}
+    public String getSizeInch(){
+        String SizeInch = "";
+
+        SizeInch = String.valueOf(SizeINT) + "인치";
+        return SizeInch;
+    }
+
+    public String getStatus(){
+        String status;
+
+        status = getCPUManufact() + " / " + getCPUKind()+ " / " + getRAMGB() + " / " + getSizeInch();
+        return status;
+    }
 
 }
