@@ -35,9 +35,9 @@ public class WebController {
         return "querypage";
     }
 
-    @GetMapping("/maintestpage")
-    public String testpage(){
-        return "testpage";
+    @GetMapping("/view")
+    public String view(){
+        return "view";
     }
 
     public void maincardinitial(Model model){
@@ -45,7 +45,7 @@ public class WebController {
         String card_model = "card_model_";
         String card_pricestring = "card_pricestring_";
         String card_imgurlf = "card_imgurlf_";
-        String card_infourl = "card_infourl_";
+        String card_infourl = "card_infoURL_";
         int id = 1;
         infoTEST[] notebookcards = new infoTEST[7];
         String term_id = "";
