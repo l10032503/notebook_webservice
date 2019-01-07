@@ -43,7 +43,6 @@ public class infoTEST {
                 PriceString = "000" + PriceString;
             else
                 PriceString = String.valueOf(Qprice%threecomma) + PriceString;
-            System.out.println(PriceString + " / " + Qprice);
             Qprice  = Qprice/threecomma;
         }
         return PriceString;

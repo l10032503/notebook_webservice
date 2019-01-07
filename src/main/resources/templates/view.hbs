@@ -10,7 +10,8 @@
     <title>노트북 견적 내줘!</title>
 
     <link rel="stylesheet" href="webjars/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../resources/css/mainpage.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
 
 </head>
 
@@ -18,7 +19,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand text-danger" href="#">노트북 견적 내줘!</a>
+        <a class="navbar-brand text-danger display-4" href="http://comalmot.com/" style="font-family: '본고딕 KR Heavy'" >노트북 견적 내줘!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,10 +47,18 @@
 
         <div class="col-lg-3 mt-4">
             <div class="list-group " >
-                <a href="#" class="list-group-item text-danger" style="font-size: large">이용 방법</a>
-                <a href="http://comalmot.com/view" class="list-group-item text-danger" style="font-size: large">노트북 상세검색</a>
-                <a href="http://comalmot.com/chatbot" class="list-group-item text-danger" style="font-size: large">컴잘알에게 말해줘</a>
-                <a href="http://comalmot.com/query" class="list-group-item text-danger" style="font-size: large">개인별 맞춤 솔루션</a>
+                <a href="#" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                    <span class="fas fa-caret-right"></span> 이용 방법
+                </a>
+                <a href="http://comalmot.com/view" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                    <span class="fas fa-caret-right"></span> 노트북 상세검색
+                </a>
+                <a href="http://comalmot.com/chatbot" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                    <span class="fas fa-caret-right"></span> 컴잘알에게 말해줘
+                </a>
+                <a href="http://comalmot.com/query" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                    <span class="fas fa-caret-right"></span> 개인별 맞춤 솔루션
+                </a>
             </div>
         </div>
         <!-- /.col-lg-3 -->
@@ -168,8 +177,9 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">가격순</a>
-                                <a class="dropdown-item" href="#">출시일순</a>
                                 <a class="dropdown-item" href="#">성능순</a>
+                                <a class="dropdown-item" href="#">무게순</a>
+                                <a class="dropdown-item" href="#">크기순</a>
                             </div>
                             <button type="button" class="btn btn-danger float-right">조건검색</button>
                         </div>
@@ -184,7 +194,7 @@
                                 <a href={{card_infoURL_1}} >{{card_model_1}}</a>
                             </h5>
                             <h5>{{card_pricestring_1}} 원</h5>
-                            <p class="card-text">{{card_infoURL_1}}</p>
+                            <p class="card-text">{{card_status_1}}</p>
                         </div>
                     </div>
                 </div>
@@ -197,7 +207,7 @@
                                 <a href={{card_infoURL_2}} >{{card_model_2}}</a>
                             </h5>
                             <h5>{{card_pricestring_2}} 원</h5>
-                            <p class="card-text">{{card_infoURL_2}}</p>
+                            <p class="card-text">{{card_status_2}}</p>
                         </div>
                     </div>
                 </div>
@@ -210,7 +220,7 @@
                                 <a href={{card_infoURL_3}} >{{card_model_3}}</a>
                             </h5>
                             <h5>{{card_pricestring_3}} 원</h5>
-                            <p class="card-text">{{card_infoURL_3}}</p>
+                            <p class="card-text">{{card_status_3}}</p>
                         </div>
                     </div>
                 </div>
@@ -223,7 +233,7 @@
                                 <a href={{card_infoURL_4}} >{{card_model_4}}</a>
                             </h5>
                             <h5>{{card_pricestring_4}} 원</h5>
-                            <p class="card-text">{{card_infoURL_4}}</p>
+                            <p class="card-text">{{card_status_4}}</p>
                         </div>
                     </div>
                 </div>
@@ -236,7 +246,7 @@
                                 <a href={{card_infoURL_5}} >{{card_model_5}}</a>
                             </h5>
                             <h5>{{card_pricestring_5}} 원</h5>
-                            <p class="card-text">{{card_infoURL_5}}</p>
+                            <p class="card-text">{{card_status_5}}</p>
                         </div>
                     </div>
                 </div>
@@ -249,7 +259,7 @@
                                 <a href={{card_infoURL_6}} >{{card_model_6}}</a>
                             </h5>
                             <h5>{{card_pricestring_1}} 원</h5>
-                            <p class="card-text">{{card_infoURL_6}}</p>
+                            <p class="card-text">{{card_status_6}}</p>
                         </div>
                     </div>
                 </div>
@@ -258,19 +268,11 @@
             <!-- /.row -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
                     <li class="page-item"><a class="page-link" href="#">1</a></li>
                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
                 </ul>
             </nav>
 
