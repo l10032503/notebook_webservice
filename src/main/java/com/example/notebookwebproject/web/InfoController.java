@@ -17,7 +17,7 @@ public class InfoController {
 
     @GetMapping("/about")
     public String about(){
-        return "chatbot";
+        return "about";
     }
 
     @RequestMapping("/notebookinfo/{ID}")

@@ -215,7 +215,7 @@ public class infoTEST {
         return nstring;
     }
     public String getVideoString(){
-        boolean ht, hd, mn, dp, ds, wc;
+        Boolean ht, hd, mn, dp, ds, wc;
         String nstring = "";
         ht = HDMITwo; hd = HDMI; mn = miniDP; dp = DP; ds = DSUB; wc = WebCam;
         if(ht) nstring += "HDMI 2.0 / ";
