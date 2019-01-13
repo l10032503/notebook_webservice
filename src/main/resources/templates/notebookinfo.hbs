@@ -77,10 +77,10 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="center-block img-fluid" src="{{imgurlf}}" style="height: 250px" alt="First slide">
+                            <img class="mx-auto d-block img-fluid" src="{{imgurlf}}" style="height: 250px" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="center-block img-fluid" src="{{imgurlb}}" style="height: 250px" alt="Second slide">
+                            <img class="mx-auto d-block img-fluid" src="{{imgurlb}}" style="height: 250px" alt="Second slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -98,17 +98,111 @@
                 <div class="col">
                     <hr>
                     <!-- Post Content -->
-                    <p class="lead">{{model}}</p>
-                    <p>가격: {{price}}원</p>
-                    <script>
-                        var w = {{weight}}
-                        if (w>=1000){
-                            document.write ( '<p>무게: '+w/1000+'kg</p>' )
-                        }else {
-                            document.write ( '<p>무게: '+w+'g</p>' )
+                    <style>
+                        .lead {
+                            margin-bottom: 20px;
+                            font-size: 28px;
+                            font-weight: bold;
+                            line-height: 1.4;
                         }
-                    </script>
-                    <p>Lorem ipsum</p>
+                    </style>
+                    <p class="lead">{{model}}</p>
+
+                    <style type="text/css">
+                        table {width: 100%;}
+                        .tg  {border-collapse:collapse;border-spacing:0;}
+                        .tg th{width: 15%;font-family:Arial, sans-serif;font-size:14px;font-weight:bold;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:inherit;}
+                        .tg td{width: 35%;font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:inherit;}
+                        .tg .tg-s268{text-align:left;}
+                    </style>
+                    <table class="tg">
+                        <tr>
+                            <th class="tg-s268">브랜드</th>
+                            <td class="tg-s268">{{brand}}</td>
+                            <th class="tg-s268">RAM타입</th>
+                            <td class="tg-s268">{{memorytype}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">가격</th>
+                            <td class="tg-s268">{{pricestring}}원</td>
+                            <th class="tg-s268">RAM용량</th>
+                            <td class="tg-s268">{{memorysize}}GB</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">크기</th>
+                            <td class="tg-s268">{{sizeint}}인치</td>
+                            <th class="tg-s268">GPU제조사</th>
+                            <td class="tg-s268">{{gpumanufact}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">무게</th>
+                            <td class="tg-s268">{{weightstring}}</td>
+                            <th class="tg-s268">GPU종류</th>
+                            <td class="tg-s268">{{gpukind}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">두께</th>
+                            <td class="tg-s268">{{thick}}mm</td>
+                            <th class="tg-s268">HDD용량</th>
+                            <td class="tg-s268">{{hddsize}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">해상도</th>
+                            <td class="tg-s268">{{resolution}}</td>
+                            <th class="tg-s268">SSD</th>
+                            <td class="tg-s268">{{ssd}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">CPU종류</th>
+                            <td class="tg-s268">{{cpumanufact}} {{cpukind}}</td>
+                            <th class="tg-s268">SSD용량</th>
+                            <td class="tg-s268">{{ssdsize}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">CPU코드</th>
+                            <td class="tg-s268">{{cpucode}}</td>
+                            <th class="tg-s268">OS</th>
+                            <td class="tg-s268">{{os}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268">코어형태</th>
+                            <td class="tg-s268">{{cpucore}}</td>
+                            <th class="tg-s268">AS기간</th>
+                            <td class="tg-s268">{{afterservice}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268" colspan="4">네트워크</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-s268" colspan="4">{{networkstring}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268" colspan="4">영상 입출력</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-s268" colspan="4">{{videostring}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268" colspan="4">단자</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-s268" colspan="4">{{terminalstring}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268" colspan="4">키보드</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-s268" colspan="4">{{keyboardstring}}</td>
+                        </tr>
+                        <tr>
+                            <th class="tg-s268" colspan="4">보안기능</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-s268" colspan="4">{{securitystring}}</td>
+                        </tr>
+                    </table>
+                    <p>&nbsp;</p>
+                    <img src="{{longimgurl}}" width=100%>
                     <hr>
                 </div>
 
