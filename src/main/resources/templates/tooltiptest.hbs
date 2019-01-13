@@ -14,6 +14,75 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
+
+
+
+
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul li{
+            list-style: none;
+        }
+        .my_message {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            display: block;
+        }
+        .my_message > .tooltip{
+            position: relative;
+            display: block;
+            background-color: green;
+            width: 200px;
+            left: 150px;
+            top: 40px;
+            border-radius: 10px;
+            padding: 10px;
+            color: white;
+        }
+        .my_message > .tooltip:before {
+            position: absolute;
+            content: '';
+            border-width: 10px;
+            border-style: solid;
+            border-color: rgba(255,255,255,0) rgba(255,255,255,0) green rgba(255,255,255,0);
+            top: 38px;
+            left: 150px;
+            transform: rotate(180deg);
+        }
+        .you_message {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+        .you_message > .tooltip{
+            position: absolute;
+            display: block;
+            background-color: lightblue;
+            width: 200px;
+            left: 50px;
+            top: 40px;
+            border-radius: 10px;
+            padding: 10px;
+            color: white;
+        }
+        .you_message > .tooltip:before {
+            position: absolute;
+            content: '';
+            border-width: 10px;
+            border-style: solid;
+            border-color: rgba(255,255,255,0) rgba(255,255,255,0) lightblue rgba(255,255,255,0);
+            top: 38px;
+            left: 40px;
+            transform: rotate(180deg);
+        }
+    </style>
+
+
 </head>
 
 <body id = mainpage-overrides>
@@ -65,27 +134,28 @@
         <!-- /.col-lg-3 -->
 
 
-        <div class="col-lg-9">
 
+
+        <div class="col-lg-9">
             <div class="row">
 
                 <p></p>
-                <div class="col-md-7">
-                    <p>&nbsp; </p>
-                    <h1>About</h1>
-                    <p>&nbsp; </p>
-                    <p>　'노트북 견적 내줘!'는 숙명여자대학교 컴퓨터과학부 컴알못 팀에서 졸업작품을 위하여 만든 노트북 추천 사이트입니다.</p>
-                    <p>　이 웹사이트에서는 컴퓨터에 대한 지식이 없더라도 통계, 질문, 챗봇 등 여러가지 형식을 기반으로 사용자에게 알맞은 성능의 노트북을 추천해드립니다.</p>
-                    <p>&nbsp; </p></div>
-                <div class="col-md-3"><p>&nbsp; </p>
-                    <img src="https://i.imgur.com/8KL1Ldq.png"></a>
-                    <p>&nbsp; </p></div>
-
+                <ul>
+                    <li>
+                        <div class="my_message">
+                            <div class="tooltip">Hi</div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="you_message">
+                            <div class="tooltip">Hello</div>
+                        </div>
+                    </li>
+                </ul>
 
 
             </div>
             <!-- /.row -->
-
         </div>
         <!-- /.col-lg-9 -->
 

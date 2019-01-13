@@ -5,6 +5,14 @@ public class infoTEST {
     private String Model, ImgURLf, ImgURLb, CPUKind, CPUManufact;
     private float SizeINT;
 
+    private int Resolution, HDDSize, SSDSize, AfterService;
+    private float Thick;
+    private String Brand, CPUCode, CPUNumber, CPUCore, MemoryType,
+            GPUManufact, GPUKind, SSD, OS, LongImgURL;
+    private Boolean LanCable, LanRadio, Bluetooth, HDMITwo, HDMI, miniDP, DP, DSUB, WebCam,
+            USBTypeCTrd, USBTypeC, USBTrdOne, USBTrd, USBSnd, ThunderBolt, eSATA, IEEE, SerialPort, ExpressCard, MultiReader,
+            NumKB, BlockKB, MachineKB, RGBLight, KBLight, WaterProofKB, MILSTD, Face, Fingerprint, TPM;
+
     public String getModel(){
         return Model;
     }
@@ -103,14 +111,6 @@ public class infoTEST {
     }
 
 
-
-    private int Resolution, HDDSize, SSDSize, AfterService;
-    private float Thick;
-    private String Brand, CPUCode, CPUNumber, CPUCore, MemoryType,
-            GPUManufact, GPUKind, SSD, OS;
-    private Boolean LanCable, LanRadio, Bluetooth, HDMITwo, HDMI, miniDP, DP, DSUB, WebCam,
-            USBTypeCTrd, USBTypeC, USBTrdOne, USBTrd, USBSnd, ThunderBolt, eSATA, IEEE, SerialPort, ExpressCard, MultiReader,
-            NumKB, BlockKB, MachineKB, RGBLight, KBLight, WaterProofKB, MILSTD, Face, Fingerprint, TPM;
 
     //표1
     public String getBrand(){
@@ -212,6 +212,8 @@ public class infoTEST {
         if(bt) nstring += "블루투스 / ";
         if (nstring.length() > 0)
             nstring = nstring.substring(0, nstring.length()-3);
+        if (nstring.length() == 0)
+            nstring = "　";
         return nstring;
     }
     public String getVideoString(){
@@ -226,6 +228,8 @@ public class infoTEST {
         if(wc) nstring += "웹캠 / ";
         if (nstring.length() > 0)
             nstring = nstring.substring(0, nstring.length()-3);
+        if (nstring.length() == 0)
+            nstring = "　";
         return nstring;
     }
     public String getTerminalString(){
@@ -246,6 +250,8 @@ public class infoTEST {
         if(mr) nstring += "멀티리더기 / ";
         if (nstring.length() > 0)
             nstring = nstring.substring(0, nstring.length()-3);
+        if (nstring.length() == 0)
+            nstring = "　";
         return nstring;
     }
     public String getKeyboardString(){
@@ -261,6 +267,8 @@ public class infoTEST {
         if(mi) nstring += "MIL-STD / ";
         if (nstring.length() > 0)
             nstring = nstring.substring(0, nstring.length()-3);
+        if (nstring.length() == 0)
+            nstring = "　";
         return nstring;
     }
     public String getSecurityString(){
@@ -272,9 +280,15 @@ public class infoTEST {
         if(tpm) nstring += "TPM / ";
         if (nstring.length() > 0)
             nstring = nstring.substring(0, nstring.length()-3);
+        if (nstring.length() == 0)
+            nstring = "　";
         return nstring;
     }
 
+    //이미지
+    public String getLongImgURL(){
+        return LongImgURL;
+    }
 
 
 
