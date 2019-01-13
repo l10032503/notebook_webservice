@@ -1,7 +1,5 @@
 package com.example.notebookwebproject.web;
 
-import com.example.notebookwebproject.SQLTEST.ScoreManager;
-import com.example.notebookwebproject.SQLTEST.ScoreManagerMapper;
 import com.example.notebookwebproject.SQLTEST.infoTEST;
 import com.example.notebookwebproject.SQLTEST.infoTESTMapper;
 import lombok.AllArgsConstructor;
@@ -16,27 +14,13 @@ import java.util.Random;
 public class ViewController {
 
     private infoTESTMapper infoTestMapper;
-    private ScoreManagerMapper scoreMangerMapper;
     private WebController webController;
 
     @GetMapping("/view")
     public String view(Model model){
-        //webController.maincardrandom(model);
         viewcardInitial(model);
-        return "view";
+        return "viewtest";
     }
-
-    /*public void rankingInitial(){
-        int rank = 1;
-        int id = 1;
-        for(int i=0 ; i<10 ; i++){
-            for(int j=1; j<=10; j++){
-                id = i*100 + j;
-                ranking[rank] = id;
-                rank++;
-            }
-        }
-    }*/
 
     public void viewcardInitial(Model model){
 
