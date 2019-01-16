@@ -19,7 +19,7 @@ public class ViewController {
     @GetMapping("/view")
     public String view(Model model){
         viewcardInitial(model);
-        return "viewtest";
+        return "view";
     }
 
     public void viewcardInitial(Model model){
