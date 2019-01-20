@@ -1,25 +1,37 @@
 package com.example.notebookwebproject.web;
 
+import com.example.notebookwebproject.Paging.Notebook;
+import com.example.notebookwebproject.Paging.NotebookDAO;
 import com.example.notebookwebproject.SQLTEST.infoTEST;
 import com.example.notebookwebproject.SQLTEST.infoTESTMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Random;
 
 @Controller
 @AllArgsConstructor
 public class ViewController {
 
     private infoTESTMapper infoTestMapper;
-    private WebController webController;
+    @Autowired
+    private NotebookDAO notebookDAO;
 
-    @GetMapping("/view")
+    /*@GetMapping("/view")
     public String view(Model model){
         viewcardInitial(model);
         return "view";
+    }*/
+
+    @GetMapping("/view")
+    public String view(Model model, Pageable pageable){
+        Page<Notebook> notebookPage = notebookDAO.findAll(pageable);
+        model.addAttribute("notebookPage",notebookPage);
+        return "viewpage";
     }
 
     public void viewcardInitial(Model model){

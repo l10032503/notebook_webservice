@@ -1,4 +1,4 @@
-package com.example.notebookwebproject.dto;
+package com.example.notebookwebproject.domain.posts.dto;
 
 import com.example.notebookwebproject.domain.posts.Posts;
 import lombok.Getter;
