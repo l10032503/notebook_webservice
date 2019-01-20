@@ -99,8 +99,8 @@
                             <h5 class="card-title ">
                                 <a href="http://comalmot.com/notebookinfo/${notebook.id}" >${notebook.model}</a>
                             </h5>
-                            <h5>${notebook.price_string} 원</h5>
-                            <p>${notebook.cpumanufact} / ${notebook.cpukind} / RAM ${notebook.memory_size} GB / ${notebook.sizeint}인치</p>
+                            <h5>${notebook.pricestring} 원</h5>
+                            <p>${notebook.cpumanufact} / ${notebook.cpukind} / RAM ${notebook.memorysize} GB / ${notebook.sizeint}인치</p>
                         </div>
                     </div>
 

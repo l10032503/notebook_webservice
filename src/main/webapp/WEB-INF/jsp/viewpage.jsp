@@ -178,10 +178,9 @@
                                 정렬순서
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">가격순</a>
-                                <a class="dropdown-item" href="#">성능순</a>
-                                <a class="dropdown-item" href="#">무게순</a>
-                                <a class="dropdown-item" href="#">크기순</a>
+                                <a class="dropdown-item" href="?sort=price,asc">낮은 가격순</a>
+                                <a class="dropdown-item" href="?sort=price,desc">높은 가격순</a>
+                                <a class="dropdown-item" href="?sort=weight,asc">낮은 무게순</a>
                             </div>
                             <button type="button" class="btn btn-danger float-right">조건검색</button>
                         </div>
@@ -197,9 +196,9 @@
                                 <h5 class="card-title ">
                                     <a href="http://comalmot.com/notebookinfo/${notebook.id}" >${notebook.model}</a>
                                 </h5>
-                                <h5>${notebook.price_string} 원</h5>
+                                <h5>${notebook.pricestring} 원</h5>
                                 <p class="card-text">
-                                        ${notebook.cpumanufact} / ${notebook.cpukind} / RAM ${notebook.memory_size} GB / ${notebook.sizeint}인치
+                                        ${notebook.cpumanufact} / ${notebook.cpukind} / RAM ${notebook.memorysize} GB / ${notebook.sizeint}인치
                                 </p>
                             </div>
                         </div>

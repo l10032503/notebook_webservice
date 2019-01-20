@@ -16,18 +16,18 @@ public class Notebook {
     private String model, cpukind, cpumanufact;
 
     @Column(columnDefinition = "text")
-    private String imgurlf, imgurlb, longimgurl,price_string, note;
+    private String imgurlf, imgurlb, longimgurl,pricestring, note;
 
-    private int price, weight, memory_size;
+    private int price, weight, memorysize;
     private float battery, sizeint;
 
-    private int adapter, sizecm, resolution, hddsize, ssd_size, afterservice, cpu_ranking, gpu_ranking;
+    private int adapter, sizecm, resolution, hddsize, ssd_size, afterservice, cpuranking, gpuranking;
     private float thick;
-    private String brand, cpu_code, cpu_number, cpu_core, memory_type,
-            gpu_manufact, gpu_kind, ssd, os, recommend_group;
+    private String brand, cpucode, cpunumber, cpucore, memorytype,
+            gpumanufact, gpukind, ssd, os, recommendgroup;
 
-    private Boolean pantoscopic, lan_cable, lan_radio, bluetooth, hdmitwo, hdmi, minidp, dp, dsub, webcam,
-            usb_typectrd, usb_typec, usb_trdone, usb_trd, usb_snd, thunderbolt, esata, ieee, serialport, expresscard,
+    private Boolean pantoscopic, lancable, lanradio, bluetooth, hdmitwo, hdmi, minidp, dp, dsub, webcam,
+            usbtypectrd, usbtypec, usbtrdone, usbtrd, usbsnd, thunderbolt, esata, ieee, serialport, expresscard,
             multireader, numkb, blockkb, machinekb, rgblight, kblight, waterproofkb, milstd, face, fingerprint, tpm,
             worldwarranty;
 }
