@@ -190,17 +190,72 @@
 
                 <!-- 카드 이미지 -->
                 <c:forEach var="notebook" items="${notebookPage.content}">
-                    <h1>${notebook.imgurlf}</h1>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <a href="http://comalmot.com/notebookinfo/${notebook.id}"><img class="card-img-top" src=${notebook.imgurlf} alt=""></a>
+                            <div class="card-body">
+                                <h5 class="card-title ">
+                                    <a href="http://comalmot.com/notebookinfo/${notebook.id}" >${notebook.model}</a>
+                                </h5>
+                                <h5>${notebook.price_string} 원</h5>
+                                <p class="card-text">
+                                        ${notebook.cpumanufact} / ${notebook.cpukind} / RAM ${notebook.memory_size} GB / ${notebook.sizeint}인치
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </c:forEach>
             </div>
             <!-- /.row -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <c:choose>
+                        <c:when test="${notebookPage.number eq 0}">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=2" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </c:when>
+                        <c:when test="${notebookPage.last}">
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${notebookPage.number}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number-1}">${notebookPage.number-1}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number}">${notebookPage.number}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number+1}">${notebookPage.number+1}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${notebookPage.number}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number}">${notebookPage.number}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number+1}">${notebookPage.number+1}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number+2}">${notebookPage.number+2}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${notebookPage.number+2}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </nav>
 
