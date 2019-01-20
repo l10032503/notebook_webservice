@@ -1,10 +1,4 @@
 spring:
-  profiles:
-    active: local
-
----
-spring:
-  profiles: local
   datasource:
       url: jdbc:mariadb://notebookwebservice.cjmajxgzxql6.ap-northeast-2.rds.amazonaws.com:3306/notebookdata
       username: l10032503
