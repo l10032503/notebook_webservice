@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +14,12 @@
     <link rel="stylesheet" href="webjars/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../resources/css/1-col-portfolio.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
+     <style>
+         .max-small{
+             width: auto; height: auto;
+             max-height: 300px;
+         }
+     </style>
 
 </head>
 
@@ -75,91 +82,84 @@
                 <div class="col-lg-12">
                     <div class="alert alert-warning" role="alert">
                         <h3>진단결과</h3>
-                        <h3>{{result_txt}}</h3>
+                        <h3></h3>
                     </div>
                 </div>
                 <!-- Project One -->
-                <div class="row">
-                    <div class="col-md-7">
-                        <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                        </a>
+                <c:forEach var="notebook" items="${notebookPage.content}">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="alert-light " style="width: 500px;height: 300px;text-align: center">
+                                <a href="http://comalmot.com/notebookinfo/${notebook.id}">
+                                    <img class="img-fluid rounded mb-3 mb-md-0 " src="${notebook.imgurlf}" style="max-height: 300px; width: auto; " alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h5 class="card-title ">
+                                <a href="http://comalmot.com/notebookinfo/${notebook.id}" >${notebook.model}</a>
+                            </h5>
+                            <h5>${notebook.price_string} 원</h5>
+                            <p>${notebook.cpumanufact} / ${notebook.cpukind} / RAM ${notebook.memory_size} GB / ${notebook.sizeint}인치</p>
+                        </div>
                     </div>
-                    <div class="col-md-5">
-                        <h3>Project One</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-                    </div>
-                </div>
+
+                    <hr>
+                </c:forEach>
                 <!-- /.row -->
-
-                <hr>
-
-                <!-- Project Two -->
-                <div class="row">
-                    <div class="col-md-7">
-                        <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-5">
-                        <h3>Project Two</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <hr>
-
-                <!-- Project Three -->
-                <div class="row">
-                    <div class="col-md-7">
-                        <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-5">
-                        <h3>Project Three</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, temporibus, dolores, at, praesentium ut unde repudiandae voluptatum sit ab debitis suscipit fugiat natus velit excepturi amet commodi deleniti alias possimus!</p>
-                    </div>
-                </div>
-                <!-- /.row -->
-
-                <hr>
-
-                <!-- Project Four -->
-                <div class="row">
-
-                    <div class="col-md-7">
-                        <a href="#">
-                            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-5">
-                        <h3>Project Four</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quidem, consectetur, officia rem officiis illum aliquam perspiciatis aspernatur quod modi hic nemo qui soluta aut eius fugit quam in suscipit?</p>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <hr>
 
             </div>
             <!-- /.row -->
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                    <c:choose>
+                        <c:when test="${notebookPage.number eq 0}">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=2" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </c:when>
+                        <c:when test="${notebookPage.last}">
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${notebookPage.number}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number-1}">${notebookPage.number-1}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number}">${notebookPage.number}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number+1}">${notebookPage.number+1}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${notebookPage.number}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number}">${notebookPage.number}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number+1}">${notebookPage.number+1}</a></li>
+                            <li class="page-item"><a class="page-link" href="?page=${notebookPage.number+2}">${notebookPage.number+2}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page=${notebookPage.number+2}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </nav>
 
