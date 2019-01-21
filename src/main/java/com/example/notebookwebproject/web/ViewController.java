@@ -33,7 +33,7 @@ public class ViewController {
     public String view(Model model, @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 6) Pageable pageable){
         Page<Notebook> notebookPage = notebookDAO.findAll(pageable);
         model.addAttribute("notebookPage",notebookPage);
-        return "viewpagetest";
+        return "viewpage";
     }
 
     public void viewcardInitial(Model model){
