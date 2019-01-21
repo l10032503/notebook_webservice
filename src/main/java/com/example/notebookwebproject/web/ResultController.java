@@ -25,6 +25,6 @@ public class ResultController {
     public String result(Model model, @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 5) Pageable pageable){
         Page<Notebook> notebookPage = notebookDAO.findAll(pageable);
         model.addAttribute("notebookPage",notebookPage);
-        return "result";
+        return "resulttest";
     }
 }
