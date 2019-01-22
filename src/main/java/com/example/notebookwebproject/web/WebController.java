@@ -1,8 +1,15 @@
 package com.example.notebookwebproject.web;
 
+import com.example.notebookwebproject.Paging.Notebook;
+import com.example.notebookwebproject.Paging.NotebookDAO;
 import com.example.notebookwebproject.SQLTEST.infoTEST;
 import com.example.notebookwebproject.SQLTEST.infoTESTMapper;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +23,20 @@ import java.util.Random;
 public class WebController {
 
     private infoTESTMapper infoTestMapper;
+    @Autowired
+    private NotebookDAO notebookDAO;
 
     @GetMapping("/")
     public String main(final Model model){
         maincardrandom(model);
         return "main";
+    }
+
+    @GetMapping("/test")
+    public String test(Model model, @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 6) Pageable pageable){
+        Page<Notebook> notebookPage = notebookDAO.findAll(pageable);
+        model.addAttribute("notebookPage",notebookPage);
+        return "test";
     }
 
     public void maincardrandom(Model model){

@@ -43,11 +43,7 @@ public class WebRestController {
                 .orElse("");
     }
 
-    @RequestMapping("/test/{testname}")
-    public String sqlhello(@PathVariable String testname){
-        sqlTEST sqlTest = sqlTestMapper.findsqlTEST(testname);
-        return "Hello, " + sqlTest.getName();
-    }
+
 
     @RequestMapping("/notebooktest/{ID}")
     public String notebookdatahello(@PathVariable int ID){
