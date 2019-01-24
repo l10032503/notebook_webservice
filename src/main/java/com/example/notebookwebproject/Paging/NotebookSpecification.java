@@ -11,6 +11,14 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 public class NotebookSpecification {
+    public static Specification<Notebook> returnDefault(){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return null;
+            }
+        };
+    }
     public static Specification<Notebook> searchBrand(final String brand){
      return new Specification<Notebook>() {
          @Override
@@ -34,6 +42,12 @@ public class NotebookSpecification {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search cpukind");
+                if (cpukind.equals("펜티엄골드"))
+                    return criteriaBuilder.equal(root.get("cpukind"), "펜티엄 골드");
+                else if (cpukind.equals("라이젠3"))
+                    return criteriaBuilder.equal(root.get("cpukind"), "라이젠 3");
+                else if (cpukind.equals("라이젠7"))
+                    return criteriaBuilder.equal(root.get("cpukind"), "라이젠 7");
                 return criteriaBuilder.equal(root.get("cpukind"),cpukind);
             }
         };
@@ -60,12 +74,12 @@ public class NotebookSpecification {
         };
     }
 
-    public static Specification<Notebook> searchSize(final float sizeint){
+    public static Specification<Notebook> searchSize(final int sizeinch){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search size");
-                return criteriaBuilder.equal(root.get("sizeint"),sizeint);
+                return criteriaBuilder.equal(root.get("sizeinch"),sizeinch);
             }
         };
     }
@@ -76,16 +90,14 @@ public class NotebookSpecification {
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search weight");
                 if (weight.equals("range1"))
-                    return criteriaBuilder.lessThanOrEqualTo(root.get("price"), 1000);
+                    return criteriaBuilder.lessThanOrEqualTo(root.get("weight"), 1000);
                 else if (weight.equals("range2"))
-                    return criteriaBuilder.between(root.get("price"), 1000,1500);
+                    return criteriaBuilder.between(root.get("weight"), 1000,2000);
                 else if (weight.equals("range3"))
-                    return criteriaBuilder.between(root.get("price"),1500,2000);
-                else if (weight.equals("range4"))
-                    return criteriaBuilder.greaterThan(root.get("price"),2000);
+                    return criteriaBuilder.greaterThan(root.get("weight"),2000);
                 else
                     System.out.println("exception");
-                return criteriaBuilder.between(root.get("price"), 0, 5000000);
+                return criteriaBuilder.between(root.get("weight"), 0, 5000);
             }
         };
     }
