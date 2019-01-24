@@ -38,15 +38,16 @@ public class ViewController {
                        @RequestParam(required = false) String memorysize,
                        @RequestParam(required = false) String cpukind,
                        @RequestParam(required = false) String pricerange,
-                       @RequestParam(required = false) String sizeint,
+                       @RequestParam(required = false) String sizeinch,
                        @RequestParam(required = false) String weight){
         Page<Notebook> notebookPage;
-        if(brand == null && memorysize == null && cpukind == null && pricerange == null && sizeint == null && weight == null) {
+        if(brand == null && memorysize == null && cpukind == null && pricerange == null && sizeinch == null && weight == null) {
             notebookPage = notebookDAO.findAll(pageable);
         }
         else{
             System.out.println(brand + " ram:" + memorysize + " cpukind: "+ cpukind);
-            Specification<Notebook> notebookSpecification = specifyCondition(brand, memorysize, cpukind);
+            Specification<Notebook> notebookSpecification
+                    = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight);
             notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
         }
         model.addAttribute("notebookPage",notebookPage);
@@ -113,28 +114,22 @@ public class ViewController {
         }
     }
 
-    public Specification<Notebook> specifyCondition(String brand, String memorysize, String cpukind){
+    public Specification<Notebook> specifyCondition(String brand, String memorysize, String cpukind, String pricerange, String sizeinch, String weight){
         Specification<Notebook> notebookSpecification;
-        if(brand != null && memorysize != null && cpukind != null){
-            notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand).
-                    and(NotebookSpecification.searchMemorySize(Integer.parseInt(memorysize))).
-                    and(NotebookSpecification.searchCPU(cpukind)));
-        } else if(brand != null && memorysize != null && cpukind == null){
-            notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand).
-                    and(NotebookSpecification.searchMemorySize(Integer.parseInt(memorysize))));
-        } else if(brand != null && memorysize == null && cpukind != null){
-            notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand).
-                    and(NotebookSpecification.searchCPU(cpukind)));
-        } else if(brand != null && memorysize == null && cpukind == null){
+        if(brand!=null)
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));
-        } else if(brand == null && memorysize != null && cpukind != null){
-            notebookSpecification = Specification.where(NotebookSpecification.searchMemorySize(Integer.parseInt(memorysize)).
-                    and(NotebookSpecification.searchCPU(cpukind)));
-        } else if(brand == null && memorysize != null && cpukind == null){
-            notebookSpecification = Specification.where(NotebookSpecification.searchMemorySize(Integer.parseInt(memorysize)));
-        } else{
-            notebookSpecification = Specification.where(NotebookSpecification.searchCPU(cpukind));
-        }
+        else
+            notebookSpecification = Specification.where(NotebookSpecification.returnDefault());
+        if(memorysize!=null)
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchMemorySize(Integer.parseInt(memorysize)));
+        if(cpukind!=null)
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchCPU(cpukind));
+        if(pricerange!=null)
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchPrice(pricerange));
+        if(sizeinch!=null)
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchSize(Integer.parseInt(sizeinch)));
+        if(weight!=null)
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchWeight(weight));
         return notebookSpecification;
     }
 
