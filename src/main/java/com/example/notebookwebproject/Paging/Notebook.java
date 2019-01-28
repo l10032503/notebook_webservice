@@ -16,9 +16,9 @@ public class Notebook {
     private String model, cpukind, cpumanufact;
 
     @Column(columnDefinition = "text")
-    private String imgurlf, imgurlb, longimgurl,pricestring, note;
+    private String imgurlf, imgurlb, longimgurl,pricestring, note, searchbrand, searchmodel, searchall;
 
-    private int price, weight, memorysize;
+    private int price, weight, memorysize, sizeinch;
     private float battery, sizeint;
 
     private int adapter, sizecm, resolution, hddsize, ssd_size, afterservice, cpuranking, gpuranking;

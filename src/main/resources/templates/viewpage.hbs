@@ -16,6 +16,31 @@
     <script src="/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
     <script src="/webjars/handlebars/4.0.11-1/handlebars.js"></script>
 
+    <script language="javascript">
+        var selection = "전체";
+        $(function(){
+            $(".dropdown-menu a").click(function(){
+                $(".ddbtn:first-child").text($(this).text());
+                $(".ddbtn:first-child").val($(this).text());
+                selection = $(".ddbtn:first-child").val();
+            });
+        });
+        function buttonClicked() {
+            var keyword = document.getElementById("keywordtext").value;
+            if (!keyword) {
+                alert("검색어를 입력해주세요.");
+            }
+            else {
+                if(selection=="모델명")
+                {window.location.href = "http://comalmot.com/view?searchmodel=" + keyword;}
+                else if(selection=="브랜드명")
+                {window.location.href = "http://comalmot.com/view?searchbrand=" + keyword;}
+                else
+                {window.location.href = "http://comalmot.com/view?searchall=" + keyword;}
+            }
+        }
+    </script>
+
 </head>
 <body >
 <!-- Navigation -->
@@ -74,19 +99,19 @@
                     <form>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="ddbtn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     전체
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">모델명</a>
-                                    <a class="dropdown-item" href="#">브랜드명</a>
+                                    <a class="dropdown-item" href="#" data-value="modelname">모델명</a>
+                                    <a class="dropdown-item" href="#" data-value="brandname">브랜드명</a>
                                     <div role="separator" class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">전체</a>
                                 </div>
                             </div>
-                            <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                            <input type="text" id="keywordtext" class="form-control" aria-label="Text input with dropdown button"/>
                             <span class="input-group-btn">
-                                <button class="btn btn-outline-secondary" type="button">검색</button>
+                                <input type="submit" class="btn btn-outline-secondary" onclick="buttonClicked(); return false;" value="검색"/>
                             </span>
                         </div>
                     </form>
