@@ -67,12 +67,12 @@
 
         <div class="col-lg-9 mt-4" >
 
-            <div class="row col-lg-12">
+            <div class="row col-lg-12" id="querytest">
                 <p style="text-align: center">
                     <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/9983BD355C4DC19334" alt="" style="max-width:100%; height: auto">
                     <img id="answerimg1" src="https://t1.daumcdn.net/cfile/tistory/99FE05355C4DC19402" alt="" style="max-width:100%; height: auto">
                     <img id="answerimg2" src="https://t1.daumcdn.net/cfile/tistory/99B30B355C4DC19426" alt="" style="max-width:100%; height: auto">
-                   
+                    <button id="resultbutton" class="btn btn-outline-secondary" href="" type="button" style="display: none">결 과 보 기</button>
                 </p>
             </div>
 
@@ -99,6 +99,9 @@
     $("#querytest").html(template);
 </script>
 
+<script id="querytest">
+    $("#resultbutton").show();
+</script>
 
 <script type="text/javascript">
     $(function () {
