@@ -115,6 +115,7 @@ public class ViewController {
 
     public Specification<Notebook> specifyCondition(String brand, String memorysize, String cpukind){
         Specification<Notebook> notebookSpecification;
+
         if(brand != null && memorysize != null && cpukind != null){
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand).
                     and(NotebookSpecification.searchMemorySize(Integer.parseInt(memorysize))).
