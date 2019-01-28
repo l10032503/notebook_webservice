@@ -19,6 +19,30 @@ public class NotebookSpecification {
             }
         };
     }
+    public static Specification<Notebook> brandFilter(final String keyword) {
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.like(root.get("searchbrand"), "%" + keyword + "%");
+            }
+        };
+    }
+    public static Specification<Notebook> modelFilter(final String keyword) {
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.like(root.get("searchmodel"), "%" + keyword + "%");
+            }
+        };
+    }
+    public static Specification<Notebook> allFilter(final String keyword) {
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.like(root.get("searchall"), "%" + keyword + "%");
+            }
+        };
+    }
     public static Specification<Notebook> searchBrand(final String brand){
      return new Specification<Notebook>() {
          @Override
