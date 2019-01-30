@@ -49,11 +49,6 @@ public class ViewController {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
         }
-        /*if(brand == null && memorysize == null && cpukind == null && pricerange == null && sizeinch == null
-                && weight == null && searchbrand == null && searchmodel == null && searchall == null) {
-            System.out.println("pageall");
-            notebookPage = notebookDAO.findAll(pageable);
-        }*/
         else{
             Specification<Notebook> notebookSpecification
                     = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel, searchall);
