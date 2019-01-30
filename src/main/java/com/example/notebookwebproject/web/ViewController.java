@@ -34,15 +34,15 @@ public class ViewController {
 
     @GetMapping("/view")
     public String view(Model model, @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 6) Pageable pageable,
-                       @RequestParam(required = false) String brand,
-                       @RequestParam(required = false) String memorysize,
-                       @RequestParam(required = false) String cpukind,
-                       @RequestParam(required = false) String pricerange,
-                       @RequestParam(required = false) String sizeinch,
-                       @RequestParam(required = false) String weight,
-                       @RequestParam(required = false) String searchbrand,
-                       @RequestParam(required = false) String searchmodel,
-                       @RequestParam(required = false) String searchall){
+                       @RequestParam(required = false) String brand[],
+                       @RequestParam(required = false) String memorysize[],
+                       @RequestParam(required = false) String cpukind[],
+                       @RequestParam(required = false) String pricerange[],
+                       @RequestParam(required = false) String sizeinch[],
+                       @RequestParam(required = false) String weight[],
+                       @RequestParam(required = false) String searchbrand[],
+                       @RequestParam(required = false) String searchmodel[],
+                       @RequestParam(required = false) String searchall[]){
         Page<Notebook> notebookPage;
         if(brand == null && memorysize == null && cpukind == null && pricerange == null && sizeinch == null && weight == null && searchbrand == null && searchmodel == null && searchall == null) {
             notebookPage = notebookDAO.findAll(pageable);
@@ -117,7 +117,7 @@ public class ViewController {
         }
     }
 
-    public Specification<Notebook> specifyCondition(String brand, String memorysize, String cpukind, String pricerange, String sizeinch, String weight, String searchbrand, String searchmodel, String searchall){
+    public Specification<Notebook> specifyCondition(String brand[], String memorysize[], String cpukind[], String pricerange[], String sizeinch[], String weight[], String searchbrand[], String searchmodel[], String searchall[]){
         Specification<Notebook> notebookSpecification;
         if(brand!=null)
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));

@@ -66,14 +66,25 @@
 
 
         <div class="col-lg-9 mt-4" >
+            <div class="row">
+                <div class="row col-lg-12" id="querytest" style="text-align: center">
+                    <p style="text-align: center">
+                        <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/9983BD355C4DC19334" alt="" style="max-width:100%; height: auto; text-align: center">
+                    </p>
+                </div>
+                <div id="answer1region" class="col-lg-3 col-md-6">
+                    <button id="answer1" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">학업</button>
+                </div>
+                <div id="answer2region" class="col-lg-3 col-md-6">
+                    <button id="answer2" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">업무</button>
+                </div>
+                <div id="answer3region" class="col-lg-3 col-md-6">
+                    <button id="answer3" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">영화감상</button>
+                </div>
+                <div id="answer4region" class="col-lg-3 col-md-6">
+                    <button id="answer4" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">게임</button>
+                </div>
 
-            <div class="row col-lg-12" id="querytest">
-                <p style="text-align: center">
-                    <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/9983BD355C4DC19334" alt="" style="max-width:100%; height: auto">
-                    <img id="answerimg1" src="https://t1.daumcdn.net/cfile/tistory/99FE05355C4DC19402" alt="" style="max-width:100%; height: auto">
-                    <img id="answerimg2" src="https://t1.daumcdn.net/cfile/tistory/99B30B355C4DC19426" alt="" style="max-width:100%; height: auto">
-                    <button id="resultbutton" class="btn btn-outline-secondary" href="" type="button" style="display: none">결 과 보 기</button>
-                </p>
             </div>
 
         </div>
@@ -94,13 +105,39 @@
 </footer>
 
 <script type="text/javascript">
-    var source = $("#querytest").html();
-    var template = Handlebars.compile(source);
-    $("#querytest").html(template);
-</script>
+    console.log("질문1");
+    var address = null;
+    var typeZ = "";
+    $("#answer1").click(function () {
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20"); //학업
+        var student= queryStudent();
+        student();
+    });
+    $("#answer2").click(function () {
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322"); //업무
+    });
+    $("#answer3").click(function () {
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322"); //영상감상
+    });
+    $("#answer4").click(function () {
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322"); //게임
+    });
 
-<script id="querytest">
-    $("#resultbutton").show();
+    function queryStudent() {
+        console.log("질문 학생");
+        $("#answer1region").attr("class","col-lg-6");
+        $("#answer2region").attr("class","col-lg-6");
+        $("#answer1").click(function () {
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20"); //초중고등학생
+
+        });
+        $("#answer2").click(function () {
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20"); //대학생
+        });
+        $("#answer3").hide();
+        $("#answer4").hide();
+    }
+
 </script>
 
 <script type="text/javascript">
