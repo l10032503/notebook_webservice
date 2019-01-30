@@ -120,6 +120,21 @@ public class NotebookSpecification {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search price");
+                Predicate pricerangeList = WhereisRange(root,criteriaBuilder,pricerange[0]);
+                for(int i=0; i<pricerange.length; i++){
+                    if(i==0) {
+                        System.out.println(pricerange[i]);
+                        pricerangeList = WhereisRange(root,criteriaBuilder,pricerange[i]);
+                    }
+                    else{
+                        System.out.println(pricerange[i]);
+                        pricerangeList = criteriaBuilder.or(pricerangeList, WhereisRange(root,criteriaBuilder,pricerange[i]));
+                    }
+                }
+                    return pricerangeList;
+            }
+
+            public Predicate WhereisRange(Root<Notebook> root, CriteriaBuilder criteriaBuilder , String pricerange){
                 if (pricerange.equals("range1"))
                     return criteriaBuilder.lessThanOrEqualTo(root.get("price"), 500000);
                 else if (pricerange.equals("range2"))
@@ -132,7 +147,7 @@ public class NotebookSpecification {
                     return criteriaBuilder.greaterThan(root.get("price"),2000000);
                 else
                     System.out.println("exception");
-                    return criteriaBuilder.between(root.get("price"), 0, 5000000);
+                return criteriaBuilder.between(root.get("price"), 0, 5000000);
             }
         };
     }
@@ -163,6 +178,21 @@ public class NotebookSpecification {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search weight");
+                Predicate weightList = WhereisRange(root,criteriaBuilder,weight[0]);
+                for(int i=0; i<weight.length; i++){
+                    if(i==0) {
+                        System.out.println(weight[i]);
+                        weightList = WhereisRange(root,criteriaBuilder,weight[i]);
+                    }
+                    else{
+                        System.out.println(weight[i]);
+                        weightList = criteriaBuilder.or(weightList, WhereisRange(root,criteriaBuilder,weight[i]));
+                    }
+                }
+                return weightList;
+            }
+
+            public Predicate WhereisRange(Root<Notebook> root, CriteriaBuilder criteriaBuilder, String weight){
                 if (weight.equals("range1"))
                     return criteriaBuilder.lessThanOrEqualTo(root.get("weight"), 1000);
                 else if (weight.equals("range2"))
@@ -171,7 +201,7 @@ public class NotebookSpecification {
                     return criteriaBuilder.greaterThan(root.get("weight"),2000);
                 else
                     System.out.println("exception");
-                return criteriaBuilder.between(root.get("weight"), 0, 5000);
+                return criteriaBuilder.between(root.get("weight"), 0,5000);
             }
         };
     }
