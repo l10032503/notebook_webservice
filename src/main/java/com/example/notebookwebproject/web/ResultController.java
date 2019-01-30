@@ -41,15 +41,16 @@ public class ResultController {
         }
         else{
             System.out.println(brand + " ram:" + memorysize + " cpukind: "+ cpukind);
-            Specification<Notebook> notebookSpecification
-                    = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel, searchall);
-            notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
+            notebookPage = notebookDAO.findAll(pageable);
+            /*Specification<Notebook> notebookSpecification
+                   = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel, searchall);
+            notebookPage = notebookDAO.findAll(notebookSpecification, pageable);*/
         }
         model.addAttribute("notebookPage",notebookPage);
         return "result";
     }
 
-    public Specification<Notebook> specifyCondition(String brand, String memorysize, String cpukind, String pricerange, String sizeinch, String weight, String searchbrand, String searchmodel, String searchall){
+    /*public Specification<Notebook> specifyCondition(String brand, String memorysize, String cpukind, String pricerange, String sizeinch, String weight, String searchbrand, String searchmodel, String searchall){
         Specification<Notebook> notebookSpecification;
         if(brand!=null)
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));
@@ -72,5 +73,5 @@ public class ResultController {
         if(searchall!=null)
             notebookSpecification = notebookSpecification.and(NotebookSpecification.allFilter(searchall));
         return notebookSpecification;
-    }
+    }*/
 }

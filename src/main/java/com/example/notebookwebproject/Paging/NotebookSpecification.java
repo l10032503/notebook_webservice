@@ -43,40 +43,79 @@ public class NotebookSpecification {
             }
         };
     }
-    public static Specification<Notebook> searchBrand(final String brand){
+    public static Specification<Notebook> searchBrand(final String[] brand){
      return new Specification<Notebook>() {
          @Override
          public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-             return criteriaBuilder.equal(root.get("brand"),brand);
+             Predicate brandsList = criteriaBuilder.equal(root.get("brand"),brand[0]);
+             for(int i=0; i<brand.length; i++){
+                 if(i==0) {
+                     System.out.println(brand[i]);
+                     brandsList = criteriaBuilder.equal(root.get("brand"), brand[i]);
+                 }
+                 else{
+                     System.out.println(brand[i]);
+                     brandsList = criteriaBuilder.or(brandsList, criteriaBuilder.equal(root.get("brand"),brand[i]));
+                 }
+             }
+             return brandsList;
          }
        };
     }
-    public static Specification<Notebook> searchMemorySize(final int memorysize){
+    public static Specification<Notebook> searchMemorySize(final int [] memorysize){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                Object obj = root.get("memorysize");
-                System.out.println(obj.getClass().getName() + " " +root.get("memorysize") + " parameter: " + memorysize + " result+ " + criteriaBuilder.equal(root.get("memorysize"),memorysize));
-                return criteriaBuilder.equal(root.get("memorysize"),memorysize);
+                Predicate memorysizeList = criteriaBuilder.equal(root.get("memorysize"),memorysize[0]);
+                System.out.println("search memorysize");
+                for(int i=0; i<memorysize.length; i++){
+                    if(i==0) {
+                        System.out.println(memorysize[i]);
+                        memorysizeList = criteriaBuilder.equal(root.get("memorysize"), memorysize[i]);
+                    }
+                    else{
+                        System.out.println(memorysize[i]);
+                        memorysizeList = criteriaBuilder.or(memorysizeList, criteriaBuilder.equal(root.get("memorysize"),memorysize[i]));
+                    }
+                }
+                return memorysizeList;
             }
         };
     }
-    public static Specification<Notebook> searchCPU(final String cpukind){
+    public static Specification<Notebook> searchCPU(final String [] cpukind){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search cpukind");
+                Predicate cpukindList = criteriaBuilder.equal(root.get("cpukind"),cpukind[0]);
+                for(int i=0; i<cpukind.length; i++){
+                    if(i==0) {
+                        cpukind[i] = ifThereisBlank(cpukind[i]);
+                        System.out.println(cpukind[i]);
+                        cpukindList = criteriaBuilder.equal(root.get("cpukind"), cpukind[i]);
+                    }
+                    else{
+                        cpukind[i] = ifThereisBlank(cpukind[i]);
+                        System.out.println(cpukind[i]);
+                        cpukindList = criteriaBuilder.or(cpukindList, criteriaBuilder.equal(root.get("cpukind"),cpukind[i]));
+                    }
+                }
+                return cpukindList;
+            }
+
+            public String ifThereisBlank(String cpukind){
                 if (cpukind.equals("펜티엄골드"))
-                    return criteriaBuilder.equal(root.get("cpukind"), "펜티엄 골드");
+                    return "펜티엄 골드";
                 else if (cpukind.equals("라이젠3"))
-                    return criteriaBuilder.equal(root.get("cpukind"), "라이젠 3");
+                    return "라이젠 3";
                 else if (cpukind.equals("라이젠7"))
-                    return criteriaBuilder.equal(root.get("cpukind"), "라이젠 7");
-                return criteriaBuilder.equal(root.get("cpukind"),cpukind);
+                    return "라이젠 7";
+                else
+                    return cpukind;
             }
         };
     }
-    public static Specification<Notebook> searchPrice(final String pricerange){
+    public static Specification<Notebook> searchPrice(final String [] pricerange){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -98,17 +137,28 @@ public class NotebookSpecification {
         };
     }
 
-    public static Specification<Notebook> searchSize(final int sizeinch){
+    public static Specification<Notebook> searchSize(final int [] sizeinch){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                System.out.println("search size");
-                return criteriaBuilder.equal(root.get("sizeinch"),sizeinch);
+                Predicate sizeinchList = criteriaBuilder.equal(root.get("sizeinch"),sizeinch[0]);
+                System.out.println("search sizeinch");
+                for(int i=0; i<sizeinch.length; i++){
+                    if(i==0) {
+                        System.out.println(sizeinch[i]);
+                        sizeinchList = criteriaBuilder.equal(root.get("sizeinch"), sizeinch[i]);
+                    }
+                    else{
+                        System.out.println(sizeinch[i]);
+                        sizeinchList = criteriaBuilder.or(sizeinchList, criteriaBuilder.equal(root.get("sizeinch"),sizeinch[i]));
+                    }
+                }
+                return sizeinchList;
             }
         };
     }
 
-    public static Specification<Notebook> searchWeight(final String weight){
+    public static Specification<Notebook> searchWeight(final String [] weight){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
