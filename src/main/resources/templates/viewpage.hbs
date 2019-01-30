@@ -39,6 +39,14 @@
                 {window.location.href = "http://comalmot.com/view?searchall=" + keyword;}
             }
         }
+        function nowpage(number) {
+            var nownumber = number +1;
+            document.location.href = "?page=" + nownumber;
+        }
+        function nextpage(number) {
+            var nextnumber = number +2;
+            document.location.href = "?page=" + nextnumber;
+        }
     </script>
 
 </head>
@@ -253,12 +261,14 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             {{#if notebookPage.first}}
-                <li class="page-item">
+                <li class="page-item disabled">
                     <a class="page-link" href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                <li class="page-item active">
+                    <a class="page-link" href="?page=1">1<span class="sr-only">(current)</span></a>
+                </li>
                 <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
                 <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
                 <li class="page-item">
@@ -269,21 +279,28 @@
             {{else}}
                 {{#if notebookPage.last}}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{notebookPage.number}}" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        </a>
+                        <a class="page-link" href="?page=16">«</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{notebookPage.number}}</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{notebookPage.number}}</a></li>
-                    <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{notebookPage.number}}</a></li>
-
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
+                    <li class="page-item"><a class="page-link" href="?page=15">15</a></li>
+                    <li class="page-item"><a class="page-link" href="?page=16">16</a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="?page=17">17<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">»</a>
                     </li>
                 {{else}}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{notebookPage.number}}">«</a>
+                    </li>
                     <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{notebookPage.number}}</a></li>
+                    <li class="page-item active">
+                        <div class="page-link" id="nowdiv" onclick="nowpage({{notebookPage.number}})">now<span class="sr-only">(current)</span></div>
+                    </li>
+                    <li class="page-item"><div class="page-link" id="nextdiv" onclick="nextpage({{notebookPage.number}})">next</div></li>
+                    <li class="page-item">
+                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">»</div>
+                    </li>
                 {{/if}}
             {{/if}}
         </ul>
@@ -292,11 +309,14 @@
 <script type="text/javascript">
     var psource = $("#pagination-template").html();
     var template = Handlebars.compile(psource);
-    Handlebars.registerHelper('add number', function (number) {
-        return number + 1;
-    });
-    Handlebars.registerHelper('sub number', function (number){
-        return number - 1;
+    var a = window.location.href;
+    a = a.substr(a.length - 2);
+    if(a.charAt(0) == '=')
+        a = a.substr(a.length - 1);
+    var b = Number(a) +1;
+    $(document).ready(function() {
+        $('#nowdiv').html(a);
+        $('#nextdiv').html(b);
     });
     $("#pagination").html(template);
 </script>
