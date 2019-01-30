@@ -14,9 +14,17 @@
     <script id="pagination-template" type="text/x-handlebars-template">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{sub notebookPage.number}}</a></li>
                 <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{notebookPage.number}}</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{add notebookPage.number}}</a></li>
+                <li class="page-item"><a class="page-link" id="nowpage" href="#">now</a></li>
+                <li class="page-item"><a class="page-link" id="nextpage" href="#">next</a></li>
+                <script language="javascript" type="text/javascript">
+                    var now = {{notebookPage.number}} +1;
+                    var next = {{notebookPage.number}} +2;
+                    var nowlink = "?page=" + now;
+                    var nextlink = "?page=" + next;
+                    document.getElementById("nowpage").setAttribute("href",nowlink);
+                    document.getElementById("nextpage").setAttribute("href",nextlink);
+                <{{!}}/script>
             </ul>
         </nav>
     </script>
@@ -24,11 +32,11 @@
     <script type="text/javascript">
         var psource = $("#pagination-template").html();
         var template = Handlebars.compile(psource);
-        Handlebars.registerHelper("add", function (number) {
+        Handlebars.registerHelper("now", function (number) {
           return number + 1;
         });
-        Handlebars.registerHelper("sub", function (number){
-            return number - 1;
+        Handlebars.registerHelper("next", function (number){
+            return number + 2;
         });
         $("#pagination").html(template);
     </script>
