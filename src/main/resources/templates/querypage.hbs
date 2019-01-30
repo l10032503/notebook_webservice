@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="row col-lg-12" id="querytest" style="text-align: center">
                     <p style="text-align: center">
-                        <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/9983BD355C4DC19334" alt="" style="max-width:100%; height: auto; text-align: center">
+                        <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/9983BD355C4DC19334" alt="" style="width:inherit; max-width:100%; height: auto; text-align: center">
                     </p>
                 </div>
                 <div id="answer1region" class="col-lg-3 col-md-6">
@@ -106,36 +106,64 @@
 
 <script type="text/javascript">
     console.log("질문1");
-    var address = null;
-    var typeZ = "";
-    $("#answer1").click(function () {
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20"); //학업
-        var student= queryStudent();
-        student();
+    var address = "?";
+    var brand = null;
+    var cpukind = null;
+    var memorysize = null;
+    var sizeinch = null;
+    var pricerange = null;
+    var weight = null;
+    var gpukind = null;
+
+    $("#answer1").click(function () { //학업
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20");
+        queryStudent();
     });
-    $("#answer2").click(function () {
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322"); //업무
+    $("#answer2").click(function () { //업무
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
     });
-    $("#answer3").click(function () {
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322"); //영상감상
+    $("#answer3").click(function () { //영상감상
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
     });
-    $("#answer4").click(function () {
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322"); //게임
+    $("#answer4").click(function () { //게임
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
     });
 
     function queryStudent() {
         console.log("질문 학생");
         $("#answer1region").attr("class","col-lg-6");
         $("#answer2region").attr("class","col-lg-6");
-        $("#answer1").click(function () {
-            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20"); //초중고등학생
-
+        $("#answer1").html('초중고등학생');
+        $("#answer2").html('대학생');
+        $("#answer1").click(function () {//초중고등학생
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
+            memorysize = "2,4";
+            address = final(address, brand, memorysize, sizeinch, pricerange, weight, gpukind);
+            console.log(address);
         });
-        $("#answer2").click(function () {
-            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20"); //대학생
+        $("#answer2").click(function () {//대학생
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
         });
         $("#answer3").hide();
         $("#answer4").hide();
+    }
+
+    function final(address, brand, cpukind, memorysize, sizeinch, pricerange, weight, gpukind){
+        if(brand != null)
+            address = address + "brand=" + brand;
+        if(cpukind != null)
+            address = address + "cpukind=" + cpukind;
+        if(memorysize != null)
+            address = address + "memorysize=" + memorysize;
+        if(sizeinch != null)
+            address = address + "sizeinch=" + sizeinch;
+        if(pricerange != null)
+            address = address + "pricerange=" + pricerange;
+        if(weight != null)
+            address = address + "weight=" + weight;
+        if(gpukind != null)
+            address = address + "gpukind" + gpukind;
+        return address;
     }
 
 </script>
