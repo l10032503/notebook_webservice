@@ -106,9 +106,11 @@
 
 <script type="text/javascript">
     console.log("질문1");
-    var address = "?";
+    var address = "http://comalmot.com/result?";
     var brand = null;
     var cpukind = null;
+    var cpurankinggreater = null;
+    var cpurankingless = null;
     var memorysize = null;
     var sizeinch = null;
     var pricerange = null;
@@ -135,35 +137,60 @@
         $("#answer2region").attr("class","col-lg-6");
         $("#answer1").html('초중고등학생');
         $("#answer2").html('대학생');
-        $("#answer1").click(function () {//초중고등학생
-            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
+        $("#answer1").click(function () { //초중고등학셍
+            cpurankinggreater = "450";
             memorysize = "2,4";
-            address = final(address, brand, memorysize, sizeinch, pricerange, weight, gpukind);
-            console.log(address);
+            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
         });
         $("#answer2").click(function () {//대학생
-            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99A1824C5C54203312");
+            queryUniversity();
         });
         $("#answer3").hide();
         $("#answer4").hide();
     }
 
-    function final(address, brand, cpukind, memorysize, sizeinch, pricerange, weight, gpukind){
+    function queryUniversity() {
+        console.log("대학생");
+        $("#answer1").html("높은 성능의 컴퓨터가 필요한 전공");
+        $("#answer2").html("그 외의 전공");
+        $("#answer1").click(function () { //초중고등학셍
+            cpurankingless = "700";
+            memorysize = "4,8,16";
+            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+        });
+        $("#answer2").click(function () { //초중고등학셍
+            cpurankinggreater = "450";
+            memorysize = "2,4";
+            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+        });
+    }
+
+    function final(address, brand, cpukind, cpurankinggreater, cpurankingless, memorysize, sizeinch, pricerange, weight, gpukind){
         if(brand != null)
-            address = address + "brand=" + brand;
+            address = address + "brand=" + brand + "&";
         if(cpukind != null)
-            address = address + "cpukind=" + cpukind;
+            address = address + "cpukind=" + cpukind + "&";
+        if(cpurankinggreater != null)
+            address = address + "cpurankinggreater=" + cpurankinggreater + "&";
+        if(cpurankingless != null)
+            address = address + "cpurankingless=" + cpurankingless + "&";
         if(memorysize != null)
-            address = address + "memorysize=" + memorysize;
+            address = address + "memorysize=" + memorysize + "&";
         if(sizeinch != null)
-            address = address + "sizeinch=" + sizeinch;
+            address = address + "sizeinch=" + sizeinch + "&";
         if(pricerange != null)
-            address = address + "pricerange=" + pricerange;
+            address = address + "pricerange=" + pricerange + "&";
         if(weight != null)
-            address = address + "weight=" + weight;
+            address = address + "weight=" + weight + "&";
         if(gpukind != null)
-            address = address + "gpukind" + gpukind;
+            address = address + "gpukind=" + gpukind + "&";
         return address;
+    }
+
+    function buttonClicked(address) {
+        console.log(address);
+        window.location.href = address;
     }
 
 </script>

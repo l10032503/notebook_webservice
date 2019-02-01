@@ -206,4 +206,24 @@ public class NotebookSpecification {
         };
     }
 
+    public static Specification<Notebook> searchCPURankingGreater(final int cpurankinggreater){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                System.out.println("search cpurakinggreater" + cpurankinggreater);
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("cpuranking"),cpurankinggreater);
+            }
+        };
+    }
+
+    public static Specification<Notebook> searchCPURankingLess(final int cpurankingless){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                System.out.println("search cpurakingless");
+                return criteriaBuilder.lessThanOrEqualTo(root.get("cpuranking"),cpurankingless);
+            }
+        };
+    }
+
 }

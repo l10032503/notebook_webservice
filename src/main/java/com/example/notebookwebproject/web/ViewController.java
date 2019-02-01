@@ -42,16 +42,19 @@ public class ViewController {
                        @RequestParam(value="weight",required = false, defaultValue = "0") String[] weight,
                        @RequestParam(value="searchbrand",required = false, defaultValue = "0") String[] searchbrand,
                        @RequestParam(value="searchmodel",required = false, defaultValue = "0") String[] searchmodel,
-                       @RequestParam(value="searchall",required = false, defaultValue = "0") String[] searchall){
+                       @RequestParam(value="searchall",required = false, defaultValue = "0") String[] searchall,
+                       @RequestParam(value="cpurankinggreater",required = false) String cpurankinggreater,
+                       @RequestParam(value="cpurankingless",required = false) String cpurankingless){
         Page<Notebook> notebookPage;
         if(brand[0].equals("0") && memorysize[0].equals("0") && cpukind[0].equals("0") && pricerange[0].equals("0") && sizeinch[0].equals("0")
-                && weight[0].equals("0") && searchbrand[0].equals("0") && searchmodel[0].equals("0") && searchall[0].equals("0")) {
+                && weight[0].equals("0") && searchbrand[0].equals("0") && searchmodel[0].equals("0") && searchall[0].equals("0")
+                &&cpurankinggreater==null&&cpurankingless==null) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
         }
         else{
             Specification<Notebook> notebookSpecification
-                    = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel, searchall);
+                    = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel, searchall, cpurankinggreater, cpurankingless);
             notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
         }
         model.addAttribute("notebookPage",notebookPage);
@@ -120,7 +123,8 @@ public class ViewController {
 
     public Specification<Notebook> specifyCondition(String[] brand, String[] memorysize, String[] cpukind,
                                                     String[] pricerange, String[] sizeinch, String[] weight,
-                                                    String[] searchbrand, String[] searchmodel, String[] searchall){
+                                                    String[] searchbrand, String[] searchmodel, String[] searchall,
+                                                    String cpurankinggreater, String cpurakingless){
         Specification<Notebook> notebookSpecification = Specification.where(NotebookSpecification.returnDefault());
         if(!brand[0].equals("0")) {
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));
@@ -157,6 +161,14 @@ public class ViewController {
         }
         if(!searchall[0].equals("0")) {
             notebookSpecification = notebookSpecification.and(NotebookSpecification.allFilter(searchall[0]));
+        }
+        if(cpurankinggreater != null) {
+            System.out.println(cpurankinggreater);
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchCPURankingGreater(Integer.parseInt(cpurankinggreater)));
+        }
+        if(cpurakingless != null) {
+            System.out.println(cpurakingless);
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchCPURankingLess(Integer.parseInt(cpurakingless)));
         }
         return notebookSpecification;
     }
