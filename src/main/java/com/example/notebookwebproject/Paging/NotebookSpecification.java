@@ -196,8 +196,10 @@ public class NotebookSpecification {
                 if (weight.equals("range1"))
                     return criteriaBuilder.lessThanOrEqualTo(root.get("weight"), 1000);
                 else if (weight.equals("range2"))
-                    return criteriaBuilder.between(root.get("weight"), 1000,2000);
+                    return criteriaBuilder.between(root.get("weight"), 1000,1500);
                 else if (weight.equals("range3"))
+                    return criteriaBuilder.between(root.get("weight"), 1500,2000);
+                else if (weight.equals("range4"))
                     return criteriaBuilder.greaterThan(root.get("weight"),2000);
                 else
                     System.out.println("exception");

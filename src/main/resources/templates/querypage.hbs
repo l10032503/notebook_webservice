@@ -65,7 +65,7 @@
         <!-- /.col-lg-3 -->
 
 
-        <div class="col-lg-9 mt-4" >
+        <div class="col-lg-9 mt-4 mb-4" >
             <div class="row">
                 <div class="row col-lg-12" id="querytest" style="text-align: center">
                     <p style="text-align: center">
@@ -79,12 +79,34 @@
                     <button id="answer2" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">업무</button>
                 </div>
                 <div id="answer3region" class="col-lg-3 col-md-6">
-                    <button id="answer3" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">영화감상</button>
+                    <button id="answer3" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">인터넷서핑</button>
                 </div>
                 <div id="answer4region" class="col-lg-3 col-md-6">
                     <button id="answer4" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">게임</button>
                 </div>
-
+                <div id="answer5region" class="col-lg-3 col-md-6">
+                    <button id="answer5" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
+                </div>
+                <div id="answer6region" class="col-lg-3 col-md-6">
+                    <button id="answer6" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
+                </div>
+                <div id="answer7region" class="col-lg-3 col-md-6">
+                    <button id="answer7" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
+                </div>
+                <div id="answer8region" class="col-lg-3 col-md-6">
+                    <button id="answer8" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
+                </div>
+                <div id="answer9region" class="col-lg-3 col-md-6">
+                    <button id="answer9" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
+                </div>
+                <div id="answer10region" class="col-lg-3 col-md-6">
+                    <button id="answer10" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
+                </div>
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                        <input type="checkbox" checked autocomplete="off"> Checked
+                    </label>
+                </div>
             </div>
 
         </div>
@@ -112,6 +134,7 @@
     var cpurankinggreater = null;
     var cpurankingless = null;
     var memorysize = null;
+    var disksize = null;
     var sizeinch = null;
     var pricerange = null;
     var weight = null;
@@ -123,12 +146,17 @@
     });
     $("#answer2").click(function () { //업무
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
+        queryJob();
     });
-    $("#answer3").click(function () { //영상감상
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
+    $("#answer3").click(function () { //인터넷서핑
+        cpurankinggreater = "450";
+        memorysize = "2,4";
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
+        queryOutdoor();
     });
     $("#answer4").click(function () { //게임
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990BEA355C4DC19322");
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99B9C2495C5A5F1C15");
+        queryGame();
     });
 
     function queryStudent() {
@@ -138,11 +166,16 @@
         $("#answer1").html('초중고등학생');
         $("#answer2").html('대학생');
         $("#answer1").click(function () { //초중고등학셍
+            console.log("초중고");
             cpurankinggreater = "450";
             memorysize = "2,4";
-            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
+            queryOutdoor();
         });
         $("#answer2").click(function () {//대학생
+            console.log("대학생");
+            console.log(cpurankinggreater);
             $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99A1824C5C54203312");
             queryUniversity();
         });
@@ -151,17 +184,220 @@
     }
 
     function queryUniversity() {
-        console.log("대학생");
+        console.log("전공 질문");
+        $("#answer1region").attr("class","col-lg-6");
+        $("#answer2region").attr("class","col-lg-6");
         $("#answer1").html("높은 성능의 컴퓨터가 필요한 전공");
         $("#answer2").html("그 외의 전공");
-        $("#answer1").click(function () { //초중고등학셍
+        console.log(cpurankinggreater);
+        $("#answer1").click(function () { //높은 성능
+            console.log(cpurankinggreater);
+            cpurankinggreater = null;
             cpurankingless = "700";
             memorysize = "4,8,16";
-            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
+            queryOutdoor();
         });
-        $("#answer2").click(function () { //초중고등학셍
+        $("#answer2").click(function () { //그 외
+            console.log(cpurankinggreater);
             cpurankinggreater = "450";
             memorysize = "2,4";
+            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
+            queryOutdoor();
+        });
+    }
+
+
+    function queryJob() {
+        console.log("직업 세분화 질문");
+        $("#answer1").html("사무용");
+        $("#answer2").html("프로그래밍용");
+        $("#answer3").html("그래픽작업용");
+        $("#answer1region").attr("class","col-lg-4");
+        $("#answer2region").attr("class","col-lg-4");
+        $("#answer3region").attr("class","col-lg-4");
+        $("#answer4").hide();
+
+        $("#answer1").click(function () { //사무용
+            cpurankinggreater = "450";
+            memorysize = "2,4";
+            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
+            queryOutdoor();
+        });
+        $("#answer2").click(function () { //높은 성능
+            cpurankinggreater = null;
+            cpurankingless = "700";
+            memorysize = "4,8,16";
+            //$("#answer2").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
+            queryOutdoor();
+        });
+        $("#answer3").click(function () { //그래픽
+            cpurankinggreater = null;
+            cpurankingless = "700";
+            memorysize = "4,8,16";
+            //$("#answer3").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
+            queryOutdoor();
+        });
+    }
+
+    function queryGame() {
+    }
+
+    function queryOutdoor() { //순서1
+        console.log("외출 질문");
+        $("#answer3").show();$("#answer4").hide();
+        $("#answer1").html('자주 나가는 편이다');
+        $("#answer2").html('잘 들고 나가지 않는다.');
+        $("#answer3").html('상관없다');
+        $("#answer1region").attr("class","col-lg-4");
+        $("#answer2region").attr("class","col-lg-4");
+        $("#answer3region").attr("class","col-lg-4");
+        $("#answer1").click(function () { //자주 나가는 편이다.
+            weight = "range1,range2,range3";
+            querySize();
+        });
+        $("#answer2").click(function () { //잘 들고 나가지 않는다.
+            querySize();
+        });
+        $("#answer3").click(function () { //상관없다.
+            querySize();
+        });
+
+    }
+
+    function querySize() { //순서2
+        console.log("사이즈 질문");
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/993536495C5A5F1D13");
+        $("#answer1").html('13인치 이하');
+        $("#answer2").html('14인치 이상.');
+        $("#answer3").html('상관없다');
+        $("#answer1").click(function () { //13인치 이하
+            sizeinch = "10,11,12,13";
+            queryDisk();
+        });
+        $("#answer2").click(function () { //14인치 이상
+            sizeinch = "14,15,17";
+            queryDisk();
+        });
+        $("#answer3").click(function () { //상관없다.
+            queryDisk();
+        });
+    }
+    
+    function queryDisk() { //순서3
+        console.log("용량 질문");
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/999BCC495C5A5F1E16");
+        $("#answer4").show();$("#answer5").show();
+        $("#answer1").html('128GB이하');
+        $("#answer2").html('256GB');
+        $("#answer3").html('512GB');
+        $("#answer4").html('1TB이상');
+        $("#answer1region").attr("class","col-lg-3");
+        $("#answer2region").attr("class","col-lg-3");
+        $("#answer3region").attr("class","col-lg-3");
+        $("#answer4region").attr("class","col-lg-3");
+        $("#answer5region").attr("class","col-lg-12");
+        $("#answer1").click(function () { //128
+            queryPrice();
+        });
+        $("#answer2").click(function () { //256
+            queryPrice();
+        });
+        $("#answer3").click(function () { //512
+            queryPrice();
+        });
+        $("#answer4").click(function () { //1024
+            queryPrice();
+        });
+        $("#answer5").click(function () { //상관없음
+            queryPrice();
+        });
+    }
+
+    function queryPrice() { //순서4
+        console.log("가격 질문");
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/9943DE495C5A5F1C18");
+        $("#answer6").show();
+        $("#answer5region").attr("class","col-lg-6");
+        $("#answer6region").attr("class","col-lg-6");
+        $("#answer1").html('500,000원 이하');
+        $("#answer2").html('500,000원~1,000,000원');
+        $("#answer3").html('1,000,000원~1,500,000원');
+        $("#answer4").html('1,500,000원~2,000,000원');
+        $("#answer5").html('2,000,000원 이상');
+        $("#answer6").html('상관없음');
+        $("#answer1").click(function () { //range1
+            queryOS();
+        });
+        $("#answer2").click(function () { //range2
+            queryOS();
+        });
+        $("#answer3").click(function () { //range3
+            queryOS();
+        });
+        $("#answer4").click(function () { //range4
+            queryOS();
+        });
+        $("#answer5").click(function () { //range5
+            queryOS();
+        });
+        $("#answer6").click(function () { //상관없음
+            queryOS();
+        });
+    }
+
+    function queryOS() { //순서5
+        console.log("운영체제 질문");
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99F9F0495C5A5F1F04");
+        $("#answer1").click(function () { //
+            queryKeyboard();
+        });
+        $("#answer2").click(function () { //
+            queryKeyboard();
+        });
+        $("#answer3").click(function () { //
+            queryKeyboard();
+        });
+        $("#answer4").click(function () { //
+            queryKeyboard();
+        });
+    }
+
+    function queryKeyboard() { //순서6
+        console.log("키보드 질문");
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99CFAD485C5A5F1F4A");
+        $("#answer1").click(function () { //
+            queryBrand();
+        });
+        $("#answer2").click(function () { //
+            queryBrand();
+        });
+        $("#answer3").click(function () { //
+            queryBrand();
+        });
+        $("#answer4").click(function () { //
+            queryBrand();
+        });
+    }
+
+    function queryBrand() { //순서7
+        console.log("브랜드 질문");
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99A659495C5A5F1D10");
+        $("#answer1").click(function () { //
+            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+        });
+        $("#answer2").click(function () { //
+            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+        });
+        $("#answer3").click(function () { //
+            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+        });
+        $("#answer4").click(function () { //
             $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
         });
     }
