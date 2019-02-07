@@ -44,17 +44,21 @@ public class ViewController {
                        @RequestParam(value="searchmodel",required = false, defaultValue = "0") String[] searchmodel,
                        @RequestParam(value="searchall",required = false, defaultValue = "0") String[] searchall,
                        @RequestParam(value="cpurankinggreater",required = false) String cpurankinggreater,
-                       @RequestParam(value="cpurankingless",required = false) String cpurankingless){
+                       @RequestParam(value="cpurankingless",required = false) String cpurankingless,
+                       @RequestParam(value="os",required = false, defaultValue = "0") String[] os,
+                       @RequestParam(value="keyboard",required = false, defaultValue = "0") String[] keyboard,
+                       @RequestParam(value="disksize",required = false, defaultValue = "0") String[] disksize){
         Page<Notebook> notebookPage;
         if(brand[0].equals("0") && memorysize[0].equals("0") && cpukind[0].equals("0") && pricerange[0].equals("0") && sizeinch[0].equals("0")
                 && weight[0].equals("0") && searchbrand[0].equals("0") && searchmodel[0].equals("0") && searchall[0].equals("0")
-                &&cpurankinggreater==null&&cpurankingless==null) {
+                &&cpurankinggreater==null&&cpurankingless==null&&os[0].equals("0")&&keyboard[0].equals("0")&&disksize[0].equals("0")) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
         }
         else{
             Specification<Notebook> notebookSpecification
-                    = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel, searchall, cpurankinggreater, cpurankingless);
+                    = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel,
+                    searchall, cpurankinggreater, cpurankingless, os, keyboard, disksize);
             notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
         }
         model.addAttribute("notebookPage",notebookPage);
@@ -124,7 +128,8 @@ public class ViewController {
     public Specification<Notebook> specifyCondition(String[] brand, String[] memorysize, String[] cpukind,
                                                     String[] pricerange, String[] sizeinch, String[] weight,
                                                     String[] searchbrand, String[] searchmodel, String[] searchall,
-                                                    String cpurankinggreater, String cpurakingless){
+                                                    String cpurankinggreater, String cpurakingless, String[] os,
+                                                    String[] keyboard, String[] disksize){
         Specification<Notebook> notebookSpecification = Specification.where(NotebookSpecification.returnDefault());
         if(!brand[0].equals("0")) {
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));
@@ -169,6 +174,15 @@ public class ViewController {
         if(cpurakingless != null) {
             System.out.println(cpurakingless);
             notebookSpecification = notebookSpecification.and(NotebookSpecification.searchCPURankingLess(Integer.parseInt(cpurakingless)));
+        }
+        if(!os[0].equals("0")){
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchOS(os));
+        }
+        if(!keyboard[0].equals("0")){
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchKeyboard(keyboard));
+        }
+        if(!disksize[0].equals("0")){
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchDisksize(disksize));
         }
         return notebookSpecification;
     }

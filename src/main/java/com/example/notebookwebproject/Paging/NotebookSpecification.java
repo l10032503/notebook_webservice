@@ -62,6 +62,41 @@ public class NotebookSpecification {
          }
        };
     }
+
+    public static Specification<Notebook> searchOS(final String[] os){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                Predicate brandsList = criteriaBuilder.equal(root.get("os"),os[0]);
+                for(int i=0; i<os.length; i++){
+                    if(i==0) {
+                        os[i] = ifThereisBlank(os[i]);
+                        System.out.println(os[i]);
+                        brandsList = criteriaBuilder.equal(root.get("os"), os[i]);
+                    }
+                    else{
+                        os[i] = ifThereisBlank(os[i]);
+                        System.out.println(os[i]);
+                        brandsList = criteriaBuilder.or(brandsList, criteriaBuilder.equal(root.get("os"),os[i]));
+                    }
+                }
+                return brandsList;
+            }
+
+            public String ifThereisBlank(String os){
+                if (os.equals("MacOS"))
+                    return "Mac OS";
+                else if (os.equals("MacOSX"))
+                    return "Mac OS X";
+                else if (os.equals("MacOSSierra"))
+                    return "Mac OS Sierra";
+                else if (os.equals("운영체제미포함"))
+                    return "운영체제 미포함";
+                else
+                    return os;
+            }
+        };
+    }
     public static Specification<Notebook> searchMemorySize(final int [] memorysize){
         return new Specification<Notebook>() {
             @Override
@@ -82,6 +117,7 @@ public class NotebookSpecification {
             }
         };
     }
+
     public static Specification<Notebook> searchCPU(final String [] cpukind){
         return new Specification<Notebook>() {
             @Override
@@ -208,6 +244,43 @@ public class NotebookSpecification {
         };
     }
 
+    public static Specification<Notebook> searchDisksize(final String [] disksize){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                System.out.println("search disksize");
+                Predicate disksizeList = WhereisRange(root,criteriaBuilder,disksize[0]);
+                for(int i=0; i<disksize.length; i++){
+                    if(i==0) {
+                        System.out.println(disksize[i]);
+                        disksizeList = WhereisRange(root,criteriaBuilder,disksize[i]);
+                    }
+                    else{
+                        System.out.println(disksize[i]);
+                        disksizeList = criteriaBuilder.or(disksizeList, WhereisRange(root,criteriaBuilder,disksize[i]));
+                    }
+                }
+                return disksizeList;
+            }
+
+            public Predicate WhereisRange(Root<Notebook> root, CriteriaBuilder criteriaBuilder, String weight){
+                if (weight.equals("range1"))
+                    return criteriaBuilder.lessThan(root.get("disksize"), 128);
+                else if (weight.equals("range2"))
+                    return criteriaBuilder.between(root.get("disksize"), 128,255);
+                else if (weight.equals("range3"))
+                    return criteriaBuilder.between(root.get("disksize"), 256,511);
+                else if (weight.equals("range4"))
+                    return criteriaBuilder.between(root.get("disksize"), 512,1023);
+                else if (weight.equals("range5"))
+                    return criteriaBuilder.greaterThan(root.get("disksize"),1024);
+                else
+                    System.out.println("exception");
+                return criteriaBuilder.between(root.get("disksize"), 0,5000);
+            }
+        };
+    }
+
     public static Specification<Notebook> searchCPURankingGreater(final int cpurankinggreater){
         return new Specification<Notebook>() {
             @Override
@@ -224,6 +297,55 @@ public class NotebookSpecification {
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search cpurakingless");
                 return criteriaBuilder.lessThanOrEqualTo(root.get("cpuranking"),cpurankingless);
+            }
+        };
+    }
+
+    public static Specification<Notebook> searchKeyboard(final String[] keyboard){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                Predicate keyboardList = WhatKeyboard(root,criteriaBuilder,keyboard[0]);
+                for(int i=0; i<keyboard.length ; i++){
+                    if(i==0) {
+                        System.out.println(keyboard[i]);
+                        keyboardList = WhatKeyboard(root,criteriaBuilder,keyboard[i]);
+                    }
+                    else{
+                        System.out.println(keyboard[i]);
+                        keyboardList = criteriaBuilder.or(keyboardList, WhatKeyboard(root,criteriaBuilder,keyboard[i]));
+                    }
+                }
+                return keyboardList;
+            }
+
+            public Predicate WhatKeyboard(Root<Notebook> root, CriteriaBuilder criteriaBuilder,String keyboard){
+                Predicate keyboardList = criteriaBuilder.equal(root.get("id"),0);
+                if(keyboard.equals("numkb")) {
+                    System.out.println("숫자");
+                    keyboardList = criteriaBuilder.equal(root.get("numkb"), 1);
+                }
+                if(keyboard.equals("blockkb")) {
+                    System.out.println("블록");
+                    keyboardList = criteriaBuilder.or(keyboardList, criteriaBuilder.equal(root.get("blockkb"), 1));
+                }
+                if(keyboard.equals("machinekb")) {
+                    System.out.println("기계");
+                    keyboardList = criteriaBuilder.or(keyboardList, criteriaBuilder.equal(root.get("machinekb"), 1));
+                }
+                if(keyboard.equals("rgblight")) {
+                    System.out.println("rgb");
+                    keyboardList = criteriaBuilder.or(keyboardList, criteriaBuilder.equal(root.get("rgblight"), 1));
+                }
+                if(keyboard.equals("kblight")) {
+                    System.out.println("키보드빛");
+                    keyboardList = criteriaBuilder.or(keyboardList, criteriaBuilder.equal(root.get("kblight"), 1));
+                }
+                if(keyboard.equals("waterproofkb")) {
+                    System.out.println("방수");
+                    keyboardList = criteriaBuilder.or(keyboardList, criteriaBuilder.equal(root.get("waterproofkb"), 1));
+                }
+                return keyboardList;
             }
         };
     }

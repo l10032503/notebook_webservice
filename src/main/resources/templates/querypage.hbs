@@ -72,41 +72,40 @@
                         <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/9983BD355C4DC19334" alt="" style="width:inherit; max-width:100%; height: auto; text-align: center">
                     </p>
                 </div>
-                <div id="answer1region" class="col-lg-3 col-md-6">
+                <div id="answer1region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer1" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">학업</button>
                 </div>
-                <div id="answer2region" class="col-lg-3 col-md-6">
+                <div id="answer2region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer2" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">업무</button>
                 </div>
-                <div id="answer3region" class="col-lg-3 col-md-6">
+                <div id="answer3region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer3" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">인터넷서핑</button>
                 </div>
-                <div id="answer4region" class="col-lg-3 col-md-6">
+                <div id="answer4region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer4" type="button" class="btn btn-outline-danger" style="width: inherit; display: block;">게임</button>
                 </div>
-                <div id="answer5region" class="col-lg-3 col-md-6">
+                <div id="answer5region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer5" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
                 </div>
-                <div id="answer6region" class="col-lg-3 col-md-6">
+                <div id="answer6region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer6" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
                 </div>
-                <div id="answer7region" class="col-lg-3 col-md-6">
+                <div id="answer7region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer7" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
                 </div>
-                <div id="answer8region" class="col-lg-3 col-md-6">
+                <div id="answer8region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer8" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
                 </div>
-                <div id="answer9region" class="col-lg-3 col-md-6">
+                <div id="answer9region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer9" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
                 </div>
-                <div id="answer10region" class="col-lg-3 col-md-6">
+                <div id="answer10region" class="col-lg-3 col-md-6 mb-2">
                     <button id="answer10" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
                 </div>
-                <div class="btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary">
-                        <input type="checkbox" checked autocomplete="off"> Checked
-                    </label>
+                <div id="answer11region" class="col-lg-3 col-md-6 mb-2">
+                    <button id="answer11" type="button" class="btn btn-outline-danger" style="width: inherit; display: none;">상관없음</button>
                 </div>
+
             </div>
 
         </div>
@@ -139,8 +138,11 @@
     var pricerange = null;
     var weight = null;
     var gpukind = null;
+    var os = null;
+    var keyboard = null;
 
     $("#answer1").click(function () { //학업
+        console.log($("#toggletest").attr("aria-pressed"));
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/990FBF3C5C51150C20");
         queryStudent();
     });
@@ -169,7 +171,6 @@
             console.log("초중고");
             cpurankinggreater = "450";
             memorysize = "2,4";
-            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
             $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
             queryOutdoor();
         });
@@ -195,7 +196,6 @@
             cpurankinggreater = null;
             cpurankingless = "700";
             memorysize = "4,8,16";
-            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
             $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
             queryOutdoor();
         });
@@ -203,7 +203,6 @@
             console.log(cpurankinggreater);
             cpurankinggreater = "450";
             memorysize = "2,4";
-            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
             $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
             queryOutdoor();
         });
@@ -223,7 +222,6 @@
         $("#answer1").click(function () { //사무용
             cpurankinggreater = "450";
             memorysize = "2,4";
-            //$("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
             $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
             queryOutdoor();
         });
@@ -231,7 +229,6 @@
             cpurankinggreater = null;
             cpurankingless = "700";
             memorysize = "4,8,16";
-            //$("#answer2").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
             $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
             queryOutdoor();
         });
@@ -239,7 +236,6 @@
             cpurankinggreater = null;
             cpurankingless = "700";
             memorysize = "4,8,16";
-            //$("#answer3").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
             $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99EC2D495C5A5F1D14");
             queryOutdoor();
         });
@@ -292,29 +288,36 @@
     function queryDisk() { //순서3
         console.log("용량 질문");
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/999BCC495C5A5F1E16");
-        $("#answer4").show();$("#answer5").show();
-        $("#answer1").html('128GB이하');
-        $("#answer2").html('256GB');
-        $("#answer3").html('512GB');
-        $("#answer4").html('1TB이상');
+        $("#answer4").show();$("#answer5").show();$("#answer6").show();
         $("#answer1region").attr("class","col-lg-3");
         $("#answer2region").attr("class","col-lg-3");
         $("#answer3region").attr("class","col-lg-3");
         $("#answer4region").attr("class","col-lg-3");
         $("#answer5region").attr("class","col-lg-12");
+        $("#answer6region").attr("class","col-lg-12");
+        $("#answer1").html('128GB이하');
+        $("#answer2").html('256GB');
+        $("#answer3").html('512GB');
+        $("#answer4").html('1TB이상');
+        $("#answer5").html('선택완료');
+        $("#answer6").html('상관없다');
+        var state = [0,0,0,0];
         $("#answer1").click(function () { //128
-            queryPrice();
+            state[0] = 1;
         });
         $("#answer2").click(function () { //256
-            queryPrice();
+            state[1] = 1;
         });
         $("#answer3").click(function () { //512
-            queryPrice();
+            state[2] = 1;
         });
         $("#answer4").click(function () { //1024
-            queryPrice();
+            state[3] = 1;
         });
         $("#answer5").click(function () { //상관없음
+            queryPrice();
+        });
+        $("#answer6").click(function () { //상관없음
             queryPrice();
         });
     }
@@ -322,31 +325,93 @@
     function queryPrice() { //순서4
         console.log("가격 질문");
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/9943DE495C5A5F1C18");
-        $("#answer6").show();
-        $("#answer5region").attr("class","col-lg-6");
-        $("#answer6region").attr("class","col-lg-6");
+        $("#answer6").show();$("#answer7").show();
+        $("#answer5region").attr("class","col-lg-4");
+        $("#answer6region").attr("class","col-lg-4");
+        $("#answer7region").attr("class","col-lg-4");
+        $("#answer1").attr("data-toggle","button");$("#answer1").attr("aria-pressed","false");
+        $("#answer2").attr("data-toggle","button");$("#answer2").attr("aria-pressed","false");
+        $("#answer3").attr("data-toggle","button");$("#answer3").attr("aria-pressed","false");
+        $("#answer4").attr("data-toggle","button");$("#answer4").attr("aria-pressed","false");
+        $("#answer5").attr("data-toggle","button");$("#answer5").attr("aria-pressed","false");
         $("#answer1").html('500,000원 이하');
         $("#answer2").html('500,000원~1,000,000원');
         $("#answer3").html('1,000,000원~1,500,000원');
         $("#answer4").html('1,500,000원~2,000,000원');
         $("#answer5").html('2,000,000원 이상');
-        $("#answer6").html('상관없음');
+        $("#answer6").html('선택 완료');
+        $("#answer7").html('상관없음');
+        var state = [0,0,0,0,0];
+        var pricelist = new Array();
         $("#answer1").click(function () { //range1
-            queryOS();
+            state[0] = 1;
+            pricelist.push("range1");
+            console.log("range1 select");
         });
         $("#answer2").click(function () { //range2
-            queryOS();
+            state[1] = 1;
+            pricelist.push("range2");
+            console.log("range2 select");
         });
         $("#answer3").click(function () { //range3
-            queryOS();
+            state[2] = 1;
+            pricelist.push("range3");
+            console.log("range3 select");
         });
         $("#answer4").click(function () { //range4
-            queryOS();
+            state[3] = 1;
+            pricelist.push("range4");
+            console.log("range4 select");
         });
         $("#answer5").click(function () { //range5
+            state[4] = 1;
+            pricelist.push("range5");
+            console.log("range5 select");
+        });
+        $("#answer6").click(function () { //선택 완료
+            for(var i=0; i<pricelist.length; i++){
+                if(pricerange = null)
+                    pricerange = pricelist[i];
+                else
+                    pricerange = pricerange + pricelist;
+                if((i+1) < pricelist.length)
+                    pricerange = pricerange + ",";
+                console.log(pricerange);
+            }
+            if(state[0] == 1)
+                $("#answer0").trigger("click");
+            if(state[1] == 1)
+                $("#answer1").trigger("click");
+            if(state[2] == 1)
+                $("#answer2").trigger("click");
+            if(state[3] == 1)
+                $("#answer3").trigger("click");
+            if(state[4] == 1)
+                $("#answer4").trigger("click");
+            $("#answer1").removeAttr("data-toggle");$("#answer1").removeAttr("aria-pressed");
+            $("#answer2").removeAttr("data-toggle");$("#answer2").removeAttr("aria-pressed");
+            $("#answer3").removeAttr("data-toggle");$("#answer3").removeAttr("aria-pressed");
+            $("#answer4").removeAttr("data-toggle");$("#answer4").removeAttr("aria-pressed");
+            $("#answer5").removeAttr("data-toggle");$("#answer5").removeAttr("aria-pressed");
             queryOS();
         });
-        $("#answer6").click(function () { //상관없음
+        $("#answer7").click(function () { //상관 없음
+            if(state[0] == 1)
+                $("#answer0").trigger("click");
+            if(state[1] == 1)
+                $("#answer1").trigger("click");
+            if(state[2] == 1)
+                $("#answer2").trigger("click");
+            if(state[3] == 1)
+                $("#answer3").trigger("click");
+            if(state[4] == 1)
+                $("#answer4").trigger("click");
+            $("#answer1").removeAttr("data-toggle");$("#answer1").removeAttr("aria-pressed");
+            $("#answer2").removeAttr("data-toggle");$("#answer2").removeAttr("aria-pressed");
+            $("#answer3").removeAttr("data-toggle");$("#answer3").removeAttr("aria-pressed");
+            $("#answer4").removeAttr("data-toggle");$("#answer4").removeAttr("aria-pressed");
+            $("#answer5").removeAttr("data-toggle");$("#answer5").removeAttr("aria-pressed");
+            pricerange = null;
             queryOS();
         });
     }
@@ -354,16 +419,30 @@
     function queryOS() { //순서5
         console.log("운영체제 질문");
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99F9F0495C5A5F1F04");
+        $("#answer6").hide();
+        $("#answer5region").attr("class","col-lg-12");
+        $("#answer1").html('윈도우');
+        $("#answer2").html('Mac OS');
+        $("#answer3").html('리눅스');
+        $("#answer4").html('운영체제 미포함');
+        $("#answer5").html('상관없다');
         $("#answer1").click(function () { //
+            os = "윈도우10";
             queryKeyboard();
         });
         $("#answer2").click(function () { //
+            os = "MacOS,MacOSX,MacOSSierra";
             queryKeyboard();
         });
         $("#answer3").click(function () { //
+            os = "리눅스";
             queryKeyboard();
         });
         $("#answer4").click(function () { //
+            os = "운영체제 미포함";
+            queryKeyboard();
+        });
+        $("#answer5").click(function () { //
             queryKeyboard();
         });
     }
@@ -371,6 +450,17 @@
     function queryKeyboard() { //순서6
         console.log("키보드 질문");
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99CFAD485C5A5F1F4A");
+        $("#answer6").show();$("#answer7").show();
+        $("#answer5region").attr("class","col-lg-4");
+        $("#answer6region").attr("class","col-lg-4");
+        $("#answer7region").attr("class","col-lg-4");
+        $("#answer1").html('숫자 키패드');
+        $("#answer2").html('블록 키보드');
+        $("#answer3").html('기계식 키보드');
+        $("#answer4").html('RGB 라이트');
+        $("#answer5").html('키보드 라이트');
+        $("#answer6").html('침수지연 키보드');
+        $("#answer7").html('상관없다');
         $("#answer1").click(function () { //
             queryBrand();
         });
@@ -383,26 +473,76 @@
         $("#answer4").click(function () { //
             queryBrand();
         });
+        $("#answer5").click(function () { //
+            queryBrand();
+        });
+        $("#answer6").click(function () { //
+            queryBrand();
+        });
+        $("#answer7").click(function () { //
+            queryBrand();
+        });
+
     }
 
     function queryBrand() { //순서7
         console.log("브랜드 질문");
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99A659495C5A5F1D10");
+        $("#answer8").show();$("#answer9").show();$("#answer10").show();$("#answer11").show();
+        $("#answer1").html('삼성');
+        $("#answer2").html('LG');
+        $("#answer3").html('애플');
+        $("#answer4").html('HP');
+        $("#answer5").html('DELL');
+        $("#answer6").html('한성');
+        $("#answer7").html('ASUS');
+        $("#answer8").html('레노바');
+        $("#answer9").html('MSI');
+        $("#answer10").html('기가바이트');
+        $("#answer11").html('상관없다');
+        $("#answer5region").attr("class","col-lg-3");
+        $("#answer6region").attr("class","col-lg-3");
+        $("#answer7region").attr("class","col-lg-3");
+        $("#answer8region").attr("class","col-lg-3");
+        $("#answer9region").attr("class","col-lg-4");
+        $("#answer10region").attr("class","col-lg-4");
+        $("#answer11region").attr("class","col-lg-4");
         $("#answer1").click(function () { //
-            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
         });
         $("#answer2").click(function () { //
-            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#answer2").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
         });
         $("#answer3").click(function () { //
-            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#answer3").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
         });
         $("#answer4").click(function () { //
-            $("#answer1").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind)));
+            $("#answer4").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
+        });
+        $("#answer5").click(function () { //
+            $("#answer5").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
+        });
+        $("#answer6").click(function () { //
+            $("#answer6").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
+        });
+        $("#answer7").click(function () { //
+            $("#answer7").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
+        });
+        $("#answer8").click(function () { //
+            $("#answer8").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
+        });
+        $("#answer9").click(function () { //
+            $("#answer9").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
+        });
+        $("#answer10").click(function () { //
+            $("#answer10").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
+        });
+        $("#answer11").click(function () { //
+            $("#answer11").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
         });
     }
 
-    function final(address, brand, cpukind, cpurankinggreater, cpurankingless, memorysize, sizeinch, pricerange, weight, gpukind){
+    function final(address, brand, cpukind, cpurankinggreater, cpurankingless, memorysize, sizeinch, pricerange, weight, gpukind, os, disksize, keyboard){
         if(brand != null)
             address = address + "brand=" + brand + "&";
         if(cpukind != null)
@@ -421,6 +561,12 @@
             address = address + "weight=" + weight + "&";
         if(gpukind != null)
             address = address + "gpukind=" + gpukind + "&";
+        if(os != null)
+            address = address + "os=" + os + "&";
+        if(disksize != null)
+            address = address + "disksize=" + disksize + "&";
+        if(keyboard != null)
+            address = address + "keyboard=" + keyboard + "&";
         return address;
     }
 
