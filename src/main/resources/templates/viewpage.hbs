@@ -39,13 +39,57 @@
                 {window.location.href = "http://comalmot.com/view?searchall=" + keyword;}
             }
         }
+        function urlcontrol(a){
+            if(a.indexOf("?page=")!=-1) { // view?page=1
+                var strarray = a.split('page=');
+                a = strarray[0] + "page=";
+            }
+            else if(a.indexOf("&page=")!=-1){ //검색시 페이지
+                var strarray = a.split('page=');
+                a = strarray[0] + "page=";
+            }
+            else{
+                var b = a.substr(a.length - 5);
+                if(b.indexOf("view")!= -1)
+                    a+="?page=";
+                else
+                    a+="&page=";
+            }
+            return a;
+        }
+        function moreprepage(number) {
+            var url = window.location.href;
+            url = urlcontrol(url);
+            var nextnumber = number -1;
+            url+=nextnumber;
+            document.location.href = url;
+        }
+        function prepage(number) {
+            var url = window.location.href;
+            url = urlcontrol(url);
+            url+=number;
+            document.location.href = url;
+        }
         function nowpage(number) {
+            var url = window.location.href;
+            url = urlcontrol(url);
             var nownumber = number +1;
-            document.location.href = "?page=" + nownumber;
+            url+=nownumber;
+            document.location.href = url;
         }
         function nextpage(number) {
+            var url = window.location.href;
+            url = urlcontrol(url);
             var nextnumber = number +2;
-            document.location.href = "?page=" + nextnumber;
+            url+=nextnumber;
+            document.location.href = url;
+        }
+        function morenextpage(number) {
+            var url = window.location.href;
+            url = urlcontrol(url);
+            var nextnumber = number +3;
+            url+=nextnumber;
+            document.location.href = url;
         }
     </script>
 
@@ -126,84 +170,81 @@
                 </div><!-- /.col-lg-6 -->
 
                 <div class ="col-md-12 text-wrap mb-3">
-                    <form method="post" name="sort-table">
+                    <form name="sort-table">
                         <table class="table table-bordered">
                             <tr>
                                 <TH nowrap="nowrap">브랜드</TH>
                                 <TD >
-                                    <input TYPE="checkbox" name="brand" value = "samsung">삼성&nbsp&nbsp&nbsp&nbsp
-                                    <input type="checkbox" name="brand" value = "lh">LG&nbsp&nbsp&nbsp&nbsp
-                                    <input type="checkbox" name="brand" value = "apple">애플&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="brand" value = "삼성">삼성&nbsp&nbsp&nbsp&nbsp
+                                    <input type="checkbox" name="brand" value = "lg">LG&nbsp&nbsp&nbsp&nbsp
+                                    <input type="checkbox" name="brand" value = "애플">애플&nbsp&nbsp&nbsp&nbsp
                                     <input type="checkbox" name="brand" value = "hp">HP&nbsp&nbsp&nbsp&nbsp
                                     <input type="checkbox" name="brand" value = "dell">DELL&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="brand" value = "hansung">한성&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="brand" value = "한성">한성&nbsp&nbsp&nbsp&nbsp
                                     <input type="checkbox" name="brand" value = "asus">ASUS&nbsp&nbsp&nbsp&nbsp
-                                    <input type="checkbox" name="brand" value = "lenova">레노바&nbsp&nbsp&nbsp&nbsp
+                                    <input type="checkbox" name="brand" value = "레노바">레노바&nbsp&nbsp&nbsp&nbsp
                                     <input type="checkbox" name="brand" value = "msi">MSI&nbsp&nbsp&nbsp&nbsp
-                                    <input type="checkbox" name="brand" value = "gigabyte">기가바이트&nbsp&nbsp&nbsp&nbsp
+                                    <input type="checkbox" name="brand" value = "기가바이트">기가바이트&nbsp&nbsp&nbsp&nbsp
                                 </TD>
                             </tr>
                             <tr>
                                 <TH>RAM</TH>
                                 <TD>
-                                    <input TYPE="checkbox" name="ramsize" value = "twogb">2GB&nbsp&nbsp&nbsp&nbsp
-                                    <input type="checkbox" name="ramsize" value = "fourgb">4GB&nbsp&nbsp&nbsp&nbsp
-                                    <input type="checkbox" name="ramsize" value = "eightgb">8GB&nbsp&nbsp&nbsp&nbsp
-                                    <input type="checkbox" name="ramsize" value = "sixteengb">16GB&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="memorysize" value = "2">2GB&nbsp&nbsp&nbsp&nbsp
+                                    <input type="checkbox" name="memorysize" value = "4">4GB&nbsp&nbsp&nbsp&nbsp
+                                    <input type="checkbox" name="memorysize" value = "8">8GB&nbsp&nbsp&nbsp&nbsp
+                                    <input type="checkbox" name="memorysize" value = "16">16GB&nbsp&nbsp&nbsp&nbsp
                                 </TD>
                             </tr>
                             <tr>
                                 <TH>가격</TH>
                                 <TD>
-                                    <input TYPE="checkbox" name="price" value = "part1">500,000원 이하&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="price" value = "part2">500,000원 ~ 1,000,000원&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="price" value = "part3">1,000,000원 ~ 1,500,000원&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="price" value = "part4">1,500,000원 ~ 2,000,000원&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="price" value = "part5">2,000,000원 이상&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="pricerange" value = "range1">500,000원 이하&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="pricerange" value = "range2">500,000원 ~ 1,000,000원&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="pricerange" value = "range3">1,000,000원 ~ 1,500,000원&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="pricerange" value = "range4">1,500,000원 ~ 2,000,000원&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="pricerange" value = "range5">2,000,000원 이상&nbsp&nbsp&nbsp&nbsp
                                 </TD>
                             </tr>
                             <tr>
                                 <TH >CPU</TH>
                                 <TD style="word-wrap: break-word">
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei37">코어i3-7세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei38">코어i3-8세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei55">코어i5-5세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei57">코어i5-7세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei58">코어i5-8세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei77">코어i7-7세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei78">코어i7-8세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei79">코어i7-9세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "corei98">코어i9-8세대&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "coreM">코어M&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "pentiumgold">펜티엄 골드&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "celeron">셀러론&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "ryzen3">라이젠 3&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "ryzen7">라이젠 7&nbsp&nbsp&nbsp&nbsp
-                                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind" value = "xeon">제온&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i3-7세대">코어i3-7세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i3-8세대">코어i3-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i5-5세대">코어i5-5세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i5-7세대">코어i5-7세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i5-8세대">코어i5-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i7-7세대">코어i7-7세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i7-8세대">코어i7-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i7-9세대">코어i7-9세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어i9-8세대">코어i9-8세대&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "코어M">코어M&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "펜티엄골드">펜티엄 골드&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "셀러론">셀러론&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "라이젠3">라이젠 3&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "라이젠7">라이젠 7&nbsp&nbsp&nbsp&nbsp
+                                    <input style="word-break: keep-all" TYPE="checkbox" name="cpukind" value = "제온">제온&nbsp&nbsp&nbsp&nbsp
                                 </TD>
                             </tr>
                             <tr>
                                 <TH>크기</TH>
                                 <TD>
-                                    <input TYPE="checkbox" name="size" value = "thirteen">13.3인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "fifteen">15인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "fifteenfour">15.4인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "fifteensix">15.6인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "fourteen">14인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "ten">10.9인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "eleven">11.6인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "twelve">12인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "twelvefive">12.5인치&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="size" value = "seventeen">17.3인치&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="sizeinch" value = "10">10인치&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="sizeinch" value = "11">11인치&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="sizeinch" value = "12">12인치&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="sizeinch" value = "13">13인치&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="sizeinch" value = "14">14인치&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="sizeinch" value = "15">15인치&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="sizeinch" value = "17">17인치&nbsp&nbsp&nbsp&nbsp
                                 </TD>
                             </tr>
                             <tr>
                                 <TH>무게</TH>
                                 <TD>
-                                    <input TYPE="checkbox" name="weight" value = "underone">1kg 이하&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="weight" value = "onetohalf">1kg~1.5kg&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="weight" value = "halftotwo">1.5kg~2kg&nbsp&nbsp&nbsp&nbsp
-                                    <input TYPE="checkbox" name="weight" value = "overtwo">2kg&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="weight" value = "range1">1kg 이하&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="weight" value = "range2">1kg~1.5kg&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="weight" value = "range3">1.5kg~2kg&nbsp&nbsp&nbsp&nbsp
+                                    <input TYPE="checkbox" name="weight" value = "range4">2kg&nbsp&nbsp&nbsp&nbsp
                                 </TD>
                             </tr>
                         </table>
@@ -216,7 +257,7 @@
                                 <a class="dropdown-item" href="?sort=price,desc">높은 가격순</a>
                                 <a class="dropdown-item" href="?sort=weight,asc">낮은 무게순</a>
                             </div>
-                            <button type="button" class="btn btn-danger float-right">조건검색</button>
+                            <input type="submit" class="btn btn-danger float-right" value="조건검색">
                         </div>
                     </form>
                 </div> <!-- 테이블 -->
@@ -268,37 +309,47 @@
                     </a>
                 </li>
                 <li class="page-item active">
-                    <a class="page-link" href="?page=1">1<span class="sr-only">(current)</span></a>
+                    <div class="page-link" onclick="nowpage({{notebookPage.number}})">1<span class="sr-only">(current)</span></div>
                 </li>
-                <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
                 <li class="page-item">
-                    <a class="page-link" href="?page=2" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
+                    <div class="page-link" onclick="nextpage({{notebookPage.number}})">2</div>
+                </li>
+                <li class="page-item">
+                    <div class="page-link" id="teafortwo" onclick="morenextpage({{notebookPage.number}})">3</div>
+                </li>
+                <li class="page-item">
+                    <div class="page-link" onclick="nextpage({{notebookPage.number}})">»</div>
                 </li>
             {{else}}
                 {{#if notebookPage.last}}
                     <li class="page-item">
-                        <a class="page-link" href="?page=16">«</a>
+                        <div class="page-link" onclick="prepage({{notebookPage.number}})">«</div>
                     </li>
-                    <li class="page-item"><a class="page-link" href="?page=15">15</a></li>
-                    <li class="page-item"><a class="page-link" href="?page=16">16</a></li>
+                    <li class="page-item">
+                        <div class="page-link" id="moreprediv" onclick="moreprepage({{notebookPage.number}})">morepre</div>
+                    </li>
+                    <li class="page-item">
+                        <div class="page-link" id="prediv" onclick="prepage({{notebookPage.number}})">pre</div>
+                    </li>
                     <li class="page-item active">
-                        <a class="page-link" href="?page=17">17<span class="sr-only">(current)</span></a>
+                        <div class="page-link" id="nowdiv" onclick="nowpage({{notebookPage.number}})">lastnow<span class="sr-only">(current)</span></div>
                     </li>
                     <li class="page-item disabled">
                         <a class="page-link" href="#">»</a>
                     </li>
                 {{else}}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{notebookPage.number}}">«</a>
+                        <div class="page-link" onclick="prepage({{notebookPage.number}})">«</div>
                     </li>
-                    <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{notebookPage.number}}</a></li>
+                    <li class="page-item">
+                        <div class="page-link" id="prediv" onclick="prepage({{notebookPage.number}})">pre</div>
+                    </li>
                     <li class="page-item active">
                         <div class="page-link" id="nowdiv" onclick="nowpage({{notebookPage.number}})">now<span class="sr-only">(current)</span></div>
                     </li>
-                    <li class="page-item"><div class="page-link" id="nextdiv" onclick="nextpage({{notebookPage.number}})">next</div></li>
+                    <li class="page-item">
+                        <div class="page-link" id="nextdiv" onclick="nextpage({{notebookPage.number}})">next</div>
+                    </li>
                     <li class="page-item">
                         <div class="page-link" onclick="nextpage({{notebookPage.number}})">»</div>
                     </li>
@@ -310,15 +361,34 @@
 <script type="text/javascript">
     var psource = $("#pagination-template").html();
     var template = Handlebars.compile(psource);
-    var a = window.location.href;
-    a = a.substr(a.length - 2);
-    if(a.charAt(0) == '=')
-        a = a.substr(a.length - 1);
-    var b = Number(a) +1;
+
+    var now = window.location.href;
+    now = now.substr(now.length - 2);
+    if(now.charAt(0) == '=')
+        now = now.substr(now.length - 1);
+    var next = Number(now) +1;
+    var morepre = next-3;
+    var pre = next -2;
+
+    if(morepre != 0)
+        $(document).ready(function() {
+            $('#moreprediv').html(morepre);
+        });
+    else
+        $(document).ready(function() {
+            $('#moreprediv').hide();
+        });
     $(document).ready(function() {
-        $('#nowdiv').html(a);
-        $('#nextdiv').html(b);
+        $('#prediv').html(pre);
+        $('#nowdiv').html(now);
+        $('#nextdiv').html(next);
     });
+
+    $(document).ready(function() {
+        if (notebookPage.length == 2)
+            $('#teafortwo').hide();
+    });
+
     $("#pagination").html(template);
 </script>
 
