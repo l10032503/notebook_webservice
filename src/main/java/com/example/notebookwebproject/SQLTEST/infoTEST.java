@@ -107,6 +107,10 @@ public class infoTEST {
         String status;
 
         status = getCPUManufact() + " / " + getCPUKind()+ " / " + getRAMGB() + " / " + getSizeInch();
+        if(HDDSize != 0)
+            status = status + " / HDD " + getHDDSize();
+        if(SSDSize != 0)
+            status = status + " / SSD " + getSSDSize();
         return status;
     }
 
