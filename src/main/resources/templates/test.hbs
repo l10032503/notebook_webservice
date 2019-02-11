@@ -1,45 +1,127 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="utf-8">
-    <title>Handlebar.js Template</title>
-    <script src="webjars/jquery/2.2.1/jquery.js"></script>
-    <script src="webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script src="webjars/handlebars/4.0.11-1/handlebars.js"></script>
+    <style type="text/css">
+        ._true {
+            background: red;
+        }
+        ._false {
+            background: blue;
+        }
+
+    </style>
+
+    <script src="./lib/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./lib/handlebars/4.0.10/handlebars.js"></script>
+
+    <script language="javascript">
+        function onclicked(form) {
+            var brands = document.getElementsByName("brand");
+            var res= brands[0].value
+            for(i=1; i<brands.length; i++){
+                if(brands [i].checked==true)
+                    res += "," + brands[i].value;
+            }
+            if(res=="")
+                return;
+            else
+                alert(res);
+        }
+    </script>
 
 </head>
+
 <body>
-    <div id="pagination"></div>
 
-    <script id="pagination-template" type="text/x-handlebars-template">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="?page={{notebookPage.number}}">{{notebookPage.number}}</a></li>
-                <li class="page-item"><a class="page-link" id="nowpage" href="#">now</a></li>
-                <li class="page-item"><a class="page-link" id="nextpage" href="#">next</a></li>
-                <script language="javascript" type="text/javascript">
-                    var now = {{notebookPage.number}} +1;
-                    var next = {{notebookPage.number}} +2;
-                    var nowlink = "?page=" + now;
-                    var nextlink = "?page=" + next;
-                    document.getElementById("nowpage").setAttribute("href",nowlink);
-                    document.getElementById("nextpage").setAttribute("href",nextlink);
-                <{{!}}/script>
-            </ul>
-        </nav>
-    </script>
+<div class ="col-md-12 text-wrap mb-3">
+    <form name="sort-table">
+        <table class="table table-bordered">
+            <tr>
+                <TH nowrap="nowrap">브랜드</TH>
+                <TD >
+                    <input TYPE="checkbox" name="brand" value = "삼성">삼성&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "lg">LG&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "애플">애플&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "hp">HP&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "dell">DELL&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="brand" value = "한성">한성&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "asus">ASUS&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "레노바">레노바&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "msi">MSI&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="brand" value = "기가바이트">기가바이트&nbsp&nbsp&nbsp&nbsp
+                </TD>
+            </tr>
+            <tr>
+                <TH>RAM</TH>
+                <TD>
+                    <input TYPE="checkbox" name="ramsize[]" value = "2">2GB&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="ramsize[]" value = "4">4GB&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="ramsize[]" value = "8">8GB&nbsp&nbsp&nbsp&nbsp
+                    <input type="checkbox" name="ramsize[]" value = "16">16GB&nbsp&nbsp&nbsp&nbsp
+                </TD>
+            </tr>
+            <tr>
+                <TH>가격</TH>
+                <TD>
+                    <input TYPE="checkbox" name="price[]" value = "range1">500,000원 이하&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="price[]" value = "range2">500,000원 ~ 1,000,000원&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="price[]" value = "range3">1,000,000원 ~ 1,500,000원&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="price[]" value = "range4">1,500,000원 ~ 2,000,000원&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="price[]" value = "range5">2,000,000원 이상&nbsp&nbsp&nbsp&nbsp
+                </TD>
+            </tr>
+            <tr>
+                <TH >CPU</TH>
+                <TD style="word-wrap: break-word">
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i3-7세대">코어i3-7세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i3-8세대">코어i3-8세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i5-5세대">코어i5-5세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i5-7세대">코어i5-7세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i5-8세대">코어i5-8세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i7-7세대">코어i7-7세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i7-8세대">코어i7-8세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i7-9세대">코어i7-9세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어i9-8세대">코어i9-8세대&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "코어M">코어M&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "펜티엄골드">펜티엄 골드&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "셀러론">셀러론&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "라이젠3">라이젠 3&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "라이젠7">라이젠 7&nbsp&nbsp&nbsp&nbsp
+                    <input style="word-break: keep-all" TYPE="checkbox" name="CPUKind[]" value = "제온">제온&nbsp&nbsp&nbsp&nbsp
+                </TD>
+            </tr>
+            <tr>
+                <TH>크기</TH>
+                <TD>
+                    <input TYPE="checkbox" name="size[]" value = "10">10인치&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="size[]" value = "11">11인치&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="size[]" value = "12">12인치&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="size[]" value = "13">13인치&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="size[]" value = "14">14인치&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="size[]" value = "15">15인치&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="size[]" value = "17">17인치&nbsp&nbsp&nbsp&nbsp
+                </TD>
+            </tr>
+            <tr>
+                <TH>무게</TH>
+                <TD>
+                    <input TYPE="checkbox" name="weight[]" value = "range1">1kg 이하&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="weight[]" value = "range2">1kg~1.5kg&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="weight[]" value = "range3">1.5kg~2kg&nbsp&nbsp&nbsp&nbsp
+                    <input TYPE="checkbox" name="weight[]" value = "range4">2kg&nbsp&nbsp&nbsp&nbsp
+                </TD>
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-danger float-right" value="조건검색" onclick="onclicked(this.form);">
+    </form>
+</div> <!-- 테이블 -->
 
-    <script type="text/javascript">
-        var psource = $("#pagination-template").html();
-        var template = Handlebars.compile(psource);
-        Handlebars.registerHelper("now", function (number) {
-          return number + 1;
-        });
-        Handlebars.registerHelper("next", function (number){
-            return number + 2;
-        });
-        $("#pagination").html(template);
-    </script>
+
+
+
+
 
 </body>
 </html>
+
