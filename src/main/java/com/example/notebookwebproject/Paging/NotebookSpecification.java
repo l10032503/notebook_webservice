@@ -118,6 +118,15 @@ public class NotebookSpecification {
         };
     }
 
+    public static Specification<Notebook> searchMemorySizeGreater(final int memorysizegreater){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("memorysize"), memorysizegreater);
+            }
+        };
+    }
+
     public static Specification<Notebook> searchCPU(final String [] cpukind){
         return new Specification<Notebook>() {
             @Override
@@ -297,6 +306,16 @@ public class NotebookSpecification {
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 System.out.println("search cpurakingless");
                 return criteriaBuilder.lessThanOrEqualTo(root.get("cpuranking"),cpurankingless);
+            }
+        };
+    }
+
+    public static Specification<Notebook> searchGPURankingLess(final int gpurankingless){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                System.out.println("search gpurakingless");
+                return criteriaBuilder.lessThanOrEqualTo(root.get("gpuranking"),gpurankingless);
             }
         };
     }

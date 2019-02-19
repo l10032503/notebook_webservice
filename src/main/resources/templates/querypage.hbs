@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="webjars/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
+    <script src="/webjars/handlebars/4.0.11-1/handlebars.js"></script>
 
 </head>
 
@@ -84,6 +85,72 @@
                 <div id="answer10region" class="col-lg-3 col-md-6 mb-2"></div>
                 <div id="answer11region" class="col-lg-3 col-md-6 mb-2"></div>
                 <div id="answer12region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="inputgroup" class="input-group col-lg-12" style="display: none">
+                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
+                            onchange="window.open(value,'_blank');">
+                        <option selected>게임을 선택하세요</option>
+                        <option value="{{game_min_1}}">롤(최소사양)</option>
+                        <option value="{{game_rec_1}}">롤(권장사양)</option>
+                        <option value="{{game_min_2}}">배틀그라운드(최소사양)</option>
+                        <option value="{{game_rec_2}}">배틀그라운드(권장사양)</option>
+                        <option value="{{game_min_3}}">오버워치(최소사양)</option>
+                        <option value="{{game_rec_3}}">오버워치(권장사양)</option>
+                        <option value="{{game_min_4}}">피파온라인4(최소사양)</option>
+                        <option value="{{game_rec_4}}">피파온라인4(권장사양)</option>
+                        <option value="{{game_min_5}}">메이플스토리(최소사양)</option>
+                        <option value="{{game_rec_5}}">메이플스토리(권장사양)</option>
+                        <option value="{{game_min_6}}">서든어택(최소사양)</option>
+                        <option value="{{game_rec_6}}">서든어택(권장사양)</option>
+                        <option value="{{game_min_7}}">스타크래프트(최소사양)</option>
+                        <option value="{{game_rec_7}}">스타크래프트(권장사양)</option>
+                        <option value="{{game_min_8}}">던전앤파이터(최소사양)</option>
+                        <option value="{{game_rec_8}}">던전앤파이터(권장사양)</option>
+                        <option value="{{game_min_9}}">월드오브워크래프트(최소사양)</option>
+                        <option value="{{game_rec_9}}">월드오브워크래프트(권장사양)</option>
+                        <option value="{{game_min_10}}">데스티니가디언즈(최소사양)</option>
+                        <option value="{{game_rec_10}}">데스티니가디언즈(권장사양)</option>
+                        <option value="{{game_min_11}}">몬스터 헌터(최소사양)</option>
+                        <option value="{{game_rec_11}}">몬스터 헌터(권장사양)</option>
+                        <option value="{{game_min_12}}">리니지리마스터(최소사양)</option>
+                        <option value="{{game_rec_12}}">리니지리마스터(권장사양)</option>
+                        <option value="{{game_min_13}}">블레이드앤소울(최소사양)</option>
+                        <option value="{{game_rec_13}}">블레이드앤소울(권장사양)</option>
+                        <option value="{{game_min_14}}">카트라이더(최소사양)</option>
+                        <option value="{{game_rec_14}}">카트라이더(권장사양)</option>
+                        <option value="{{game_min_15}}">사이퍼즈(최소사양)</option>
+                        <option value="{{game_rec_15}}">사이퍼즈(권장사양)</option>
+                        <option value="{{game_min_16}}">히어로즈오브더 스톰(최소사양)</option>
+                        <option value="{{game_rec_16}}">히어로즈오브더 스톰(권장사양)</option>
+                        <option value="{{game_min_17}}">디아블로3(최소사양)</option>
+                        <option value="{{game_rec_17}}">디아블로3(권장사양)</option>
+                        <option value="{{game_min_18}}">스타크래프트2(최소사양)</option>
+                        <option value="{{game_rec_18}}">스타크래프트2(권장사양)</option>
+                        <option value="{{game_min_19}}">아이온(최소사양)</option>
+                        <option value="{{game_rec_19}}">아이온(권장사양)</option>
+                        <option value="{{game_min_20}}">한게임로우바둑이(최소사양)</option>
+                        <option value="{{game_rec_20}}">한게임로우바둑이(권장사양)</option>
+                        <option value="{{game_min_21}}">마인크래프트(최소사양)</option>
+                        <option value="{{game_rec_21}}">마인크래프트(권장사양)</option>
+                        <option value="{{game_min_22}}">심즈4(최소사양)</option>
+                        <option value="{{game_rec_22}}">심즈4(권장사양)</option>
+                        <option value="{{game_min_23}}">도타2(최소사양)</option>
+                        <option value="{{game_rec_23}}">도타2(권장사양)</option>
+                        <option value="{{game_min_24}}">카운터스트라이크(최소사양)</option>
+                        <option value="{{game_rec_24}}">카운터스트라이크(권장사양)</option>
+                        <option value="{{game_min_25}}">로스트아크(최소사양)</option>
+                        <option value="{{game_rec_25}}">로스트아크(권장사양)</option>
+                        <option value="{{game_min_26}}">GTA5(최소사양)</option>
+                        <option value="{{game_rec_26}}">GTA5(권장사양)</option>
+                        <option value="{{game_min_27}}">팀포트리스2(최소사양)</option>
+                        <option value="{{game_rec_27}}">팀포트리스2(권장사양)</option>
+                        <option value="{{game_min_28}}">문명5(최소사양)</option>
+                        <option value="{{game_rec_28}}">문명5(권장사양)</option>
+                        <option value="{{game_min_29}}">문명6(최소사양)</option>
+                        <option value="{{game_rec_29}}">문명6(권장사양)</option>
+                        <option value="{{game_min_30}}">심즈3(최소사양)</option>
+                        <option value="{{game_rec_30}}">심즈3(권장사양)</option>
+                    </select>
+                </div>
 
             </div>
 
@@ -281,6 +348,8 @@
     }
 
     function queryGame() {
+        console.log("게임 질문");
+        $("#inputgroup").show();
     }
 
     function queryOutdoor() { //순서1

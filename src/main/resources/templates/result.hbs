@@ -123,7 +123,14 @@
                                 <a href="http://comalmot.com/notebookinfo/{{id}}" >{{model}}</a>
                             </h5>
                             <h5>{{pricestring}} 원</h5>
-                            <p> {{cpumanufact}} / {{cpukind}} / RAM {{memorysize}} GB / {{sizeint}}인치</p>
+                            <p> {{cpumanufact}} / {{cpukind}} / RAM {{memorysize}} GB / {{sizeint}}인치
+                                {{#if hddsize}}
+                                    / HDD {{hddsize}} GB
+                                {{/if}}
+                                {{#if ssdsize}}
+                                    / SSD {{ssdsize}} GB
+                                {{/if}}
+                            </p>
                         </div>
                     </div>
                     <hr>

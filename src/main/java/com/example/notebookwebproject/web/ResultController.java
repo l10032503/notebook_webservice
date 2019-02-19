@@ -39,18 +39,21 @@ public class ResultController {
                          @RequestParam(value="cpurankingless",required = false) String cpurankingless,
                          @RequestParam(value="os",required = false, defaultValue = "0") String[] os,
                          @RequestParam(value="keyboard",required = false, defaultValue = "0") String[] keyboard,
-                         @RequestParam(value="disksize",required = false, defaultValue = "0") String[] disksize){
+                         @RequestParam(value="disksize",required = false, defaultValue = "0") String[] disksize,
+                         @RequestParam(value="memorysizegreater",required = false) String memorysizegreater,
+                         @RequestParam(value="gpurankingless",required = false) String gpurankingless){
         Page<Notebook> notebookPage;
         if(brand[0].equals("0") && memorysize[0].equals("0") && cpukind[0].equals("0") && pricerange[0].equals("0") && sizeinch[0].equals("0")
                 && weight[0].equals("0") && searchbrand[0].equals("0") && searchmodel[0].equals("0") && searchall[0].equals("0")
-                &&cpurankinggreater==null&&cpurankingless==null&&os[0].equals("0")&&keyboard[0].equals("0")&&disksize[0].equals("0")) {
+                &&cpurankinggreater==null&&cpurankingless==null&&os[0].equals("0")&&keyboard[0].equals("0")&&disksize[0].equals("0")
+                &&memorysizegreater==null&&gpurankingless==null) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
         }
         else{
             Specification<Notebook> notebookSpecification
                     = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel,
-                    searchall, cpurankinggreater, cpurankingless, os, keyboard, disksize);
+                    searchall, cpurankinggreater, cpurankingless, os, keyboard, disksize, memorysizegreater, gpurankingless);
             notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
         }
         model.addAttribute("notebookPage",notebookPage);
@@ -61,7 +64,8 @@ public class ResultController {
                                                     String[] pricerange, String[] sizeinch, String[] weight,
                                                     String[] searchbrand, String[] searchmodel, String[] searchall,
                                                     String cpurankinggreater, String cpurakingless, String[] os,
-                                                    String[] keyboard, String[] disksize){
+                                                    String[] keyboard, String[] disksize, String memorysizegreater,
+                                                    String gpurankingless){
         Specification<Notebook> notebookSpecification = Specification.where(NotebookSpecification.returnDefault());
         if(!brand[0].equals("0")) {
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));
@@ -115,6 +119,14 @@ public class ResultController {
         }
         if(!disksize[0].equals("0")){
             notebookSpecification = notebookSpecification.and(NotebookSpecification.searchDisksize(disksize));
+        }
+        if(memorysizegreater != null) {
+            System.out.println(memorysizegreater);
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchMemorySizeGreater(Integer.parseInt(memorysizegreater)));
+        }
+        if(gpurankingless != null) {
+            System.out.println(gpurankingless);
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchGPURankingLess(Integer.parseInt(gpurankingless)));
         }
         return notebookSpecification;
     }

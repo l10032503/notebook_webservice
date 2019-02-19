@@ -21,7 +21,7 @@ public class Notebook {
     private int price, weight, memorysize, sizeinch;
     private float battery, sizeint;
 
-    private int adapter, sizecm, resolution, hddsize, ssd_size, afterservice, cpuranking, gpuranking, disksize;
+    private int adapter, sizecm, resolution, hddsize, ssdsize, afterservice, cpuranking, gpuranking, disksize;
     private float thick;
     private String brand, cpucode, cpunumber, cpucore, memorytype,
             gpumanufact, gpukind, ssd, os, recommendgroup;

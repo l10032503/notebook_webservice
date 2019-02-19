@@ -274,6 +274,12 @@
                                 <h5>{{pricestring}} 원</h5>
                                 <p class="card-text">
                                     {{cpumanufact}} / {{cpukind}} / RAM {{memorysize}} GB / {{sizeint}}인치
+                                    {{#if hddsize}}
+                                        / HDD {{hddsize}} GB
+                                    {{/if}}
+                                    {{#if ssdsize}}
+                                        / SSD {{ssdsize}} GB
+                                    {{/if}}
                                 </p>
                             </div>
                         </div>
