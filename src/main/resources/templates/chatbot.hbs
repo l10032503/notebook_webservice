@@ -74,7 +74,7 @@
                 <script type="text/javascript">
 
 
-                    var accessToken ="9862922ef6c74d34821007ce322a471f";
+                    var accessToken ="f010d344292941969d77251beb7f9d7e";
 
                     var baseUrl = "https://api.dialogflow.com/v1/";
                     $(document).ready(function() {
@@ -132,7 +132,7 @@
                     }
                     function send() {
                         var text = $("#input").val();
-                        conversation.push("나: " + text + '\r\n');
+                        conversation.push("■ " + text + '\r\n');
                         $.ajax({
                             type: "POST",
                             url: baseUrl + "query?v=20150910",
@@ -155,8 +155,23 @@
                     }
                     function setResponse(val) {
                         //Edit "AI: " to change name
-                        conversation.push("AI: " + val + '\r\n');
+                        conversation.push("→ " + val + '\r\n');
                         $("#response").text(conversation.join(""));
+                        var page = "http://comalmot.com/view?";
+                        if(val){
+                            var etcarray = val.split(", ");
+                            /*var etcstr = "";
+                            for(i=0;i<etcarray.length;i++){
+                                if(etcstr)
+                                    etcstr += ",";
+                                etcstr+=etcarray[i];
+                                window.location.href = page+"etc="+etcarray;
+                            }*/
+                            for(i=0;i<etcarray.length;i++){
+                                page += etcarray[i]+"=1&"
+                            }
+                            window.location.href = page;
+                        }
                     }
 
                     ////////////////////////////////FUNCTION TO CHANGE BACKGROUND COLOR//////////////////////////////////////////////
@@ -179,7 +194,7 @@
 
                 <div>
                     <input id="input" type="text"> <button id="rec">CHAT</button>
-                    <p style="font-size:36px; color:#000000;">Chat Response</p>
+                    <p style="font-size:36px; color:#000000;">Test</p>
                     <textarea id="response" cols="40" rows="20"></textarea>
                 </div>
 

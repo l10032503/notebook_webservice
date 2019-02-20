@@ -58,15 +58,12 @@ public class InfoController {
         model.addAttribute("securitystring", infoTest.getSecurityString());
         //
         model.addAttribute("longimgurl", infoTest.getLongImgURL());
+        model.addAttribute("pageurl", infoTest.getPageURL());
         return "notebookinfo";
     }
 
     @GetMapping("/chatbot")
     public String chatbot(){
         return "chatbot";
-    }
-    @GetMapping("/tooltip")
-    public String tooltip(){
-        return "tooltiptest";
     }
 }

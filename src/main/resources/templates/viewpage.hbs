@@ -309,23 +309,37 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             {{#if notebookPage.first}}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item active">
-                    <div class="page-link" onclick="nowpage({{notebookPage.number}})">1<span class="sr-only">(current)</span></div>
-                </li>
-                <li class="page-item">
-                    <div class="page-link" onclick="nextpage({{notebookPage.number}})">2</div>
-                </li>
-                <li class="page-item">
-                    <div class="page-link" id="teafortwo" onclick="morenextpage({{notebookPage.number}})">3</div>
-                </li>
-                <li class="page-item">
-                    <div class="page-link" onclick="nextpage({{notebookPage.number}})">»</div>
-                </li>
+                {{#if notebookPage.last}}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active">
+                        <div class="page-link" onclick="nowpage({{notebookPage.number}})">1<span class="sr-only">(current)</span></div>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">»</a>
+                    </li>
+                {{else}}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item active">
+                        <div class="page-link" onclick="nowpage({{notebookPage.number}})">1<span class="sr-only">(current)</span></div>
+                    </li>
+                    <li class="page-item">
+                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">2</div>
+                    </li>
+                    <li class="page-item">
+                        <div class="page-link" onclick="morenextpage({{notebookPage.number}})">3</div>
+                    </li>
+                    <li class="page-item">
+                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">»</div>
+                    </li>
+                {{/if}}
             {{else}}
                 {{#if notebookPage.last}}
                     <li class="page-item">
@@ -388,11 +402,6 @@
         $('#prediv').html(pre);
         $('#nowdiv').html(now);
         $('#nextdiv').html(next);
-    });
-
-    $(document).ready(function() {
-        if (notebookPage.length == 2)
-            $('#teafortwo').hide();
     });
 
     $("#pagination").html(template);
