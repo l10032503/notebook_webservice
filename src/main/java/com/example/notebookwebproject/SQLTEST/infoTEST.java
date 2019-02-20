@@ -8,7 +8,7 @@ public class infoTEST {
     private int Resolution, HDDSize, SSDSize, AfterService;
     private float Thick;
     private String Brand, CPUCode, CPUNumber, CPUCore, MemoryType,
-            GPUManufact, GPUKind, SSD, OS, LongImgURL;
+            GPUManufact, GPUKind, SSD, OS, LongImgURL, PageURL;
     private Boolean LanCable, LanRadio, Bluetooth, HDMITwo, HDMI, miniDP, DP, DSUB, WebCam,
             USBTypeCTrd, USBTypeC, USBTrdOne, USBTrd, USBSnd, ThunderBolt, eSATA, IEEE, SerialPort, ExpressCard, MultiReader,
             NumKB, BlockKB, MachineKB, RGBLight, KBLight, WaterProofKB, MILSTD, Face, Fingerprint, TPM;
@@ -292,6 +292,9 @@ public class infoTEST {
     //이미지
     public String getLongImgURL(){
         return LongImgURL;
+    }
+    public String getPageURL(){
+        return PageURL;
     }
 
 
