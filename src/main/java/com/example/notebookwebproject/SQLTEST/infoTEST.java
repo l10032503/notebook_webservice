@@ -41,16 +41,28 @@ public class infoTEST {
     public String getPriceString(){ //1000단위로 콤마
         int Qprice;
         int threecomma = 1000;
+        int term;
         String PriceString ="";
 
         Qprice = Price;
         while(Qprice>0){
             if(Qprice != Price)
                 PriceString = "," + PriceString;
-            if(Qprice%threecomma == 0)
-                PriceString = "000" + PriceString;
-            else
-                PriceString = String.valueOf(Qprice%threecomma) + PriceString;
+            term = Qprice%threecomma;
+
+            if(Qprice<1000){
+                PriceString = String.valueOf(term) + PriceString;
+            }
+            else {
+                if(term == 0)
+                    PriceString = "000" + PriceString;
+                else if (term < 10)
+                    PriceString = "00" + String.valueOf(term) + PriceString;
+                else if (term < 100)
+                    PriceString = "0" + String.valueOf(term) + PriceString;
+                else
+                    PriceString = String.valueOf(term) + PriceString;
+            }
             Qprice  = Qprice/threecomma;
         }
         return PriceString;
