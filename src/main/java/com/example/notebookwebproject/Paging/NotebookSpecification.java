@@ -403,21 +403,55 @@ public class NotebookSpecification {
             }
         };
     }
-    public static Specification<Notebook> searchFace(final int face){
+    public static Specification<Notebook> searchAS(final int afterservice){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                return criteriaBuilder.equal(root.get("face"), face);
+                return criteriaBuilder.equal(root.get("afterservice"), afterservice);
             }
         };
     }
-    public static Specification<Notebook> searchFingerprint(final int fingerprint){
+    public static Specification<Notebook> searchNumkb(final int numkb){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                return criteriaBuilder.equal(root.get("fingerprint"), fingerprint);
+                return criteriaBuilder.equal(root.get("numkb"), numkb);
             }
         };
     }
-
+    public static Specification<Notebook> searchTablet(final int tablet){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("tablet"), tablet);
+            }
+        };
+    }
+    public static Specification<Notebook> searchSchool(final int school){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("school"), school);
+            }
+        };
+    }
+    public static Specification<Notebook> searchGrade(final String[] grade){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                Predicate gradesList = criteriaBuilder.equal(root.get("grade"),grade[0]);
+                for(int i=0; i<grade.length; i++){
+                    if(i==0) {
+                        System.out.println(grade[i]);
+                        gradesList = criteriaBuilder.equal(root.get("grade"), grade[i]);
+                    }
+                    else{
+                        System.out.println(grade[i]);
+                        gradesList = criteriaBuilder.or(gradesList, criteriaBuilder.equal(root.get("grade"),grade[i]));
+                    }
+                }
+                return gradesList;
+            }
+        };
+    }
 }
