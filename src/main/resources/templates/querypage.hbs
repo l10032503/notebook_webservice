@@ -73,18 +73,6 @@
                         <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/9983BD355C4DC19334" alt="" style="width:inherit; max-width:100%; height: auto; text-align: center">
                     </p>
                 </div>
-                <div id="answer1region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer2region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer3region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer4region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer5region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer6region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer7region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer8region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer9region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer10region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer11region" class="col-lg-3 col-md-6 mb-2"></div>
-                <div id="answer12region" class="col-lg-3 col-md-6 mb-2"></div>
                 <div id="inputgroup" class="input-group col-lg-12" style="display: none">
                     <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
                             onchange="window.open(value,'_blank');">
@@ -151,6 +139,18 @@
                         <option value="{{game_rec_30}}">심즈3(권장사양)</option>
                     </select>
                 </div>
+                <div id="answer1region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer2region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer3region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer4region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer5region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer6region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer7region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer8region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer9region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer10region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer11region" class="col-lg-3 col-md-6 mb-2"></div>
+                <div id="answer12region" class="col-lg-3 col-md-6 mb-2"></div>
 
             </div>
 
@@ -186,6 +186,7 @@
     var gpukind = null;
     var os = null;
     var keyboard = null;
+    var sortingorder = null;
 
     var button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">학업</button>";
     var button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">업무</button>";
@@ -349,6 +350,18 @@
 
     function queryGame() {
         console.log("게임 질문");
+        $("#answer1region").remove();
+        $("#answer2region").remove();
+        $("#answer3region").remove();
+        $("#answer4region").remove();
+        $("#answer5region").remove();
+        $("#answer6region").remove();
+        $("#answer7region").remove();
+        $("#answer8region").remove();
+        $("#answer9region").remove();
+        $("#answer10region").remove();
+        $("#answer11region").remove();
+        $("#answer12region").remove();
         $("#inputgroup").show();
     }
 
@@ -849,6 +862,10 @@
             keyboard = null;
             $("#answer12").attr("onclick",buttonClicked(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard)));
         });
+    }
+
+    function sorting(){
+
     }
 
     function final(address, brand, cpukind, cpurankinggreater, cpurankingless, memorysize, sizeinch, pricerange, weight, gpukind, os, disksize, keyboard){

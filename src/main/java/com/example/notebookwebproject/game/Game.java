@@ -33,8 +33,7 @@ public class Game {
         return mincpuranking;
     }
 
-    public float getMinram(){
-        return minram;
+    public int getMinram(){ return (int)minram;
     }
 
     public int getMinhdd(){
