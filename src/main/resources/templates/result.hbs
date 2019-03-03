@@ -160,14 +160,25 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             {{#if notebookPage.first}}
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">이전</span>
-                    </a>
-                </li>
-                <li class="page-item">
-                    <div class="page-link" onclick="nextpage({{notebookPage.number}})">다음</div>
-                </li>
+                {{#if notebookPage.last}}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">이전</span>
+                        </a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">다음</a>
+                    </li>
+                {{else}}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">이전</span>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">다음</div>
+                    </li>
+                {{/if}}
             {{else}}
                 {{#if notebookPage.last}}
                     <li class="page-item">

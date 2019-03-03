@@ -57,37 +57,16 @@
             }
             return a;
         }
-        function moreprepage(number) {
-            var url = window.location.href;
-            url = urlcontrol(url);
-            var nextnumber = number -1;
-            url+=nextnumber;
-            document.location.href = url;
-        }
         function prepage(number) {
             var url = window.location.href;
             url = urlcontrol(url);
             url+=number;
             document.location.href = url;
         }
-        function nowpage(number) {
-            var url = window.location.href;
-            url = urlcontrol(url);
-            var nownumber = number +1;
-            url+=nownumber;
-            document.location.href = url;
-        }
         function nextpage(number) {
             var url = window.location.href;
             url = urlcontrol(url);
             var nextnumber = number +2;
-            url+=nextnumber;
-            document.location.href = url;
-        }
-        function morenextpage(number) {
-            var url = window.location.href;
-            url = urlcontrol(url);
-            var nextnumber = number +3;
             url+=nextnumber;
             document.location.href = url;
         }
@@ -312,66 +291,36 @@
                 {{#if notebookPage.last}}
                     <li class="page-item disabled">
                         <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
+                            <span aria-hidden="true">이전</span>
                         </a>
                     </li>
-                    <li class="page-item active">
-                        <div class="page-link" onclick="nowpage({{notebookPage.number}})">1<span class="sr-only">(current)</span></div>
-                    </li>
                     <li class="page-item disabled">
-                        <a class="page-link" href="#">»</a>
+                        <a class="page-link" href="#">다음</a>
                     </li>
                 {{else}}
                     <li class="page-item disabled">
                         <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
+                            <span aria-hidden="true">이전</span>
                         </a>
                     </li>
-                    <li class="page-item active">
-                        <div class="page-link" onclick="nowpage({{notebookPage.number}})">1<span class="sr-only">(current)</span></div>
-                    </li>
                     <li class="page-item">
-                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">2</div>
-                    </li>
-                    <li class="page-item">
-                        <div class="page-link" onclick="morenextpage({{notebookPage.number}})">3</div>
-                    </li>
-                    <li class="page-item">
-                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">»</div>
+                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">다음</div>
                     </li>
                 {{/if}}
             {{else}}
                 {{#if notebookPage.last}}
                     <li class="page-item">
-                        <div class="page-link" onclick="prepage({{notebookPage.number}})">«</div>
-                    </li>
-                    <li class="page-item">
-                        <div class="page-link" id="moreprediv" onclick="moreprepage({{notebookPage.number}})">morepre</div>
-                    </li>
-                    <li class="page-item">
-                        <div class="page-link" id="prediv" onclick="prepage({{notebookPage.number}})">pre</div>
-                    </li>
-                    <li class="page-item active">
-                        <div class="page-link" id="nowdiv" onclick="nowpage({{notebookPage.number}})">lastnow<span class="sr-only">(current)</span></div>
+                        <div class="page-link" onclick="prepage({{notebookPage.number}})">이전</div>
                     </li>
                     <li class="page-item disabled">
-                        <a class="page-link" href="#">»</a>
+                        <a class="page-link" href="#">다음</a>
                     </li>
                 {{else}}
                     <li class="page-item">
-                        <div class="page-link" onclick="prepage({{notebookPage.number}})">«</div>
+                        <div class="page-link" onclick="prepage({{notebookPage.number}})">이전</div>
                     </li>
                     <li class="page-item">
-                        <div class="page-link" id="prediv" onclick="prepage({{notebookPage.number}})">pre</div>
-                    </li>
-                    <li class="page-item active">
-                        <div class="page-link" id="nowdiv" onclick="nowpage({{notebookPage.number}})">now<span class="sr-only">(current)</span></div>
-                    </li>
-                    <li class="page-item">
-                        <div class="page-link" id="nextdiv" onclick="nextpage({{notebookPage.number}})">next</div>
-                    </li>
-                    <li class="page-item">
-                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">»</div>
+                        <div class="page-link" onclick="nextpage({{notebookPage.number}})">다음</div>
                     </li>
                 {{/if}}
             {{/if}}
@@ -381,29 +330,6 @@
 <script type="text/javascript">
     var psource = $("#pagination-template").html();
     var template = Handlebars.compile(psource);
-
-    var now = window.location.href;
-    now = now.substr(now.length - 2);
-    if(now.charAt(0) == '=')
-        now = now.substr(now.length - 1);
-    var next = Number(now) +1;
-    var morepre = next-3;
-    var pre = next -2;
-
-    if(morepre != 0)
-        $(document).ready(function() {
-            $('#moreprediv').html(morepre);
-        });
-    else
-        $(document).ready(function() {
-            $('#moreprediv').hide();
-        });
-    $(document).ready(function() {
-        $('#prediv').html(pre);
-        $('#nowdiv').html(now);
-        $('#nextdiv').html(next);
-    });
-
     $("#pagination").html(template);
 </script>
 

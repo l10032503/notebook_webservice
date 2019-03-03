@@ -16,30 +16,6 @@
     <script src="/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
     <script src="/webjars/handlebars/4.0.11-1/handlebars.js"></script>
 
-    <script language="javascript">
-        var selection = "전체";
-        $(function(){
-            $(".dropdown-menu a").click(function(){
-                $(".ddbtn:first-child").text($(this).text());
-                $(".ddbtn:first-child").val($(this).text());
-                selection = $(".ddbtn:first-child").val();
-            });
-        });
-        function buttonClicked() {
-            var keyword = document.getElementById("keywordtext").value;
-            if (!keyword) {
-                alert("검색어를 입력해주세요.");
-            }
-            else {
-                if(selection=="모델명")
-                {window.location.href = "http://comalmot.com/view?searchmodel=" + keyword;}
-                else if(selection=="브랜드명")
-                {window.location.href = "http://comalmot.com/view?searchbrand=" + keyword;}
-                else
-                {window.location.href = "http://comalmot.com/view?searchall=" + keyword;}
-            }
-        }
-    </script>
 
 </head>
 
@@ -126,23 +102,282 @@
                 <div class="col-lg-12">
                     <form>
                         <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <button class="ddbtn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    전체
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#" data-value="modelname">모델명</a>
-                                    <a class="dropdown-item" href="#" data-value="brandname">브랜드명</a>
-                                    <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">전체</a>
-                                </div>
-                            </div>
-                            <input type="text" id="keywordtext" class="form-control" aria-label="Text input with dropdown button"/>
+                            <script type="text/javascript">
+                                var mycheck = 0;
+                                var mylevel = 0;
+
+                                var accessToken ="317508177791459ab2f154f4e0828492";
+                                var baseUrl = "https://api.dialogflow.com/v1/";
+                                $(document).ready(function() {
+                                    $("#input2").keypress(function(event) {
+                                        if (event.which == 13) {
+                                            event.preventDefault();
+                                            send();
+                                            this.value = '';
+                                        }
+                                    });
+                                });
+                                function buttonClicked() {
+                                    var keyword = $("#input2").val();
+                                    if (!keyword)
+                                        alert("검색어를 입력해주세요.");
+                                    else
+                                        send();
+                                }
+                                function send() {
+                                    var text = $("#input2").val();
+                                    conversation.push("■ " + text + '\r\n');
+                                    $.ajax({
+                                        type: "POST",
+                                        url: baseUrl + "query?v=20150910",
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        headers: {
+                                            "Authorization": "Bearer " + accessToken
+                                        },
+                                        data: JSON.stringify({ query: text, lang: "ko", sessionId: "somerandomthing" }),
+                                        success: function(data) {
+                                            var respText = data.result.fulfillment.speech;
+                                            console.log("Respuesta: " + respText);
+                                            setResponse(respText);
+
+                                        },
+                                        error: function() {
+                                            setResponse("Internal Server Error");
+                                        }
+                                    });
+                                }
+                                function doubleDelete(ddarr) {
+                                    var tempArr = [];
+                                    for (var i = 0; i < ddarr.length; i++) {
+                                        if (tempArr.length == 0) {
+                                            tempArr.push(ddarr[i]);
+                                        } else {
+                                            var duplicatesFlag = true;
+                                            for (var j = 0; j < tempArr.length; j++) {
+                                                if (tempArr[j] == ddarr[i]) {
+                                                    duplicatesFlag = false;
+                                                    break;
+                                                }
+                                            }
+                                            if (duplicatesFlag) {
+                                                tempArr.push(ddarr[i]);
+                                            }
+                                        }
+                                    }
+                                    return tempArr;
+                                }
+                                function doubleCheck(arr){
+                                    var carr2 = ['high','medium','low','value','school'];
+                                    var checkarr2 = [0,0,0,0,0];
+                                    var z = 0;
+
+                                    if(mycheck > 1)
+                                        for(i=0;i<arr.length;i++){
+                                            if(arr[i].indexOf("weight") == -1)
+                                                z++;
+                                            if(arr[i].indexOf("price") == -1)
+                                                z++;
+                                        }
+                                    if(z==2)
+                                        for(i=0;i<arr.length;i++)
+                                            if(arr[i].indexOf("weight") == -1)
+                                                arr[i] = "weight=range1";
+
+                                    switch(mylevel){
+                                        case 0:
+                                            break;
+                                        case 1:
+                                            arr.push("grade=D,F,G");
+                                            break;
+                                        case 2:
+                                            arr.push("grade=A,B");
+                                            break;
+                                        case 3:
+                                            arr.push("grade=A");
+                                            break;
+                                    }
+
+                                    arr = doubleDelete(arr); alert(arr);
+
+                                    for(i=0;i<arr.length;i++){
+                                        for(j=0;j<carr2.length;j++)
+                                            if(arr[i].indexOf(carr2[j]) != -1)
+                                                checkarr2[j] += 1;
+                                    }
+
+                                    if(checkarr2[0] || checkarr2[1] || checkarr2[2]){
+                                        for(i=0;i<arr.length;i++)
+                                            if(arr[i].indexOf("cpuranking") != -1)
+                                                arr[i] = "DELETE";
+                                    }
+                                    if(checkarr2[3]){
+                                        for(i=0;i<arr.length;i++){
+                                            if(arr[i].indexOf("cpuranking") != -1)
+                                                arr[i] = "DELETE";
+                                            if(arr[i].indexOf("price") != -1)
+                                                arr[i] = "DELETE";
+                                        }
+                                    }
+                                    if(checkarr2[4]) {
+                                        for (i = 0; i < arr.length; i++) {
+                                            if (arr[i].indexOf("weight") != -1)
+                                                arr[i] = "DELETE";
+                                            if (arr[i].indexOf("sizeinch") != -1)
+                                                arr[i] = "DELETE";
+                                        }
+                                    }
+
+                                    while(true){
+                                        var search = arr.indexOf("DELETE");
+                                        if(search!=-1){
+                                            arr.splice(search,1); // "DELETE"를 찾아서 제거
+                                        }else{
+                                            break;
+                                        }
+                                    }
+
+                                    var str = "";
+                                    for(i=0;i<arr.length;i++){
+                                        str+=arr[i]+"&";
+                                    }
+                                    str = str.substr(0, str.length -1);
+
+                                    return str;
+                                }
+                                function setResponse(val) {
+                                    //Edit "AI: " to change name
+                                    /*
+                                    conversation.push("→ " + val + '\r\n');
+                                    $("#response").text(conversation.join(""));
+                                    */
+
+                                    if(val){
+                                        var temparr = val.split("☆");
+                                        var tempstr = temparr[0];
+                                        var arr1 = tempstr.split(", ");
+                                        tempstr = temparr[1];
+                                        var arr2 = tempstr.split(", ");
+                                        var carr = ['sort.', 'money.', 'cond.', 'fig.', 'bin.', 'etc1.', 'etc2.'];
+
+                                        var myarr = [];
+                                        mycheck = mylevel = 0;
+
+                                        var xs = 0;
+                                        var xw = 0;
+                                        var xp = 0;
+                                        var sstr = "";
+                                        var sstr2 = "";
+                                        var wstr = "";
+                                        var pstr = "";
+                                        var toolstr = "";
+
+                                        for(i=0;i<arr1.length;i++){
+                                            for(j=0; j<carr.length;j++){
+                                                if(arr1[i].indexOf(carr[j]) == 0){
+                                                    arr1[i] = arr1[i].replace(carr[j], "");
+                                                    if(j == 0){
+                                                        myarr.push("sort="+ arr1[i]+",asc");
+                                                        mycheck++;
+                                                    }
+                                                    else if(j == 1){
+                                                        ;
+                                                    }
+                                                    else if(j==2){ //■ 중복되는 요소: 상중하->cpu / 가성비->price,cpu / 통학->weight,sizeinch
+                                                        if (arr1[i] == 'high') //배그, 그래픽작업
+                                                            mylevel = 3;
+                                                        else if(arr1[i] == 'medium')//오버워치, 파판
+                                                            if(mylevel < 3)
+                                                                mylevel = 2;
+                                                            else
+                                                                ;
+                                                        else if(arr1[i]=='low') //100만원 이하의 문서용 보급형 노트북
+                                                            if(mylevel < 2)
+                                                                mylevel = 1;
+                                                            else
+                                                                ;
+                                                        else if(arr1[i]=='value') //가성비
+                                                            myarr.push("value=1");
+                                                        else if(arr1[i]=='school') //통학
+                                                            myarr.push("school=1");
+                                                        else if(arr1[i]=='cpuranking') //cpu 성능 어느정도 이상
+                                                            myarr.push("grade=A,B,C");
+                                                    }
+                                                    else if(j==3) {
+                                                        if (arr1[i] == 'big')
+                                                            myarr.push("sizeinch=15,17");
+                                                        else if(arr1[i] == 'small')
+                                                            myarr.push("sizeinch=10,11,12,13,14");
+                                                        else if(arr1[i]=='disksize')
+                                                            myarr.push("disksize=range4,range5");
+                                                    }
+                                                    else if(j == 4){
+                                                        myarr.push(arr1[i]+"=1");
+                                                    }
+                                                    else if(j == 5) {
+                                                        switch(arr1[i]){
+                                                            case 'sizeinch':
+                                                                if(xs == 0){
+                                                                    sstr = arr2[i].replace("인치","");
+                                                                    xs = 1;
+                                                                }
+                                                                else{
+                                                                    arr2[i] = arr2[i].replace("인치","");
+                                                                    if(toolstr == 'down'){
+                                                                        for(k=10;k<=arr2[i];k++)
+                                                                            sstr2+=k+",";
+                                                                    }
+                                                                    else if(toolstr == 'up'){
+                                                                        for(k=sstr;k<=arr2[i];k++)
+                                                                            sstr2+=k+",";
+                                                                    }
+                                                                    if(sstr2.substr(sstr2.length - 1)==",")
+                                                                        sstr2 = sstr2.substr(0, sstr2.length -1);
+                                                                }
+                                                                break;
+                                                            case 'price':
+                                                                break;
+
+                                                        }
+                                                    }
+                                                    else if(j == 6){
+                                                        if(arr2[i]=="이하")
+                                                            toolstr = "down";
+                                                        else if(arr2[i]=="이상")
+                                                            toolstr = "up";
+                                                    }
+                                                    else
+                                                        myarr.push("not j");
+                                                }
+                                            }
+                                        }
+                                        if(sstr!="") {
+                                            if (sstr2 == "")
+                                                myarr.push("sizeinch=" + sstr);
+                                            else
+                                                myarr.push("sizeinch=" + sstr2);
+                                        }
+                                        alert(myarr);
+                                        myarr = doubleDelete(myarr);
+                                        var mystr = doubleCheck(myarr);
+                                    }
+
+                                    var page = "http://localhost:8080/view?"+mystr;
+                                    alert(page);
+                                    //window.location.href = page;
+                                    conversation.push("→ " + val + '\r\n# ' + page + '\r\n');
+                                    $("#response").text(conversation.join(""));
+                                }
+                                var conversation = [];
+                            </script>
+
+                            <input id="input2" type="text" class="form-control" placeholder="원하시는 노트북 조건을 적어주세요">
                             <span class="input-group-btn">
                                 <input type="submit" class="btn btn-outline-secondary" onclick="buttonClicked(); return false;" value="검색"/>
                             </span>
                         </div>
                     </form>
+                    <textarea id="response" cols=100% rows="5px" placeholder="This is a temporary text area."></textarea>
                 </div><!-- /.col-lg-6 -->
 
                 <div class="col-12">
