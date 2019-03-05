@@ -61,6 +61,7 @@ public class ViewController {
                 &&etc[0].equals("0")&&afterservice==null&&numkb==null&&grade[0].equals("0")&&tablet==null&&school==null) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
+
         }
         else{
             Specification<Notebook> notebookSpecification
