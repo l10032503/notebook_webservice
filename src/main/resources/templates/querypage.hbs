@@ -68,10 +68,8 @@
 
         <div class="col-lg-9 mt-4 mb-4" >
             <div class="row" style="text-align: center">
-                <div class="row col-lg-12" id="querytest" style="text-align: center">
-                    <p style="text-align: center">
-                        <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/99B6BF3B5C7E60933E" alt="" style="display: block; margin: 0px auto;" align="center">
-                    </p>
+                <div class="row col-lg-12 mb-2" id="querytest" style="text-align: center">
+                        <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/99B6BF3B5C7E60933E" style="display: block; width:100%; height:100%; margin-left: auto; margin-right: auto">
                 </div>
                 <div id="inputgroup" class="input-group col-lg-12" style="display: none">
                     <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
@@ -336,8 +334,8 @@
         $("#answer1region").attr("class","col-lg-4");
         $("#answer2region").attr("class","col-lg-4");
         $("#answer3region").attr("class","col-lg-4");
-        button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">높은 성능의 노트북이 필요한 공부</button>";
-        button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">그래픽 작업이 필요한 공부</button>";
+        button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">높은 성능의 노트북이<br>필요한 공부</button>";
+        button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">그래픽 작업이<br>필요한 공부</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">그 외(ex 문서작업, 검색, 인강 시청 등)의 용도</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
