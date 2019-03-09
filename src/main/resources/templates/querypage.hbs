@@ -71,9 +71,9 @@
                 <div class="row col-lg-12 mb-2" id="querytest" style="text-align: center">
                         <img id="queryimg" src="https://t1.daumcdn.net/cfile/tistory/99B6BF3B5C7E60933E" style="display: block; width:100%; height:100%; margin-left: auto; margin-right: auto">
                 </div>
-                <div id="inputgroup" class="input-group col-lg-12" style="display: none">
+                <div id="inputgroup" class="input-group col-lg-12 mb-2" style="display: none">
                     <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon"
-                            onchange="window.open(value,'_blank');">
+                            onchange="gameselect();">
                         <option selected>게임을 선택하세요</option>
                         <option value="{{game_min_1}}">롤(최소사양)</option>
                         <option value="{{game_rec_1}}">롤(권장사양)</option>
@@ -234,6 +234,7 @@
 <script type="text/javascript">
     console.log("질문1");
     var address = "http://comalmot.com/result?";
+    var finaladdress = "";
     var brand = null;
     var cpukind = null;
     var cpurankinggreater = null;
@@ -260,48 +261,59 @@
     var button10 = "";
     var button11 = "";
     var button12 = "";
-
+    var button13 = "";
     var laststate = "";
 
-    $("#answer1region").append(button1);
-    $("#answer2region").append(button2);
-    $("#answer3region").append(button3);
-    $("#answer4region").append(button4);
+    queryMain();
 
-    $("#answer1").click(function () { //학업
-        console.log($("#toggletest").attr("aria-pressed"));
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99D6BA355C7E621C3B");
-        $("#answer1").remove();
-        $("#answer2").remove();
-        $("#answer3").remove();
-        $("#answer4").remove();
-        queryUniversity();
-    });
-    $("#answer2").click(function () { //업무
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/9946553A5C7E639B0B");
-        $("#answer1").remove();
-        $("#answer2").remove();
-        $("#answer3").remove();
-        $("#answer4").remove();
-        queryJob();
-    });
-    $("#answer3").click(function () { //인터넷서핑
-        cpurankinggreater = "450";
-        memorysize = "2,4";
-        $("#answer1").remove();
-        $("#answer2").remove();
-        $("#answer3").remove();
-        $("#answer4").remove();
-        queryOutdoor();
-    });
-    $("#answer4").click(function () { //게임
-        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99F49A455C7E676C11");
-        $("#answer1").remove();
-        $("#answer2").remove();
-        $("#answer3").remove();
-        $("#answer4").remove();
-        queryGame();
-    });
+    function queryMain(){
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99B6BF3B5C7E60933E");
+        $("#answer1region").attr("class","col-lg-3");
+        $("#answer2region").attr("class","col-lg-3");
+        $("#answer3region").attr("class","col-lg-3");
+        $("#answer4region").attr("class","col-lg-3");
+        button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">학업</button>";
+        button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">업무</button>";
+        button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">인터넷서핑</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">게임</button>";
+        $("#answer1region").append(button1);
+        $("#answer2region").append(button2);
+        $("#answer3region").append(button3);
+        $("#answer4region").append(button4);
+        laststate = "main";
+
+        $("#answer1").click(function () { //학업
+            console.log($("#toggletest").attr("aria-pressed"));
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            queryUniversity();
+        });
+        $("#answer2").click(function () { //업무
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            queryJob();
+        });
+        $("#answer3").click(function () { //인터넷서핑
+            cpurankinggreater = "450";
+            memorysize = "2,4";
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            queryOutdoor();
+        });
+        $("#answer4").click(function () { //게임
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            queryGame();
+        });
+    }
 
     function queryStudent() {
         console.log("질문 학생");
@@ -334,16 +346,21 @@
     function queryUniversity() {
         console.log("전공 질문");
         console.log(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard,sortingorder));
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99D6BA355C7E621C3B");
         $("#answer1region").attr("class","col-lg-4");
         $("#answer2region").attr("class","col-lg-4");
         $("#answer3region").attr("class","col-lg-4");
+        $("#answer4region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">높은 성능의 노트북이<br>필요한 공부</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">그래픽 작업이<br>필요한 공부</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">그 외(ex 문서작업, 검색, 인강 시청 등)의 용도</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
+        $("#answer4region").append(button4);
         console.log(cpurankinggreater);
+        laststate = "university";
 
         $("#answer1").click(function () { //높은 성능
             console.log(cpurankinggreater);
@@ -353,6 +370,7 @@
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryOutdoor();
         });
         $("#answer2").click(function () { //높은 성능
@@ -363,6 +381,7 @@
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryOutdoor();
         });
         $("#answer3").click(function () { //그 외
@@ -372,23 +391,39 @@
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryOutdoor();
+        });
+        $("#answer4").click(function () { //그 외
+            console.log(cpurankinggreater);
+            cpurankinggreater = null;
+            memorysize = null;
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            queryMain();
         });
     }
 
 
     function queryJob() {
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/9946553A5C7E639B0B");
         console.log("직업 세분화 질문");
         console.log(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard,sortingorder));
         $("#answer1region").attr("class","col-lg-4");
         $("#answer2region").attr("class","col-lg-4");
         $("#answer3region").attr("class","col-lg-4");
+        $("#answer4region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">사무용</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">높은 성능이 필요한 작업</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">그래픽 작업용</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
+        $("#answer4region").append(button4);
+        laststate = "job";
 
         $("#answer1").click(function () { //사무용
             cpurankinggreater = "450";
@@ -405,6 +440,7 @@
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryOutdoor();
         });
         $("#answer3").click(function () { //그래픽
@@ -414,25 +450,49 @@
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryOutdoor();
+        });
+        $("#answer4").click(function () { //그 외
+            console.log(cpurankinggreater);
+            cpurankinggreater = null;
+            memorysize = null;
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            queryMain();
         });
     }
 
     function queryGame() {
+        $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99F49A455C7E676C11");
         console.log("게임 질문");
-        $("#answer1region").remove();
-        $("#answer2region").remove();
-        $("#answer3region").remove();
-        $("#answer4region").remove();
-        $("#answer5region").remove();
-        $("#answer6region").remove();
-        $("#answer7region").remove();
-        $("#answer8region").remove();
-        $("#answer9region").remove();
-        $("#answer10region").remove();
-        $("#answer11region").remove();
-        $("#answer12region").remove();
+        $("#answer1region").attr("class","col-lg-12");
+        $("#answer2region").attr("class","col-lg-12");
+
         $("#inputgroup").show();
+        button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">선택 완료</button>";
+        button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block;\">뒤로</button>";
+        laststate = "game";
+
+        $("#answer1region").append(button1);
+        $("#answer2region").append(button2);
+
+        $("#answer1").click(function () {
+            finaladdress = gameselect();
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#inputgroup").remove();
+            sorting();
+        });
+        $("#answer2").click(function () {
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#inputgroup").hide();
+            queryMain();
+        });
+
     }
 
     function queryOutdoor() { //순서1
@@ -442,31 +502,60 @@
         $("#answer1region").attr("class","col-lg-4");
         $("#answer2region").attr("class","col-lg-4");
         $("#answer3region").attr("class","col-lg-4");
+        $("#answer4region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">자주 들고 나가는 편이다</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">잘 들고 나가지 않는다</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">상관없다</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
+        $("#answer4region").append(button4);
+        console.log(laststate);
 
         $("#answer1").click(function () { //자주 나가는 편이다.
             weight = "range1,range2,range3";
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             querySize();
         });
         $("#answer2").click(function () { //잘 들고 나가지 않는다.
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             querySize();
         });
         $("#answer3").click(function () { //상관없다.
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             querySize();
+        });
+        $("#answer4").click(function () { //상관없다.
+            weight = null;
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            if(laststate == "main"){
+                cpurankinggreater = null;
+                memorysize = null;
+                queryMain();
+            }
+            else if(laststate == "university"){
+                cpurankinggreater = null;
+                memorysize = null;
+                queryUniversity();
+            }
+            else if(laststate == "job"){
+                cpurankinggreater = null;
+                memorysize = null;
+                queryJob();
+            }
         });
 
     }
@@ -475,18 +564,25 @@
         console.log("사이즈 질문");
         console.log(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard,sortingorder));
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/9977AD3E5C7E7E113A");
+        $("#answer1region").attr("class","col-lg-4");
+        $("#answer2region").attr("class","col-lg-4");
+        $("#answer3region").attr("class","col-lg-4");
+        $("#answer4region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">13인치 이하</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">14인치 이상</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">상관없다</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
+        $("#answer4region").append(button4);
 
         $("#answer1").click(function () { //13인치 이하
             sizeinch = "10,11,12,13";
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryDisk();
         });
         $("#answer2").click(function () { //14인치 이상
@@ -494,13 +590,24 @@
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryDisk();
         });
         $("#answer3").click(function () { //상관없다.
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryDisk();
+        });
+        $("#answer4").click(function () {
+            sizeinch = null;
+            weight = null;
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            queryOutdoor();
         });
     }
     
@@ -515,6 +622,7 @@
         $("#answer5region").attr("class","col-lg-6");
         $("#answer6region").attr("class","col-lg-12");
         $("#answer7region").attr("class","col-lg-12");
+        $("#answer8region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">128GB미만</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">128GB이상 256GB미만</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">256GB이상 512GB미만</button>";
@@ -522,6 +630,7 @@
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">1TB이상</button>";
         button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
         button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -529,6 +638,8 @@
         $("#answer5region").append(button5);
         $("#answer6region").append(button6);
         $("#answer7region").append(button7);
+        $("#answer8region").append(button8);
+
         var state = [0,0,0,0,0];
         var disksizelist = new Array();
         $("#answer1").click(function () { //128
@@ -573,6 +684,7 @@
             $("#answer5").remove();
             $("#answer6").remove();
             $("#answer7").remove();
+            $("#answer8").remove();
             queryPrice();
         });
         $("#answer7").click(function () { //상관없음
@@ -583,8 +695,22 @@
             $("#answer5").remove();
             $("#answer6").remove();
             $("#answer7").remove();
+            $("#answer8").remove();
             disksize = null;
             queryPrice();
+        });
+        $("#answer8").click(function () { //상관없음
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            $("#answer5").remove();
+            $("#answer6").remove();
+            $("#answer7").remove();
+            $("#answer8").remove();
+            disksize = null;
+            sizeinch = null;
+            querySize();
         });
     }
 
@@ -599,6 +725,7 @@
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">200만원 이상</button>";
         button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
         button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -606,6 +733,7 @@
         $("#answer5region").append(button5);
         $("#answer6region").append(button6);
         $("#answer7region").append(button7);
+        $("#answer8region").append(button8);
         var state = [0,0,0,0,0];
         var pricelist = new Array();
         $("#answer1").click(function () { //range1
@@ -651,6 +779,7 @@
             $("#answer5").remove();
             $("#answer6").remove();
             $("#answer7").remove();
+            $("#answer8").remove();
             queryOS();
         });
         $("#answer7").click(function () { //상관 없음
@@ -661,8 +790,22 @@
             $("#answer5").remove();
             $("#answer6").remove();
             $("#answer7").remove();
+            $("#answer8").remove();
             pricerange = null;
             queryOS();
+        });
+        $("#answer8").click(function () { //상관없음
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            $("#answer5").remove();
+            $("#answer6").remove();
+            $("#answer7").remove();
+            $("#answer8").remove();
+            pricerange = null;
+            disksize = null;
+            queryDisk();
         });
     }
 
@@ -676,18 +819,23 @@
         $("#answer4region").attr("class","col-lg-3");
         $("#answer5region").attr("class","col-lg-12");
         $("#answer6region").attr("class","col-lg-12");
+        $("#answer7region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">윈도우</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">Mac OS</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">리눅스</button>";
         button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">운영체제 미포함</button>";
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
         button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없음</button>";
+        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
         $("#answer4region").append(button4);
         $("#answer5region").append(button5);
         $("#answer6region").append(button6);
+        $("#answer7region").append(button7);
+
         var state = [0,0,0,0];
         var oslist = new Array();
         $("#answer1").click(function () { //
@@ -726,6 +874,7 @@
             $("#answer4").remove();
             $("#answer5").remove();
             $("#answer6").remove();
+            $("#answer7").remove();
             queryKeyboard();
         });
         $("#answer6").click(function () { // 상관없음
@@ -735,9 +884,22 @@
             $("#answer4").remove();
             $("#answer5").remove();
             $("#answer6").remove();
+            $("#answer7").remove();
             os = null;
             queryKeyboard();
         });
+        $("#answer7").click(function () { // 상관없음
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            $("#answer5").remove();
+            $("#answer6").remove();
+            $("#answer7").remove();
+            os = null;
+            pricerange = null;
+            queryPrice();
+        })
     }
 
     function queryKeyboard() { //순서6
@@ -751,6 +913,7 @@
         $("#answer5region").attr("class","col-lg-6");
         $("#answer6region").attr("class","col-lg-12");
         $("#answer7region").attr("class","col-lg-12");
+        $("#answer8region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">숫자 키패드</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">블록 키보드</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">기계식 키보드</button>";
@@ -758,6 +921,7 @@
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">방수 키보드</button>";
         button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
         button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -765,6 +929,8 @@
         $("#answer5region").append(button5);
         $("#answer6region").append(button6);
         $("#answer7region").append(button7);
+        $("#answer8region").append(button8);
+
         var state = [0,0,0,0,0];
         var keyboardlist = new Array();
         $("#answer1").click(function () { //
@@ -809,6 +975,7 @@
             $("#answer5").remove();
             $("#answer6").remove();
             $("#answer7").remove();
+            $("#answer8").remove();
             queryBrand();
         });
         $("#answer7").click(function () { //
@@ -819,8 +986,22 @@
             $("#answer5").remove();
             $("#answer6").remove();
             $("#answer7").remove();
+            $("#answer8").remove();
             keyboard = null;
             queryBrand();
+        });
+        $("#answer8").click(function () { //
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            $("#answer5").remove();
+            $("#answer6").remove();
+            $("#answer7").remove();
+            $("#answer8").remove();
+            keyboard = null;
+            os = null;
+            queryOS();
         });
 
     }
@@ -841,6 +1022,7 @@
         $("#answer10region").attr("class","col-lg-3");
         $("#answer11region").attr("class","col-lg-12");
         $("#answer12region").attr("class","col-lg-12");
+        $("#answer13region").attr("class","col-lg-12");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">삼성</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">LG</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">애플</button>";
@@ -853,6 +1035,8 @@
         button10 = "<button id=\"answer10\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">기가바이트</button>";
         button11 = "<button id=\"answer11\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
         button12 = "<button id=\"answer12\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button13 = "<button id=\"answer13\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -865,8 +1049,10 @@
         $("#answer10region").append(button10);
         $("#answer11region").append(button11);
         $("#answer12region").append(button12);
+        $("#answer13region").append(button13);
         var state = [0,0,0,0,0,0,0,0,0,0];
         var brandlist = new Array();
+        laststate = "brand";
 
         $("#answer1").click(function () { //
             state[0] = 1;
@@ -940,10 +1126,11 @@
             $("#answer10").remove();
             $("#answer11").remove();
             $("#answer12").remove();
+            $("#answer13").remove();
             sorting();
         });
         $("#answer12").click(function () { //
-            keyboard = null;
+            brand = null;
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
@@ -956,12 +1143,32 @@
             $("#answer10").remove();
             $("#answer11").remove();
             $("#answer12").remove();
+            $("#answer13").remove();
             sorting();
+        });
+        $("#answer13").click(function () { //
+            brand = null;
+            $("#answer1").remove();
+            $("#answer2").remove();
+            $("#answer3").remove();
+            $("#answer4").remove();
+            $("#answer5").remove();
+            $("#answer6").remove();
+            $("#answer7").remove();
+            $("#answer8").remove();
+            $("#answer9").remove();
+            $("#answer10").remove();
+            $("#answer11").remove();
+            $("#answer12").remove();
+            $("#answer13").remove();
+            keyboard = null;
+            queryKeyboard();
         });
     }
 
     function sorting(){
         console.log("순서 질문");
+        console.log(laststate);
         console.log(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard,sortingorder));
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99BB7F425C7E952E23");
         $("#sortinggroup1").show();
@@ -970,12 +1177,19 @@
         $("#sortinggroup4").show();
         $("#answer5region").attr("class","col-lg-12");
         $("#answer6region").attr("class","col-lg-12");
+        $("#answer7region").attr("class","col-lg-12");
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
         button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+
         $("#answer5region").append(button5);
         $("#answer6region").append(button6);
+        $("#answer7region").append(button7);
+
         var sortinglist = new Array();
-        var finaladdress = final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard, sortingorder);
+        if(laststate != "game")
+            finaladdress = final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard, sortingorder);
+
         $("#answer5").click(function(){
             sortinglist.push(sortselect1());
             sortinglist.push(sortselect2());
@@ -1005,6 +1219,24 @@
         $("#answer6").click(function(){
             $("#answer6").attr("onclick",buttonClicked(finaladdress));
         });
+        $("#answer7").click(function(){
+            $("#sortinggroup1").hide();
+            $("#sortinggroup2").hide();
+            $("#sortinggroup3").hide();
+            $("#sortinggroup4").hide();
+            $("#answer5").remove();
+            $("#answer6").remove();
+            $("#answer7").remove();
+            if(laststate == "brand"){
+                brand = null;
+                queryBrand();
+            }
+            else if(laststate == "game"){
+
+                queryGame();
+            }
+        });
+
     }
 
     function sortselect1(){
@@ -1024,6 +1256,12 @@
     }
     function sortselect4(){
         var sortSelect = document.getElementById("sortingGroupSelect4");
+        var selectValue = sortSelect.options[sortSelect.selectedIndex].value;
+        return selectValue;
+    }
+
+    function gameselect(){
+        var sortSelect = document.getElementById("inputGroupSelect04");
         var selectValue = sortSelect.options[sortSelect.selectedIndex].value;
         return selectValue;
     }
