@@ -431,6 +431,7 @@
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
+            $("#answer4").remove();
             queryOutdoor();
         });
         $("#answer2").click(function () { //높은 성능
@@ -642,30 +643,66 @@
 
         var state = [0,0,0,0,0];
         var disksizelist = new Array();
+        var index = -1;
         $("#answer1").click(function () { //128
-            state[0] = 1;
-            disksizelist.push("range1");
-            console.log("range1 select");
+            if(state[0] == 0){
+                state[0] = 1;
+                disksizelist.push("range1");
+                console.log("range1 select");
+            } else if (state[0] == 1){
+                state[0] = 0;
+                index = disksizelist.indexOf("range1");
+                disksizelist.splice(index,1);
+                console.log(disksizelist);
+            }
         });
         $("#answer2").click(function () { //256
-            state[1] = 1;
-            disksizelist.push("range2");
-            console.log("range2 select");
+            if(state[1] == 0){
+                state[1] = 1;
+                disksizelist.push("range2");
+                console.log("range2 select");
+            } else if (state[1] == 1){
+                state[1] = 0;
+                index = disksizelist.indexOf("range2");
+                disksizelist.splice(index,1);
+                console.log(disksizelist);
+            }
         });
         $("#answer3").click(function () { //512
-            state[2] = 1;
-            disksizelist.push("range3");
-            console.log("range3 select");
+            if(state[2] == 0){
+                state[2] = 1;
+                disksizelist.push("range3");
+                console.log("range3 select");
+            } else if (state[2] == 1){
+                state[2] = 0;
+                index = disksizelist.indexOf("range3");
+                disksizelist.splice(index,1);
+                console.log(disksizelist);
+            }
         });
         $("#answer4").click(function () { //1024
-            state[3] = 1;
-            disksizelist.push("range4");
-            console.log("range4 select");
+            if(state[3] == 0){
+                state[3] = 1;
+                disksizelist.push("range4");
+                console.log("range4 select");
+            } else if (state[3] == 1){
+                state[3] = 0;
+                index = disksizelist.indexOf("range4");
+                disksizelist.splice(index,1);
+                console.log(disksizelist);
+            }
         });
         $("#answer5").click(function () { //1024
-            state[4] = 1;
-            disksizelist.push("range5");
-            console.log("range5 select");
+            if(state[4] == 0){
+                state[4] = 1;
+                disksizelist.push("range5");
+                console.log("range5 select");
+            } else if (state[4] == 1){
+                state[4] = 0;
+                index = disksizelist.indexOf("range5");
+                disksizelist.splice(index,1);
+                console.log(disksizelist);
+            }
         });
         $("#answer6").click(function () { //선택완료
             for(var i=0; i<disksizelist.length; i++){
@@ -737,30 +774,64 @@
         var state = [0,0,0,0,0];
         var pricelist = new Array();
         $("#answer1").click(function () { //range1
+            if(state[0] == 0){
                 state[0] = 1;
                 pricelist.push("range1");
                 console.log("range1 select");
-            state[0] = 0;
+            } else if (state[0] == 1){
+                state[0] = 0;
+                index = pricelist.indexOf("range1");
+                pricelist.splice(index,1);
+                console.log(pricelist);
+            }
         });
         $("#answer2").click(function () { //range2
-            state[1] = 1;
-            pricelist.push("range2");
-            console.log("range2 select");
+            if(state[1] == 0){
+                state[1] = 1;
+                pricelist.push("range2");
+                console.log("range2 select");
+            } else if (state[1] == 1){
+                state[1] = 0;
+                index = pricelist.indexOf("range2");
+                pricelist.splice(index,1);
+                console.log(pricelist);
+            }
         });
         $("#answer3").click(function () { //range3
-            state[2] = 1;
-            pricelist.push("range3");
-            console.log("range3 select");
+            if(state[2] == 0){
+                state[2] = 1;
+                pricelist.push("range3");
+                console.log("range3 select");
+            } else if (state[2] == 1){
+                state[2] = 0;
+                index = pricelist.indexOf("range3");
+                pricelist.splice(index,1);
+                console.log(pricelist);
+            }
         });
         $("#answer4").click(function () { //range4
-            state[3] = 1;
-            pricelist.push("range4");
-            console.log("range4 select");
+            if(state[3] == 0){
+                state[3] = 1;
+                pricelist.push("range4");
+                console.log("range4 select");
+            } else if (state[3] == 1){
+                state[3] = 0;
+                index = pricelist.indexOf("range4");
+                pricelist.splice(index,1);
+                console.log(pricelist);
+            }
         });
         $("#answer5").click(function () { //range5
-            state[4] = 1;
-            pricelist.push("range5");
-            console.log("range5 select");
+            if(state[4] == 0){
+                state[4] = 1;
+                pricelist.push("range5");
+                console.log("range5 select");
+            } else if (state[4] == 1){
+                state[4] = 0;
+                index = pricelist.indexOf("range5");
+                pricelist.splice(index,1);
+                console.log(pricelist);
+            }
         });
         $("#answer6").click(function () { //선택 완료
             for(var i=0; i<pricelist.length; i++){
@@ -839,24 +910,52 @@
         var state = [0,0,0,0];
         var oslist = new Array();
         $("#answer1").click(function () { //
-            state[0] = 1;
-            oslist.push("윈도우10");
-            console.log("윈도우 select");
+            if(state[0] == 0){
+                state[0] = 1;
+                oslist.push("윈도우10");
+                console.log("윈도우10 select");
+            } else if (state[0] == 1){
+                state[0] = 0;
+                index = oslist.indexOf("윈도우10");
+                oslist.splice(index,1);
+                console.log(oslist);
+            }
         });
         $("#answer2").click(function () { //
-            state[1] = 1;
-            oslist.push("MacOS,MacOSX,MacOSSierra");
-            console.log("Mac OS select");
+            if(state[1] == 0){
+                state[1] = 1;
+                oslist.push("MacOS,MacOSX,MacOSSierra");
+                console.log("Mac select");
+            } else if (state[1] == 1){
+                state[1] = 0;
+                index = oslist.indexOf("MacOS,MacOSX,MacOSSierra");
+                oslist.splice(index,1);
+                console.log(oslist);
+            }
         });
         $("#answer3").click(function () { //
-            state[2] = 1;
-            oslist.push("리눅스");
-            console.log("리눅스 select");
+            if(state[2] == 0){
+                state[2] = 1;
+                oslist.push("리눅스");
+                console.log("리눅스 select");
+            } else if (state[2] == 1){
+                state[2] = 0;
+                index = oslist.indexOf("리눅스");
+                oslist.splice(index,1);
+                console.log(oslist);
+            }
         });
         $("#answer4").click(function () { //
-            state[3] = 1;
-            oslist.push("운영체제미포함");
-            console.log("운영체제 미포함 select");
+            if(state[3] == 0){
+                state[3] = 1;
+                oslist.push("운영체제미포함");
+                console.log("운영체제미포함 select");
+            } else if (state[3] == 1){
+                state[3] = 0;
+                index = oslist.indexOf("운영체제미포함");
+                oslist.splice(index,1);
+                console.log(oslist);
+            }
         });
         $("#answer5").click(function () { // 선택완료
             for(var i=0; i<oslist.length; i++){
@@ -934,29 +1033,65 @@
         var state = [0,0,0,0,0];
         var keyboardlist = new Array();
         $("#answer1").click(function () { //
-            state[0] = 1;
-            keyboardlist.push("numkb");
-            console.log("numkb select");
+            if(state[0] == 0){
+                state[0] = 1;
+                keyboardlist.push("numkb");
+                console.log("numkb select");
+            } else if (state[0] == 1){
+                state[0] = 0;
+                index = keyboardlist.indexOf("numkb");
+                keyboardlist.splice(index,1);
+                console.log(keyboardlist);
+            }
         });
         $("#answer2").click(function () { //
-            state[1] = 1;
-            keyboardlist.push("bockkb");
-            console.log("blockkb select");
+            if(state[1] == 0){
+                state[1] = 1;
+                keyboardlist.push("blockkb");
+                console.log("blockkb select");
+            } else if (state[1] == 1){
+                state[1] = 0;
+                index = keyboardlist.indexOf("blockkb");
+                keyboardlist.splice(index,1);
+                console.log(keyboardlist);
+            }
         });
         $("#answer3").click(function () { //
-            state[2] = 1;
-            keyboardlist.push("machinekb");
-            console.log("machinekb select");
+            if(state[2] == 0){
+                state[2] = 1;
+                keyboardlist.push("machinekb");
+                console.log("machinekb select");
+            } else if (state[2] == 1){
+                state[2] = 0;
+                index = keyboardlist.indexOf("machinekb");
+                keyboardlist.splice(index,1);
+                console.log(keyboardlist);
+            }
         });
         $("#answer4").click(function () { //
-            state[3] = 1;
-            keyboardlist.push("kblight");
-            console.log("kblight select");
+            if(state[3] == 0){
+                state[3] = 1;
+                keyboardlist.push("kblight");
+                console.log("kblight select");
+            } else if (state[3] == 1){
+                state[3] = 0;
+                index = keyboardlist.indexOf("kblight");
+                keyboardlist.splice(index,1);
+                console.log(keyboardlist);
+            }
         });
         $("#answer5").click(function () { //
-            state[4] = 1;
-            keyboardlist.push("waterproofkb");
-            console.log("waterproofkb select");
+            if(state[4] == 0){
+                state[4] = 1;
+                keyboardlist.push("waterproofkb");
+                console.log("waterproofkb select");
+            } else if (state[4] == 1){
+                state[4] = 0;
+                index = keyboardlist.indexOf("waterproofkb");
+                keyboardlist.splice(index,1);
+                console.log(keyboardlist);
+            }
+
         });
         $("#answer6").click(function () { //
             for(var i=0; i<keyboardlist.length; i++){
@@ -1055,54 +1190,124 @@
         laststate = "brand";
 
         $("#answer1").click(function () { //
-            state[0] = 1;
-            brandlist.push("삼성");
-            console.log("삼성 select");
+            if(state[0] == 0){
+                state[0] = 1;
+                brandlist.push("삼성");
+                console.log("삼성 select");
+            } else if (state[0] == 1){
+                state[0] = 0;
+                index = brandlist.indexOf("삼성");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
            });
         $("#answer2").click(function () { //
-            state[1] = 1;
-            brandlist.push("LG");
-            console.log("LG select");
+            if(state[1] == 0){
+                state[1] = 1;
+                brandlist.push("LG");
+                console.log("LG select");
+            } else if (state[1] == 1){
+                state[1] = 0;
+                index = brandlist.indexOf("LG");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
           });
         $("#answer3").click(function () { //
-            state[2] = 1;
-            brandlist.push("애플");
-            console.log("애플 select");
+            if(state[2] == 0){
+                state[2] = 1;
+                brandlist.push("애플");
+                console.log("애플 select");
+            } else if (state[2] == 1){
+                state[2] = 0;
+                index = brandlist.indexOf("애플");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
         });
         $("#answer4").click(function () { //
-            state[3] = 1;
-            brandlist.push("HP");
-            console.log("HP select");
+            if(state[3] == 0){
+                state[3] = 1;
+                brandlist.push("HP");
+                console.log("HP select");
+            } else if (state[3] == 1){
+                state[3] = 0;
+                index = brandlist.indexOf("HP");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
         });
         $("#answer5").click(function () { //
-            state[4] = 1;
-            brandlist.push("DELL");
-            console.log("DELL select");
+            if(state[4] == 0){
+                state[4] = 1;
+                brandlist.push("DELL");
+                console.log("DELL select");
+            } else if (state[4] == 1){
+                state[4] = 0;
+                index = brandlist.indexOf("DELL");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
        });
         $("#answer6").click(function () { //
-            state[5] = 1;
-            brandlist.push("한성");
-            console.log("한성 select");
+            if(state[5] == 0){
+                state[5] = 1;
+                brandlist.push("한성");
+                console.log("한성 select");
+            } else if (state[5] == 1){
+                state[5] = 0;
+                index = brandlist.indexOf("한성");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
         });
         $("#answer7").click(function () { //
-            state[6] = 1;
-            brandlist.push("ASUS");
-            console.log("ASUS select");
+            if(state[6] == 0){
+                state[6] = 1;
+                brandlist.push("ASUS");
+                console.log("ASUS select");
+            } else if (state[6] == 1){
+                state[6] = 0;
+                index = brandlist.indexOf("ASUS");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
        });
         $("#answer8").click(function () { //
-            state[7] = 1;
-            brandlist.push("레노바");
-            console.log("레노바 select");
+            if(state[7] == 0){
+                state[7] = 1;
+                brandlist.push("레노바");
+                console.log("레노바 select");
+            } else if (state[7] == 1){
+                state[7] = 0;
+                index = brandlist.indexOf("레노바");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
         });
         $("#answer9").click(function () { //
-            state[8] = 1;
-            brandlist.push("MSI");
-            console.log("MSI select");
+            if(state[8] == 0){
+                state[8] = 1;
+                brandlist.push("MSI");
+                console.log("MSI select");
+            } else if (state[8] == 1){
+                state[8] = 0;
+                index = brandlist.indexOf("MSI");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
          });
         $("#answer10").click(function () { //
-            state[9] = 1;
-            brandlist.push("기가바이트");
-            console.log("기가바이트 select");
+            if(state[9] == 0){
+                state[9] = 1;
+                brandlist.push("기가바이트");
+                console.log("기가바이트 select");
+            } else if (state[9] == 1){
+                state[9] = 0;
+                index = brandlist.indexOf("기가바이트");
+                brandlist.splice(index,1);
+                console.log(brandlist);
+            }
         });
         $("#answer11").click(function () { //
             for(var i=0; i<brandlist.length; i++){
