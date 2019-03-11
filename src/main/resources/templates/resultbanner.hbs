@@ -12,9 +12,8 @@
     <link rel="stylesheet" href="webjars/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
-    <script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
     <script src="/webjars/handlebars/4.0.11-1/handlebars.js"></script>
-    <script src="/static/js/indexnumber.js"></script>
     <script>
 
     </script>
@@ -103,17 +102,24 @@
 
             <div class="row">
                 <!-- Page Heading -->
-                <h1 class="my-4" style="font-family: '본고딕 KR Bold'">당신과 가장 어울리는 노트북<br>
-                </h1>
+                <div class="col-lg-9">
+                    <h2 class="my-4" style="font-family: '본고딕 KR Bold'; word-break: keep-all">당신과 가장 어울리는 노트북<br></h2>
+                </div>
+                <div class="col-lg-3 mt-4 mb-2">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            정렬순서
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="&sort=price,asc">낮은 가격순</a>
+                            <a class="dropdown-item" href="&sort=price,desc">높은 가격순</a>
+                            <a class="dropdown-item" href="&sort=weight,asc">낮은 무게순</a>
+                        </div>
+                    </div>
+                </div>
                 <!-- Project One -->
                 {{#each notebookPage}}
                     <div class="row">
-                        {{#if NumberOfElements}}
-                            <div id="ranking" class="col-md-1" >
-                                <button type="button" class="btn btn-lg btn-primary" style="width: 50px; height: 50px;" disabled>
-                                    {{ranking}}
-                                </button>
-                            </div>
                             <div class="col-md-6">
                                 <div class="alert-light " style="width: auto;height: 300px;text-align: center">
                                     <a href="http://comalmot.com/notebookinfo/{{id}}">
@@ -136,9 +142,6 @@
                                 </p>
                             </div>
                         </div>
-                        {{else}}
-                            <h2> 검색 결과가 없습니다 </h2>
-                        {{/if}}
 
                 {{/each}}
                 <!-- /.row -->

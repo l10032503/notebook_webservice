@@ -3,8 +3,6 @@ package com.example.notebookwebproject.web;
 import com.example.notebookwebproject.Paging.Notebook;
 import com.example.notebookwebproject.Paging.NotebookDAO;
 import com.example.notebookwebproject.Paging.NotebookSpecification;
-import com.example.notebookwebproject.SQLTEST.infoTEST;
-import com.example.notebookwebproject.SQLTEST.infoTESTMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
-public class ResultController {
+public class ResultBannerController {
 
     @Autowired
     private NotebookDAO notebookDAO;
 
-    @GetMapping("/result")
+    @GetMapping("/resultbanner")
     public String result(Model model, @PageableDefault(sort = {"id"}, direction = Sort.Direction.ASC, size = 6) Pageable pageable,
                          @RequestParam(value="brand", required = false, defaultValue = "0") String[] brand,
                          @RequestParam(value="memorysize",required = false, defaultValue = "0") String[] memorysize,
@@ -63,7 +61,7 @@ public class ResultController {
             model.addAttribute("ranking",index);
         }
         model.addAttribute("notebookPage",notebookPage);
-        return "result";
+        return "resultbanner";
     }
 
     public Specification<Notebook> specifyCondition(String[] brand, String[] memorysize, String[] cpukind,
