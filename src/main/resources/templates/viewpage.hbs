@@ -89,7 +89,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="/about">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Services</a>
@@ -108,11 +108,8 @@
                 <a href="#" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 이용 방법
                 </a>
-                <a href="http://comalmot.com/view" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                <a href="http://comalmot.com/view?" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 노트북 상세검색
-                </a>
-                <a href="http://comalmot.com/chatbot" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
-                    <span class="fas fa-caret-right"></span> 컴잘알에게 말해줘
                 </a>
                 <a href="http://comalmot.com/query" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 개인별 맞춤 솔루션
@@ -227,14 +224,14 @@
                                 </TD>
                             </tr>
                         </table>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="sortdropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="sortdropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 정렬순서
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="?sort=price,asc">낮은 가격순</a>
-                                <a class="dropdown-item" href="?sort=price,desc">높은 가격순</a>
-                                <a class="dropdown-item" href="?sort=weight,asc">낮은 무게순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=priceasc()">낮은 가격순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=pricedesc()">높은 가격순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=weightasc()">낮은 무게순</a>
                             </div>
                             <input type="submit" class="btn btn-danger float-right" value="조건검색">
                         </div>
@@ -333,6 +330,23 @@
     $("#pagination").html(template);
 </script>
 
+<script>
+    var linkArray = document.location.href.split("&");
+    var link = "";
+    console.log(linkArray[0]);
+    function pricedesc() {
+        link = linkArray[0] + "&sort=price,desc";
+        return link;
+    }
+    function priceasc() {
+        link = linkArray[0] + "&sort=price,asc";
+        return link;
+    }
+    function weightasc() {
+        link = linkArray[0] + "&sort=weight,asc";
+        return link;
+    }
+</script>
 </body>
 
 </html>

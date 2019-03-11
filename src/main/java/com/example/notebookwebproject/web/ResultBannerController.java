@@ -49,6 +49,7 @@ public class ResultBannerController {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
             index = notebookPage.getNumber()*6;
+            model.addAttribute("NumberOfElements",notebookPage.getTotalElements());
             model.addAttribute("ranking",index);
         }
         else{
