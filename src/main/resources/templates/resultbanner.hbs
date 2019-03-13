@@ -84,7 +84,7 @@
                 <a href="/service" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 이용 방법
                 </a>
-                <a href="http://comalmot.com/view?" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                <a href="http://comalmot.com/view" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 노트북 상세검색
                 </a>
                 <a href="http://comalmot.com/query" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
@@ -110,7 +110,12 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#" onclick="location.href=priceasc()">낮은 가격순</a>
                             <a class="dropdown-item" href="#" onclick="location.href=pricedesc()">높은 가격순</a>
+                            <a class="dropdown-item" href="#" onclick="location.href=cpurankingasc()">낮은 CPU성능순</a>
+                            <a class="dropdown-item" href="#" onclick="location.href=cpurankingdesc()">높은 CPU성능순</a>
+                            <a class="dropdown-item" href="#" onclick="location.href=sizecmasc()">작은 크기순</a>
+                            <a class="dropdown-item" href="#" onclick="location.href=sizecmdesc()">큰 크기순</a>
                             <a class="dropdown-item" href="#" onclick="location.href=weightasc()">낮은 무게순</a>
+                            <a class="dropdown-item" href="#" onclick="location.href=weightdesc()">높은 무게순</a>
                         </div>
                     </div>
                 </div>
@@ -139,7 +144,7 @@
                                 </p>
                             </div>
                         </div>
-
+                    <hr class="mb-5" style="width: 100%">
                 {{/each}}
                 <!-- /.row -->
             </div>
@@ -206,8 +211,11 @@
     </nav>
 </script>
 <script>
-    var linkArray = document.location.href.split("&");
+    var linkArray = document.location.href.split("sort");
     var link = "";
+    if(document.location.href.indexOf("gaseongbi") != -1){
+        linkArray[0] = linkArray[0] + "sort=gaseongbi";
+    }
     console.log(linkArray[0]);
     function pricedesc() {
         link = linkArray[0] + "&sort=price,desc";
@@ -219,6 +227,27 @@
     }
     function weightasc() {
         link = linkArray[0] + "&sort=weight,asc";
+        return link;
+    }
+    function weightdesc() {
+        link = linkArray[0] + "&sort=weight,desc";
+        return link;
+    }
+    function cpurankingasc() {
+        link = linkArray[0] + "&sort=cpuranking,asc";
+        return link;
+    }
+    function cpurankingdesc() {
+        link = linkArray[0] + "&sort=cpuranking,desc";
+        return link;
+    }
+
+    function sizecmasc() {
+        link = linkArray[0] + "&sort=sizecm,asc";
+        return link;
+    }
+    function sizecmdesc() {
+        link = linkArray[0] + "&sort=sizecm,desc";
         return link;
     }
 </script>

@@ -14,7 +14,6 @@
     <script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script src="/webjars/handlebars/4.0.11-1/handlebars.js"></script>
-    <script src="/static/js/indexnumber.js"></script>
     <script>
 
     </script>
@@ -109,39 +108,34 @@
                 <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
                 <!-- Project One -->
                 {{#each notebookPage}}
-                <div class="row">
-                    {{#if NumberOfElements}}
-                        <div id="ranking" class="col-md-1" >
-                            <button type="button" class="btn btn-lg btn-primary" style="width: 50px; height: 50px;" disabled>
-                                {{ranking}}
-                            </button>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="alert-light " style="width: auto;height: 300px;text-align: center">
-                                <a href="http://comalmot.com/notebookinfo/{{id}}">
-                                    <img class="img-fluid rounded mb-3 mb-md-0 " src="{{imgurlf}}" style="max-height: 300px; width: auto; " alt="">
-                                </a>
+                    <div class="row">
+                        {{#if NumberOfElements}}
+                            <div class="col-md-7">
+                                <div class="alert-light " style="width: auto;height: 300px;text-align: center">
+                                    <a href="http://comalmot.com/notebookinfo/{{id}}">
+                                        <img class="img-fluid rounded mb-3 mb-md-0 " src="{{imgurlf}}" style="max-height: 300px; width: auto; " alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <h5 class="card-title ">
+                                    <a href="http://comalmot.com/notebookinfo/{{id}}" >{{model}}</a>
+                                </h5>
+                                <h5>{{pricestring}} 원</h5>
+                                <p> {{cpumanufact}} / {{cpukind}} / RAM {{memorysize}} GB / {{sizeint}}인치
+                                    {{#if hddsize}}
+                                        / HDD {{hddsize}} GB
+                                    {{/if}}
+                                    {{#if ssdsize}}
+                                        / SSD {{ssdsize}} GB
+                                    {{/if}}
+                                </p>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <h5 class="card-title ">
-                                <a href="http://comalmot.com/notebookinfo/{{id}}" >{{model}}</a>
-                            </h5>
-                            <h5>{{pricestring}} 원</h5>
-                            <p> {{cpumanufact}} / {{cpukind}} / RAM {{memorysize}} GB / {{sizeint}}인치
-                                {{#if hddsize}}
-                                    / HDD {{hddsize}} GB
-                                {{/if}}
-                                {{#if ssdsize}}
-                                    / SSD {{ssdsize}} GB
-                                {{/if}}
-                            </p>
-                        </div>
-                    </div>
-                    {{else}}
-                        <h2> 검색 결과가 없습니다 </h2>
-                    {{/if}}
-
+                            <hr class="mb-5" style="width: 100%">
+                        {{else}}
+                            <h2> 검색 결과가 없습니다 </h2>
+                        {{/if}}
                 {{/each}}
                 <!-- /.row -->
             </div>
@@ -207,7 +201,12 @@
         </ul>
     </nav>
 </script>
-
+<script>
+    function ranking() {
+        var index = 7;
+        return  index;
+    }
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         var address = window.location.href;

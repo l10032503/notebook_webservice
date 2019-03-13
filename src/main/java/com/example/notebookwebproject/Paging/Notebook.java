@@ -18,7 +18,7 @@ public class Notebook {
     @Column(columnDefinition = "text")
     private String imgurlf, imgurlb, longimgurl,pricestring, note, searchbrand, searchmodel, searchall;
 
-    private int price, weight, memorysize, sizeinch;
+    private int price, weight, memorysize, sizeinch, gaseongbi;
     private float battery, sizeint;
 
     private int adapter, sizecm, resolution, hddsize, ssdsize, afterservice, cpuranking, gpuranking, disksize,
