@@ -52,13 +52,19 @@ public class ViewController {
                        @RequestParam(value="afterservice",required = false) String afterservice,
                        @RequestParam(value="numkb",required = false) String numkb,
                        @RequestParam(value="grade", required = false, defaultValue = "0") String[] grade,
-                       @RequestParam(value="tablet",required = false) String tablet,
-                       @RequestParam(value="school",required = false) String school){
+                       @RequestParam(value="tablet",required = false, defaultValue = "0") String[] tablet,
+                       @RequestParam(value="school",required = false) String school,
+                       @RequestParam(value="thickless",required = false) String thickless,
+                       @RequestParam(value="ramgreater",required = false) String ramgreater,
+                       @RequestParam(value="sizeless",required = false) String sizeless,
+                       @RequestParam(value="sizegreater",required = false) String sizegreater,
+                       @RequestParam(value="gaseongbi",required = false) String gaseongbi){
         Page<Notebook> notebookPage;
         if(brand[0].equals("0") && memorysize[0].equals("0") && cpukind[0].equals("0") && pricerange[0].equals("0") && sizeinch[0].equals("0")
                 && weight[0].equals("0") && searchbrand[0].equals("0") && searchmodel[0].equals("0") && searchall[0].equals("0")
                 &&cpurankinggreater==null&&cpurankingless==null&&os[0].equals("0")&&keyboard[0].equals("0")&&disksize[0].equals("0")
-                &&etc[0].equals("0")&&afterservice==null&&numkb==null&&grade[0].equals("0")&&tablet==null&&school==null) {
+                &&etc[0].equals("0")&&afterservice==null&&numkb==null&&grade[0].equals("0")&&tablet[0].equals("0")&&school==null
+                &&thickless==null&&ramgreater==null&&sizeless==null&&sizegreater==null&&gaseongbi==null) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
 
@@ -67,7 +73,7 @@ public class ViewController {
             Specification<Notebook> notebookSpecification
                     = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel,
                     searchall, cpurankinggreater, cpurankingless, os, keyboard, disksize, etc,
-                    afterservice, numkb, grade, tablet, school);
+                    afterservice, numkb, grade, tablet, school, thickless, ramgreater,sizeless, sizegreater, gaseongbi);
             notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
         }
         model.addAttribute("notebookPage",notebookPage);
@@ -139,7 +145,8 @@ public class ViewController {
                                                     String[] searchbrand, String[] searchmodel, String[] searchall,
                                                     String cpurankinggreater, String cpurakingless, String[] os,
                                                     String[] keyboard, String[] disksize, String[] etc, String afterservice, String numkb,
-                                                    String[] grade, String tablet, String school){
+                                                    String[] grade, String[] tablet, String school,
+                                                    String thickless, String ramgreater, String sizeless, String sizegreater, String gaseongbi){
         Specification<Notebook> notebookSpecification = Specification.where(NotebookSpecification.returnDefault());
         if(!brand[0].equals("0")) {
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));
@@ -206,11 +213,29 @@ public class ViewController {
         if(!grade[0].equals("0")){
             notebookSpecification = notebookSpecification.and(NotebookSpecification.searchGrade(grade));
         }
-        if(tablet != null) {
-            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchTablet(Integer.parseInt(tablet)));
+        if(!tablet[0].equals("0")) {
+            int [] tabletint = new int[tablet.length];
+            for(int i = 0; i < tablet.length; i++)
+                tabletint[i] = Integer.parseInt(tablet[i]);
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchTablet(tabletint));
         }
         if(school != null) {
             notebookSpecification = notebookSpecification.and(NotebookSpecification.searchSchool(Integer.parseInt(school)));
+        }
+        if(thickless != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchThickLess(Float.parseFloat(thickless)));
+        }
+        if(ramgreater != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchRamGreater(Integer.parseInt(ramgreater)));
+        }
+        if(sizeless != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchSizeLess(Integer.parseInt(sizeless)));
+        }
+        if(sizegreater != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchSizeGreater(Integer.parseInt(sizegreater)));
+        }
+        if(gaseongbi != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchValue(Integer.parseInt(gaseongbi)));
         }
         return notebookSpecification;
     }

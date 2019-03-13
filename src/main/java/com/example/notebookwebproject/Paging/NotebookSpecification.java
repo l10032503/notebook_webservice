@@ -419,11 +419,20 @@ public class NotebookSpecification {
             }
         };
     }
-    public static Specification<Notebook> searchTablet(final int tablet){
+    public static Specification<Notebook> searchTablet(final int [] tablet){
         return new Specification<Notebook>() {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                return criteriaBuilder.equal(root.get("tablet"), tablet);
+                Predicate tabletList = criteriaBuilder.equal(root.get("tablet"),tablet[0]);
+                for(int i=0; i<tablet.length; i++){
+                    if(i==0) {
+                        tabletList = criteriaBuilder.equal(root.get("tablet"), tablet[i]);
+                    }
+                    else{
+                        tabletList = criteriaBuilder.or(tabletList, criteriaBuilder.equal(root.get("tablet"),tablet[i]));
+                    }
+                }
+                return tabletList;
             }
         };
     }
@@ -451,6 +460,46 @@ public class NotebookSpecification {
                     }
                 }
                 return gradesList;
+            }
+        };
+    }
+    public static Specification<Notebook> searchThickLess(final float thickless){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.lessThanOrEqualTo(root.get("thick"),thickless);
+            }
+        };
+    }
+    public static Specification<Notebook> searchRamGreater(final int ramgrater){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("memorysize"),ramgrater);
+            }
+        };
+    }
+    public static Specification<Notebook> searchSizeLess(final int sizeless){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.lessThanOrEqualTo(root.get("sizeinch"),sizeless);
+            }
+        };
+    }
+    public static Specification<Notebook> searchSizeGreater(final int sizegrater){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("sizeinch"),sizegrater);
+            }
+        };
+    }
+    public static Specification<Notebook> searchValue(final int gaseongbi){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.lessThanOrEqualTo(root.get("gaseongbi"), gaseongbi);
             }
         };
     }
