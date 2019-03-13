@@ -144,7 +144,7 @@
                                 </p>
                             </div>
                         </div>
-
+                    <hr class="mb-5" style="width: 100%">
                 {{/each}}
                 <!-- /.row -->
             </div>
@@ -213,6 +213,9 @@
 <script>
     var linkArray = document.location.href.split("sort");
     var link = "";
+    if(document.location.href.indexOf("gaseongbi") != -1){
+        linkArray[0] = linkArray[0] + "sort=gaseongbi";
+    }
     console.log(linkArray[0]);
     function pricedesc() {
         link = linkArray[0] + "&sort=price,desc";

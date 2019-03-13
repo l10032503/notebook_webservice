@@ -43,15 +43,13 @@ public class ResultController {
                          @RequestParam(value="memorysizegreater",required = false) String memorysizegreater,
                          @RequestParam(value="gpurankingless",required = false) String gpurankingless){
         Page<Notebook> notebookPage;
-        int index;
+        int rank;
         if(brand[0].equals("0") && memorysize[0].equals("0") && cpukind[0].equals("0") && pricerange[0].equals("0") && sizeinch[0].equals("0")
                 && weight[0].equals("0") && searchbrand[0].equals("0") && searchmodel[0].equals("0") && searchall[0].equals("0")
                 &&cpurankinggreater==null&&cpurankingless==null&&os[0].equals("0")&&keyboard[0].equals("0")&&disksize[0].equals("0")
                 &&memorysizegreater==null&&gpurankingless==null) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
-            index = notebookPage.getNumber()*6;
-            model.addAttribute("ranking",index);
         }
         else{
             Specification<Notebook> notebookSpecification
@@ -59,8 +57,8 @@ public class ResultController {
                     searchall, cpurankinggreater, cpurankingless, os, keyboard, disksize, memorysizegreater, gpurankingless);
             notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
             model.addAttribute("NumberOfElements",notebookPage.getTotalElements());
-            index = notebookPage.getNumber()*6 + notebookPage.getNumberOfElements();
-            model.addAttribute("ranking",index);
+            rank = notebookPage.getNumber()*6 + notebookPage.getNumberOfElements();
+            model.addAttribute("ranking",rank);
         }
         model.addAttribute("notebookPage",notebookPage);
         return "result";
