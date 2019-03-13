@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/service">Services</a>
@@ -57,6 +57,9 @@
                 <a href="http://comalmot.com/view" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 노트북 상세검색
                 </a>
+                <a href="http://comalmot.com/chatbot" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                    <span class="fas fa-caret-right"></span> 컴잘알에게 말해줘
+                </a>
                 <a href="http://comalmot.com/query" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 개인별 맞춤 솔루션
                 </a>
@@ -68,6 +71,7 @@
         <div class="col-lg-9">
 
             <div class="row">
+
                 <div class="col-lg-12">
                     <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -92,15 +96,15 @@
                                 </a>
                             </div>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
 
                 <div class="col-lg-12">
@@ -130,7 +134,7 @@
                                 }
                                 function send() {
                                     var text = $("#input2").val();
-                                    conversation.push("■ " + text + '\r\n');
+                                    //conversation.push("■ " + text + '\r\n');
                                     $.ajax({
                                         type: "POST",
                                         url: baseUrl + "query?v=20150910",
@@ -150,6 +154,40 @@
                                             setResponse("Internal Server Error");
                                         }
                                     });
+                                }
+                                function gameFinder(number){
+                                    var gamevalue = "";
+                                    if(number == 1) gamevalue = "{{{game_min_1}}}";
+                                    else if(number ==2) gamevalue = "{{{game_min_2}}}";
+                                    else if(number ==3) gamevalue = "{{{game_min_3}}}";
+                                    else if(number ==4) gamevalue = "{{{game_min_4}}}";
+                                    else if(number ==5) gamevalue = "{{{game_min_5}}}";
+                                    else if(number ==6) gamevalue = "{{{game_min_6}}}";
+                                    else if(number ==7) gamevalue = "{{{game_min_7}}}";
+                                    else if(number ==8) gamevalue = "{{{game_min_8}}}";
+                                    else if(number ==9) gamevalue = "{{{game_min_9}}}";
+                                    else if(number ==10) gamevalue = "{{{game_min_10}}}";
+                                    else if(number ==11) gamevalue = "{{{game_min_11}}}";
+                                    else if(number ==12) gamevalue = "{{{game_min_12}}}";
+                                    else if(number ==13) gamevalue = "{{{game_min_13}}}";
+                                    else if(number ==14) gamevalue = "{{{game_min_14}}}";
+                                    else if(number ==15) gamevalue = "{{{game_min_15}}}";
+                                    else if(number ==16) gamevalue = "{{{game_min_16}}}";
+                                    else if(number ==17) gamevalue = "{{{game_min_17}}}";
+                                    else if(number ==18) gamevalue = "{{{game_min_18}}}";
+                                    else if(number ==19) gamevalue = "{{{game_min_19}}}";
+                                    else if(number ==20) gamevalue = "{{{game_min_20}}}";
+                                    else if(number ==21) gamevalue = "{{{game_min_21}}}";
+                                    else if(number ==22) gamevalue = "{{{game_min_22}}}";
+                                    else if(number ==23) gamevalue = "{{{game_min_23}}}";
+                                    else if(number ==24) gamevalue = "{{{game_min_24}}}";
+                                    else if(number ==25) gamevalue = "{{{game_min_25}}}";
+                                    else if(number ==26) gamevalue = "{{{game_min_26}}}";
+                                    else if(number ==27) gamevalue = "{{{game_min_27}}}";
+                                    else if(number ==28) gamevalue = "{{{game_min_28}}}";
+                                    else if(number ==29) gamevalue = "{{{game_min_29}}}";
+                                    else if(number ==30) gamevalue = "{{{game_min_30}}}";
+                                    return gamevalue;
                                 }
                                 function doubleDelete(ddarr) {
                                     var tempArr = [];
@@ -172,7 +210,7 @@
                                     return tempArr;
                                 }
                                 function doubleCheck(arr){
-                                    var carr2 = ['high','medium','low','value','school'];
+                                    var carr2 = ['high','medium','low'];
                                     var checkarr2 = [0,0,0,0,0];
                                     var z = 0;
 
@@ -202,34 +240,17 @@
                                             break;
                                     }
 
-                                    arr = doubleDelete(arr); alert(arr);
+                                    arr = doubleDelete(arr);
 
                                     for(i=0;i<arr.length;i++){
                                         for(j=0;j<carr2.length;j++)
                                             if(arr[i].indexOf(carr2[j]) != -1)
                                                 checkarr2[j] += 1;
                                     }
-
                                     if(checkarr2[0] || checkarr2[1] || checkarr2[2]){
                                         for(i=0;i<arr.length;i++)
                                             if(arr[i].indexOf("cpuranking") != -1)
                                                 arr[i] = "DELETE";
-                                    }
-                                    if(checkarr2[3]){
-                                        for(i=0;i<arr.length;i++){
-                                            if(arr[i].indexOf("cpuranking") != -1)
-                                                arr[i] = "DELETE";
-                                            if(arr[i].indexOf("price") != -1)
-                                                arr[i] = "DELETE";
-                                        }
-                                    }
-                                    if(checkarr2[4]) {
-                                        for (i = 0; i < arr.length; i++) {
-                                            if (arr[i].indexOf("weight") != -1)
-                                                arr[i] = "DELETE";
-                                            if (arr[i].indexOf("sizeinch") != -1)
-                                                arr[i] = "DELETE";
-                                        }
                                     }
 
                                     while(true){
@@ -250,31 +271,19 @@
                                     return str;
                                 }
                                 function setResponse(val) {
-                                    //Edit "AI: " to change name
-                                    /*
-                                    conversation.push("→ " + val + '\r\n');
-                                    $("#response").text(conversation.join(""));
-                                    */
-
                                     if(val){
                                         var temparr = val.split("☆");
                                         var tempstr = temparr[0];
                                         var arr1 = tempstr.split(", ");
                                         tempstr = temparr[1];
                                         var arr2 = tempstr.split(", ");
-                                        var carr = ['sort.', 'money.', 'cond.', 'fig.', 'bin.', 'etc1.', 'etc2.'];
+                                        var carr = ['sort.', 'cond.', 'fig.', 'bin.', 'etc.', 'money1.', 'money2.','weight.','game.'];
 
                                         var myarr = [];
                                         mycheck = mylevel = 0;
+                                        var gamevalue = "";
 
-                                        var xs = 0;
-                                        var xw = 0;
-                                        var xp = 0;
                                         var sstr = "";
-                                        var sstr2 = "";
-                                        var wstr = "";
-                                        var pstr = "";
-                                        var toolstr = "";
 
                                         for(i=0;i<arr1.length;i++){
                                             for(j=0; j<carr.length;j++){
@@ -284,10 +293,7 @@
                                                         myarr.push("sort="+ arr1[i]+",asc");
                                                         mycheck++;
                                                     }
-                                                    else if(j == 1){
-                                                        ;
-                                                    }
-                                                    else if(j==2){ //■ 중복되는 요소: 상중하->cpu / 가성비->price,cpu / 통학->weight,sizeinch
+                                                    else if(j == 1){ //■ 중복되는 요소: 상중하->cpu / 가성비->price,cpu / 통학->weight,sizeinch
                                                         if (arr1[i] == 'high') //배그, 그래픽작업
                                                             mylevel = 3;
                                                         else if(arr1[i] == 'medium')//오버워치, 파판
@@ -301,78 +307,87 @@
                                                             else
                                                                 ;
                                                         else if(arr1[i]=='value') //가성비
-                                                            myarr.push("value=1");
+                                                            myarr.push("gaseongbi=50");
                                                         else if(arr1[i]=='school') //통학
                                                             myarr.push("school=1");
                                                         else if(arr1[i]=='cpuranking') //cpu 성능 어느정도 이상
                                                             myarr.push("grade=A,B,C");
                                                     }
-                                                    else if(j==3) {
+                                                    else if(j == 2) {
                                                         if (arr1[i] == 'big')
-                                                            myarr.push("sizeinch=15,17");
+                                                            myarr.push("sizegreater=15");
                                                         else if(arr1[i] == 'small')
-                                                            myarr.push("sizeinch=10,11,12,13,14");
+                                                            myarr.push("sizeless=14");
                                                         else if(arr1[i]=='disksize')
                                                             myarr.push("disksize=range4,range5");
-                                                    }
-                                                    else if(j == 4){
-                                                        myarr.push(arr1[i]+"=1");
-                                                    }
-                                                    else if(j == 5) {
-                                                        switch(arr1[i]){
-                                                            case 'sizeinch':
-                                                                if(xs == 0){
-                                                                    sstr = arr2[i].replace("인치","");
-                                                                    xs = 1;
-                                                                }
-                                                                else{
-                                                                    arr2[i] = arr2[i].replace("인치","");
-                                                                    if(toolstr == 'down'){
-                                                                        for(k=10;k<=arr2[i];k++)
-                                                                            sstr2+=k+",";
-                                                                    }
-                                                                    else if(toolstr == 'up'){
-                                                                        for(k=sstr;k<=arr2[i];k++)
-                                                                            sstr2+=k+",";
-                                                                    }
-                                                                    if(sstr2.substr(sstr2.length - 1)==",")
-                                                                        sstr2 = sstr2.substr(0, sstr2.length -1);
-                                                                }
-                                                                break;
-                                                            case 'price':
-                                                                break;
-
+                                                        else if(arr1[i]=='thick')
+                                                            myarr.push("thickless=17");
+                                                        else if(arr1[i]=='music') {
+                                                            myarr.push("ramgreater=16");
+                                                            myarr.push("disksize=range3,range4,range5");
+                                                        }
+                                                        else if(arr1[i]=='touch') {
+                                                            myarr.push("tablet=1,2");
                                                         }
                                                     }
+                                                    else if(j == 3){
+                                                        myarr.push(arr1[i]+"=1");
+                                                    }
+                                                    else if(j == 4) {
+                                                        sstr = arr2[i].replace("인치","");
+                                                        myarr.push("sizeinch=" + sstr);
+                                                    }
+                                                    else if(j == 5){
+                                                        if (arr1[i] == 'g1')
+                                                            myarr.push("pricerange=range1");
+                                                        else if(arr1[i] == 'g2')
+                                                            myarr.push("pricerange=range1,range2");
+                                                        else if(arr1[i]=='g3')
+                                                            myarr.push("pricerange=range1,range2,range3");
+                                                        else if(arr1[i]=='g4')
+                                                            myarr.push("pricerange=range1,range2,range3,range4");
+                                                    }
                                                     else if(j == 6){
-                                                        if(arr2[i]=="이하")
-                                                            toolstr = "down";
-                                                        else if(arr2[i]=="이상")
-                                                            toolstr = "up";
+                                                        if (arr1[i] == 'g1')
+                                                            myarr.push("pricerange=range2");
+                                                        else if(arr1[i] == 'g2')
+                                                            myarr.push("pricerange=range3,range4");
+                                                    }
+                                                    else if(j == 7){
+                                                        if (arr1[i] == 'g1')
+                                                            myarr.push("weight=range1");
+                                                        else if(arr1[i] == 'g2')
+                                                            myarr.push("weight=range1,range2");
+                                                        else if(arr1[i] == 'g3')
+                                                            myarr.push("weight=range1,range2,range3");
+                                                    }
+                                                    else if(j == 8){ //gametest
+                                                        gamevalue = gameFinder(arr1[i]);
                                                     }
                                                     else
-                                                        myarr.push("not j");
+                                                        ;
                                                 }
                                             }
                                         }
-                                        if(sstr!="") {
-                                            if (sstr2 == "")
-                                                myarr.push("sizeinch=" + sstr);
-                                            else
-                                                myarr.push("sizeinch=" + sstr2);
-                                        }
-                                        alert(myarr);
                                         myarr = doubleDelete(myarr);
                                         var mystr = doubleCheck(myarr);
                                     }
+                                    arr2 = doubleDelete(arr2);
+                                    tempstr = "";
+                                    for(i=0;i<arr2.length;i++){
+                                        tempstr+=arr2[i]+", ";
+                                    }
+                                    tempstr = tempstr.substr(0, tempstr.length -2);
 
-                                    var page = "http://localhost:8080/view?"+mystr;
-                                    alert(page);
-                                    //window.location.href = page;
-                                    conversation.push("→ " + val + '\r\n# ' + page + '\r\n');
-                                    $("#response").text(conversation.join(""));
+                                    if(gamevalue != "")
+                                        window.location.href = gamevalue+"&"+mystr+"&tm="+tempstr;
+                                    else
+                                        window.location.href = "http://comalmot.com/result?"+mystr+"&tm="+tempstr;
+
+                                    //conversation.push("→ " + val + '\r\n→ ' + page + '\r\n');
+                                    //$("#response").text(conversation.join(""));
                                 }
-                                var conversation = [];
+                                //var conversation = [];
                             </script>
 
                             <input id="input2" type="text" class="form-control" placeholder="원하시는 노트북 조건을 적어주세요">
@@ -381,7 +396,7 @@
                             </span>
                         </div>
                     </form>
-                    <textarea id="response" cols=100% rows="5px" placeholder="This is a temporary text area."></textarea>
+                    <!--<textarea id="response" cols=100% rows="5px" placeholder="This is a temporary text area."></textarea>-->
                 </div><!-- /.col-lg-6 -->
 
                 <div class="col-12">

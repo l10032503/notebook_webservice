@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/service">Services</a>
@@ -54,6 +54,9 @@
                 <a href="http://comalmot.com/view" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 노트북 상세검색
                 </a>
+                <a href="http://comalmot.com/chatbot" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                    <span class="fas fa-caret-right"></span> 컴잘알에게 말해줘
+                </a>
                 <a href="http://comalmot.com/query" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 개인별 맞춤 솔루션
                 </a>
@@ -71,7 +74,7 @@
                 <script type="text/javascript">
 
 
-                    var accessToken ="f010d344292941969d77251beb7f9d7e";
+                    var accessToken ="c8c1336f9bb64236893574a4f6867234";
 
                     var baseUrl = "https://api.dialogflow.com/v1/";
                     $(document).ready(function() {
@@ -150,25 +153,151 @@
                             }
                         });
                     }
+                    function gameFinder(number){
+                        var gamevalue = "";
+                        if(number == 1) gamevalue = "{{{game_min_1}}}";
+                        else if(number ==2) gamevalue = "{{{game_min_2}}}";
+                        else if(number ==3) gamevalue = "{{{game_min_3}}}";
+                        else if(number ==4) gamevalue = "{{{game_min_4}}}";
+                        else if(number ==5) gamevalue = "{{{game_min_5}}}";
+                        else if(number ==6) gamevalue = "{{{game_min_6}}}";
+                        else if(number ==7) gamevalue = "{{{game_min_7}}}";
+                        else if(number ==8) gamevalue = "{{{game_min_8}}}";
+                        else if(number ==9) gamevalue = "{{{game_min_9}}}";
+                        else if(number ==10) gamevalue = "{{{game_min_10}}}";
+                        else if(number ==11) gamevalue = "{{{game_min_11}}}";
+                        else if(number ==12) gamevalue = "{{{game_min_12}}}";
+                        else if(number ==13) gamevalue = "{{{game_min_13}}}";
+                        else if(number ==14) gamevalue = "{{{game_min_14}}}";
+                        else if(number ==15) gamevalue = "{{{game_min_15}}}";
+                        else if(number ==16) gamevalue = "{{{game_min_16}}}";
+                        else if(number ==17) gamevalue = "{{{game_min_17}}}";
+                        else if(number ==18) gamevalue = "{{{game_min_18}}}";
+                        else if(number ==19) gamevalue = "{{{game_min_19}}}";
+                        else if(number ==20) gamevalue = "{{{game_min_20}}}";
+                        else if(number ==21) gamevalue = "{{{game_min_21}}}";
+                        else if(number ==22) gamevalue = "{{{game_min_22}}}";
+                        else if(number ==23) gamevalue = "{{{game_min_23}}}";
+                        else if(number ==24) gamevalue = "{{{game_min_24}}}";
+                        else if(number ==25) gamevalue = "{{{game_min_25}}}";
+                        else if(number ==26) gamevalue = "{{{game_min_26}}}";
+                        else if(number ==27) gamevalue = "{{{game_min_27}}}";
+                        else if(number ==28) gamevalue = "{{{game_min_28}}}";
+                        else if(number ==29) gamevalue = "{{{game_min_29}}}";
+                        else if(number ==30) gamevalue = "{{{game_min_30}}}";
+                        return gamevalue;
+                    }
+                    function doubleDelete(ddarr) {
+                        var tempArr = [];
+                        for (var i = 0; i < ddarr.length; i++) {
+                            if (tempArr.length == 0) {
+                                tempArr.push(ddarr[i]);
+                            } else {
+                                var duplicatesFlag = true;
+                                for (var j = 0; j < tempArr.length; j++) {
+                                    if (tempArr[j] == ddarr[i]) {
+                                        duplicatesFlag = false;
+                                        break;
+                                    }
+                                }
+                                if (duplicatesFlag) {
+                                    tempArr.push(ddarr[i]);
+                                }
+                            }
+                        }
+                        return tempArr;
+                    }
+                    function doubleCheck(arr){
+                        var j = 0; var k=0; var check = [0,0,0,0];
+                        arr = doubleDelete(arr);
+                        for(i=0;i<arr.length;i++) {
+                            if (arr[i].indexOf("sort") == -1)
+                                j++;
+                            if (arr[i].indexOf("weight=") == -1) {
+                                k++;
+                            }
+                        }
+                        if(j==2) {
+                            if(k==0){
+                                for (i = 0; i < arr.length; i++)
+                                    if (arr[i].indexOf("sort=weight") == -1)
+                                        arr[i] = "weight=range1";
+                            }
+                            else {
+                                for (i = 0; i < arr.length; i++)
+                                    if (arr[i].indexOf("sort=weight") == -1)
+                                        arr[i] = "DELETE";
+                            }
+                        }
+                        j=k=0;
+                        for(i=0;i<arr.length;i++) {
+                            if (arr[i].indexOf("grade=g") == -1){
+                                check[0]++;
+                                check[arr[i].replace("grade=g", "")] = i;
+                            }
+                            if (k < arr[i].replace("grade=g", "")) {
+                                k = arr[i].replace("grade=g", "");
+                                k2 = i;
+                            }
+                            else
+                                check.push(i);
+                        }
+                        if(check[0]){
+                            if(check[3] != 0){
+                                arr[check[3]]="weight=range1";
+                                if(check[2] != 0)
+                                    arr[check[2]]="DELETE";
+                                if(check[1] != 0)
+                                    arr[check[1]]="DELETE";
+                            }
+                            else{
+                                if(check[2] != 0){
+                                    arr[check[2]]="weight=range1,range2";
+                                    if(check[1] != 0)
+                                        arr[check[1]]="DELETE";
+                                }
+                                else{
+                                    if(check[1] != 0)
+                                        arr[check[1]]="weight=range1,range2,range3";
+                                }
+                            }
+                        }
+
+                        while(true){
+                            var search = arr.indexOf("DELETE");
+                            if(search!=-1){
+                                arr.splice(search,1);
+                            }else{
+                                break;
+                            }
+                        }
+                        var str = "";
+                        for(i=0;i<arr.length;i++){
+                            str+=arr[i]+"&";
+                        }
+                        str = str.substr(0, str.length -1);
+                        return str;
+                    }
                     function setResponse(val) {
-                        //Edit "AI: " to change name
+                        if(val){
+                            var str = "";
+                            var temp = val.split("☆");
+                            var earr = temp[0].split(", ");
+                            var garr = temp[1].split(", ");
+                            if(temp[1])
+                                var gamevalue = gameFinder(temp[1]);
+                            earr = doubleDelete(earr);
+                            str = doubleCheck(earr);
+                            alert(str);
+                            /*
+                            if(gamevalue != "")
+                                window.location.href = gamevalue+"&"+str;
+                            else
+                                window.location.href = "http://comalmot.com/view?"+str;
+                                */
+                        }
                         conversation.push("→ " + val + '\r\n');
                         $("#response").text(conversation.join(""));
-                        var page = "http://comalmot.com/view?";
-                        if(val){
-                            var etcarray = val.split(", ");
-                            /*var etcstr = "";
-                            for(i=0;i<etcarray.length;i++){
-                                if(etcstr)
-                                    etcstr += ",";
-                                etcstr+=etcarray[i];
-                                window.location.href = page+"etc="+etcarray;
-                            }*/
-                            for(i=0;i<etcarray.length;i++){
-                                page += etcarray[i]+"=1&"
-                            }
-                            window.location.href = page;
-                        }
                     }
 
                     ////////////////////////////////FUNCTION TO CHANGE BACKGROUND COLOR//////////////////////////////////////////////

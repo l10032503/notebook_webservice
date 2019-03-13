@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/service">Services</a>
@@ -87,6 +87,9 @@
                 <a href="http://comalmot.com/view" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 노트북 상세검색
                 </a>
+                <a href="http://comalmot.com/chatbot" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                    <span class="fas fa-caret-right"></span> 컴잘알에게 말해줘
+                </a>
                 <a href="http://comalmot.com/query" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 개인별 맞춤 솔루션
                 </a>
@@ -99,8 +102,10 @@
 
             <div class="row">
                 <!-- Page Heading -->
-                <h1 class="my-4" style="font-family: '본고딕 KR Bold'">당신과 가장 어울리는 노트북<br>
+                <h1 class="my-4" style="font-family: '본고딕 KR Bold'">당신과 가장 어울리는 노트북　　　　　　　<br>
                 </h1>
+                <h3 class="tmclass" style="color:gold"></h3>
+                <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
                 <!-- Project One -->
                 {{#each notebookPage}}
                     <div class="row">
@@ -203,6 +208,13 @@
     }
 </script>
 <script type="text/javascript">
+    $(document).ready(function() {
+        var address = window.location.href;
+        var tmarr = address.split("&tm=");
+        var tmarr2 = tmarr[1].split("&page=");
+        if(tmarr2[0] != null)
+            $('.tmclass').text("　→ "+decodeURI(tmarr2[0])+" 에 해당하는 노트북입니다.");
+    });
 
     var psource = $("#pagination-template").html();
     var template = Handlebars.compile(psource);
