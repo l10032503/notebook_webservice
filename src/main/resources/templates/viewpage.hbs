@@ -15,7 +15,23 @@
     <script src="/webjars/jquery/2.2.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
     <script src="/webjars/handlebars/4.0.11-1/handlebars.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            console.log("test");
+            $("#table").hide();
+            $("#table-btn").click(function () {
+                if($("#table").is(":visible")){
+                    console.log("hide");
+                    $("#table-btn").html("상세검색 펼치기");
+                    $("#table").slideUp();
+                }else{
+                    console.log("show");
+                    $("#table-btn").html("상세검색 접기");
+                    $("#table").slideDown();
+                }
+            })
+        })
+    </script>
     <script language="javascript">
         var selection = "전체";
         $(function(){
@@ -108,7 +124,7 @@
                 <a href="/service" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 이용 방법
                 </a>
-                <a href="http://comalmot.com/view?" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
+                <a href="http://comalmot.com/view" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
                     <span class="fas fa-caret-right"></span> 노트북 상세검색
                 </a>
                 <a href="http://comalmot.com/query" class="list-group-item list-group-item-action text-danger h5" style="font-family: '본고딕 KR Medium'">
@@ -145,9 +161,12 @@
                     </form>
                 </div><!-- /.col-lg-6 -->
 
-                <div class ="col-md-12 text-wrap mb-3">
+                <div class="col-lg-12">
+                    <button id="table-btn" class="btn btn-outline-dark mb-2" style="width:100%">상세검색 접기</button>
+                </div>
+                <div id="table" class ="col-md-12 text-wrap mb-3">
                     <form name="sort-table">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" style="display: block">
                             <tr>
                                 <TH nowrap="nowrap">브랜드</TH>
                                 <TD >
@@ -231,9 +250,14 @@
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#" onclick="location.href=priceasc()">낮은 가격순</a>
                                 <a class="dropdown-item" href="#" onclick="location.href=pricedesc()">높은 가격순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=cpurankingasc()">낮은 CPU성능순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=cpurankingdesc()">높은 CPU성능순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=sizecmasc()">작은 크기순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=sizecmdesc()">큰 크기순</a>
                                 <a class="dropdown-item" href="#" onclick="location.href=weightasc()">낮은 무게순</a>
+                                <a class="dropdown-item" href="#" onclick="location.href=weightdesc()">높은 무게순</a>
                             </div>
-                            <input type="submit" class="btn btn-danger float-right" value="조건검색">
+                            <input type="submit" class="btn btn-danger float-right" value="상세검색">
                         </div>
                     </form>
                 </div> <!-- 테이블 -->
@@ -331,7 +355,7 @@
 </script>
 
 <script>
-    var linkArray = document.location.href.split("&");
+    var linkArray = document.location.href.split("sort");
     var link = "";
     console.log(linkArray[0]);
     function pricedesc() {
@@ -344,6 +368,27 @@
     }
     function weightasc() {
         link = linkArray[0] + "&sort=weight,asc";
+        return link;
+    }
+    function weightdesc() {
+        link = linkArray[0] + "&sort=weight,desc";
+        return link;
+    }
+    function cpurankingasc() {
+        link = linkArray[0] + "&sort=cpuranking,asc";
+        return link;
+    }
+    function cpurankingdesc() {
+        link = linkArray[0] + "&sort=cpuranking,desc";
+        return link;
+    }
+
+    function sizecmasc() {
+        link = linkArray[0] + "&sort=sizecm,asc";
+        return link;
+    }
+    function sizecmdesc() {
+        link = linkArray[0] + "&sort=sizecm,desc";
         return link;
     }
 </script>
