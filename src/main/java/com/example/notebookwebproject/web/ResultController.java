@@ -50,6 +50,7 @@ public class ResultController {
                 &&memorysizegreater==null&&gpurankingless==null) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
+            model.addAttribute("NumberOfElements",notebookPage.getTotalElements());
         }
         else{
             Specification<Notebook> notebookSpecification
