@@ -351,7 +351,7 @@
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">높은 성능의 노트북이<br>필요한 공부</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">그래픽 작업이<br>필요한 공부</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">그 외(ex 문서작업, 검색, 인강 시청 등)의 용도</button>";
-        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -375,6 +375,7 @@
             cpurankinggreater = null;
             cpurankingless = "700";
             memorysize = "4,8,16";
+            gpukind = "120";
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
@@ -415,7 +416,7 @@
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">사무용</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">높은 성능이 필요한 작업</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">그래픽 작업용</button>";
-        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -445,6 +446,7 @@
             cpurankinggreater = null;
             cpurankingless = "700";
             memorysize = "4,8,16";
+            gpukind = "120";
             $("#answer1").remove();
             $("#answer2").remove();
             $("#answer3").remove();
@@ -470,8 +472,8 @@
         $("#answer2region").attr("class","col-lg-12");
 
         $("#inputgroup").show();
-        button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">선택 완료</button>";
-        button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block;\">뒤로</button>";
+        button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-danger mb-2\" style=\"width: inherit; display: block;\">선택 완료</button>";
+        button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\">뒤로</button>";
         laststate = "game";
 
         $("#answer1region").append(button1);
@@ -497,14 +499,14 @@
         console.log("외출 질문");
         console.log(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard,sortingorder));
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/99F1E5415C7E76602E");
-        $("#answer1region").attr("class","col-lg-4");
-        $("#answer2region").attr("class","col-lg-4");
-        $("#answer3region").attr("class","col-lg-4");
-        $("#answer4region").attr("class","col-lg-12");
+        $("#answer1region").attr("class","col-lg-6");
+        $("#answer2region").attr("class","col-lg-6");
+        $("#answer3region").attr("class","col-lg-6");
+        $("#answer4region").attr("class","col-lg-6");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">자주 들고 나가는 편이다</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">잘 들고 나가지 않는다</button>";
-        button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">상관없다</button>";
-        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\">상관없다</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -562,14 +564,14 @@
         console.log("사이즈 질문");
         console.log(final(address,brand,cpukind,cpurankinggreater,cpurankingless,memorysize,sizeinch,pricerange,weight,gpukind,os,disksize,keyboard,sortingorder));
         $("#queryimg").attr("src","https://t1.daumcdn.net/cfile/tistory/9977AD3E5C7E7E113A");
-        $("#answer1region").attr("class","col-lg-4");
-        $("#answer2region").attr("class","col-lg-4");
-        $("#answer3region").attr("class","col-lg-4");
-        $("#answer4region").attr("class","col-lg-12");
+        $("#answer1region").attr("class","col-lg-6");
+        $("#answer2region").attr("class","col-lg-6");
+        $("#answer3region").attr("class","col-lg-6");
+        $("#answer4region").attr("class","col-lg-6");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">13인치 이하</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">14인치 이상</button>";
-        button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\">상관없다</button>";
-        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\">상관없다</button>";
+        button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -619,16 +621,16 @@
         $("#answer4region").attr("class","col-lg-6");
         $("#answer5region").attr("class","col-lg-6");
         $("#answer6region").attr("class","col-lg-12");
-        $("#answer7region").attr("class","col-lg-12");
-        $("#answer8region").attr("class","col-lg-12");
+        $("#answer7region").attr("class","col-lg-6");
+        $("#answer8region").attr("class","col-lg-6");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">128GB미만</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">128GB이상 256GB미만</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">256GB이상 512GB미만</button>";
         button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">512GB이상 1TB미만</button>";
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">1TB이상</button>";
-        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
-        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
-        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
+        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-secondary  mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -757,9 +759,9 @@
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">100만원 이상 150만원 이하</button>";
         button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">150만원 이상 200만원 이하</button>";
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">200만원 이상</button>";
-        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
-        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
-        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
+        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -886,15 +888,15 @@
         $("#answer3region").attr("class","col-lg-3");
         $("#answer4region").attr("class","col-lg-3");
         $("#answer5region").attr("class","col-lg-12");
-        $("#answer6region").attr("class","col-lg-12");
-        $("#answer7region").attr("class","col-lg-12");
+        $("#answer6region").attr("class","col-lg-6");
+        $("#answer7region").attr("class","col-lg-6");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">윈도우</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">Mac OS</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">리눅스</button>";
         button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">운영체제 미포함</button>";
-        button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
-        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없음</button>";
-        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
+        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없음</button>";
+        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
 
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
@@ -1008,16 +1010,16 @@
         $("#answer4region").attr("class","col-lg-6");
         $("#answer5region").attr("class","col-lg-6");
         $("#answer6region").attr("class","col-lg-12");
-        $("#answer7region").attr("class","col-lg-12");
-        $("#answer8region").attr("class","col-lg-12");
+        $("#answer7region").attr("class","col-lg-6");
+        $("#answer8region").attr("class","col-lg-6");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">숫자 키패드</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">블록 키보드</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">기계식 키보드</button>";
         button4 = "<button id=\"answer4\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">키보드 라이트</button>";
         button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">방수 키보드</button>";
-        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
-        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
-        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
+        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
         $("#answer3region").append(button3);
@@ -1153,8 +1155,8 @@
         $("#answer9region").attr("class","col-lg-3");
         $("#answer10region").attr("class","col-lg-3");
         $("#answer11region").attr("class","col-lg-12");
-        $("#answer12region").attr("class","col-lg-12");
-        $("#answer13region").attr("class","col-lg-12");
+        $("#answer12region").attr("class","col-lg-6");
+        $("#answer13region").attr("class","col-lg-6");
         button1 = "<button id=\"answer1\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">삼성</button>";
         button2 = "<button id=\"answer2\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">LG</button>";
         button3 = "<button id=\"answer3\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">애플</button>";
@@ -1165,9 +1167,9 @@
         button8 = "<button id=\"answer8\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">레노바</button>";
         button9 = "<button id=\"answer9\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">MSI</button>";
         button10 = "<button id=\"answer10\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">기가바이트</button>";
-        button11 = "<button id=\"answer11\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
-        button12 = "<button id=\"answer12\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
-        button13 = "<button id=\"answer13\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        button11 = "<button id=\"answer11\" type=\"button\" class=\"btn btn-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
+        button12 = "<button id=\"answer12\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button13 = "<button id=\"answer13\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
 
         $("#answer1region").append(button1);
         $("#answer2region").append(button2);
@@ -1378,11 +1380,11 @@
         $("#sortinggroup3").show();
         $("#sortinggroup4").show();
         $("#answer5region").attr("class","col-lg-12");
-        $("#answer6region").attr("class","col-lg-12");
-        $("#answer7region").attr("class","col-lg-12");
-        button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
-        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-outline-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
-        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-outline-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
+        $("#answer6region").attr("class","col-lg-6");
+        $("#answer7region").attr("class","col-lg-6");
+        button5 = "<button id=\"answer5\" type=\"button\" class=\"btn btn-danger mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">선택완료</button>";
+        button6 = "<button id=\"answer6\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block;\" data-toggle=\"button\" aria-pressed=\"false\" autocomplete=\"off\">상관없다</button>";
+        button7 = "<button id=\"answer7\" type=\"button\" class=\"btn btn-secondary mb-2\" style=\"width: inherit; display: block; word-break: keep-all\">뒤로</button>";
 
         $("#answer5region").append(button5);
         $("#answer6region").append(button6);
@@ -1486,7 +1488,7 @@
         if(weight != null)
             address = address + "weight=" + weight + "&";
         if(gpukind != null)
-            address = address + "gpukind=" + gpukind + "&";
+            address = address + "gpurankingless=" + gpukind + "&";
         if(os != null)
             address = address + "os=" + os + "&";
         if(disksize != null)
