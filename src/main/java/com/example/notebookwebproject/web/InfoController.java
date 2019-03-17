@@ -59,6 +59,7 @@ public class InfoController {
         //
         model.addAttribute("longimgurl", infoTest.getLongImgURL());
         model.addAttribute("pageurl", infoTest.getPageURL());
+        model.addAttribute("newlongimgurl", infoTest.getNewLongImgURL());
         return "notebookinfo";
     }
 

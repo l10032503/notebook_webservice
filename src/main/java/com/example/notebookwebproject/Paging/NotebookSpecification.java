@@ -44,23 +44,23 @@ public class NotebookSpecification {
         };
     }
     public static Specification<Notebook> searchBrand(final String[] brand){
-     return new Specification<Notebook>() {
-         @Override
-         public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-             Predicate brandsList = criteriaBuilder.equal(root.get("brand"),brand[0]);
-             for(int i=0; i<brand.length; i++){
-                 if(i==0) {
-                     System.out.println(brand[i]);
-                     brandsList = criteriaBuilder.equal(root.get("brand"), brand[i]);
-                 }
-                 else{
-                     System.out.println(brand[i]);
-                     brandsList = criteriaBuilder.or(brandsList, criteriaBuilder.equal(root.get("brand"),brand[i]));
-                 }
-             }
-             return brandsList;
-         }
-       };
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                Predicate brandsList = criteriaBuilder.equal(root.get("brand"),brand[0]);
+                for(int i=0; i<brand.length; i++){
+                    if(i==0) {
+                        System.out.println(brand[i]);
+                        brandsList = criteriaBuilder.equal(root.get("brand"), brand[i]);
+                    }
+                    else{
+                        System.out.println(brand[i]);
+                        brandsList = criteriaBuilder.or(brandsList, criteriaBuilder.equal(root.get("brand"),brand[i]));
+                    }
+                }
+                return brandsList;
+            }
+        };
     }
 
     public static Specification<Notebook> searchOS(final String[] os){
@@ -176,7 +176,7 @@ public class NotebookSpecification {
                         pricerangeList = criteriaBuilder.or(pricerangeList, WhereisRange(root,criteriaBuilder,pricerange[i]));
                     }
                 }
-                    return pricerangeList;
+                return pricerangeList;
             }
 
             public Predicate WhereisRange(Root<Notebook> root, CriteriaBuilder criteriaBuilder , String pricerange){
@@ -368,41 +368,6 @@ public class NotebookSpecification {
             }
         };
     }
-    public static Specification<Notebook> searchETC(final String[] etc){
-        return new Specification<Notebook>() {
-            @Override
-            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-                Predicate etcList = WhatETC(root,criteriaBuilder,etc[0]);
-                for(int i=0; i<etc.length ; i++){
-                    if(i==0) {
-                        System.out.println(etc[i]);
-                        etcList = WhatETC(root,criteriaBuilder,etc[i]);
-                    }
-                    else{
-                        System.out.println(etc[i]);
-                        etcList = criteriaBuilder.or(etcList, WhatETC(root,criteriaBuilder,etc[i]));
-                    }
-                }
-                return etcList;
-            }
-            public Predicate WhatETC(Root<Notebook> root, CriteriaBuilder criteriaBuilder,String etc){
-                Predicate etcList = criteriaBuilder.equal(root.get("id"),0);
-                if(etc.equals("face")) {
-                    System.out.println("얼굴인식");
-                    etcList = criteriaBuilder.equal(root.get("face"), 1);
-                }
-                if(etc.equals("fingerprint")) {
-                    System.out.println("지문인식");
-                    etcList = criteriaBuilder.or(etcList, criteriaBuilder.equal(root.get("fingerprint"), 1));
-                }
-                if(etc.equals("tpm")) {
-                    System.out.println("TPM");
-                    etcList = criteriaBuilder.or(etcList, criteriaBuilder.equal(root.get("tpm"), 1));
-                }
-                return etcList;
-            }
-        };
-    }
     public static Specification<Notebook> searchAS(final int afterservice){
         return new Specification<Notebook>() {
             @Override
@@ -500,6 +465,38 @@ public class NotebookSpecification {
             @Override
             public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
                 return criteriaBuilder.lessThanOrEqualTo(root.get("gaseongbi"), gaseongbi);
+            }
+        };
+    }
+    public static Specification<Notebook> searchFast(final int fast){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("fast"), fast);
+            }
+        };
+    }
+    public static Specification<Notebook> searchBatteryGreater(final float batterygrater){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.greaterThanOrEqualTo(root.get("battery"),batterygrater);
+            }
+        };
+    }
+    public static Specification<Notebook> searchFace(final int face){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("face"), face);
+            }
+        };
+    }
+    public static Specification<Notebook> searchFingerprint(final int fingerprint){
+        return new Specification<Notebook>() {
+            @Override
+            public Predicate toPredicate(Root<Notebook> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
+                return criteriaBuilder.equal(root.get("fingerprint"), fingerprint);
             }
         };
     }

@@ -42,7 +42,6 @@ public class ResultController {
                          @RequestParam(value="disksize",required = false, defaultValue = "0") String[] disksize,
                          @RequestParam(value="memorysizegreater",required = false) String memorysizegreater,
                          @RequestParam(value="gpurankingless",required = false) String gpurankingless,
-                         @RequestParam(value="etc",required = false, defaultValue = "0") String[] etc,
                          @RequestParam(value="afterservice",required = false) String afterservice,
                          @RequestParam(value="numkb",required = false) String numkb,
                          @RequestParam(value="grade", required = false, defaultValue = "0") String[] grade,
@@ -52,15 +51,20 @@ public class ResultController {
                          @RequestParam(value="ramgreater",required = false) String ramgreater,
                          @RequestParam(value="sizeless",required = false) String sizeless,
                          @RequestParam(value="sizegreater",required = false) String sizegreater,
-                         @RequestParam(value="gaseongbi",required = false) String gaseongbi){
+                         @RequestParam(value="gaseongbi",required = false) String gaseongbi,
+                         @RequestParam(value="fast",required = false) String fast,
+                         @RequestParam(value="batterygreater",required = false) String batterygreater,
+                         @RequestParam(value="face",required = false) String face,
+                         @RequestParam(value="fingerprint",required = false) String fingerprint){
         Page<Notebook> notebookPage;
         int rank;
         if(brand[0].equals("0") && memorysize[0].equals("0") && cpukind[0].equals("0") && pricerange[0].equals("0") && sizeinch[0].equals("0")
                 && weight[0].equals("0") && searchbrand[0].equals("0") && searchmodel[0].equals("0") && searchall[0].equals("0")
                 &&cpurankinggreater==null&&cpurankingless==null&&os[0].equals("0")&&keyboard[0].equals("0")&&disksize[0].equals("0")
-                &&memorysizegreater==null&&gpurankingless==null&&etc[0].equals("0")&&afterservice==null&&numkb==null
+                &&memorysizegreater==null&&gpurankingless==null&&afterservice==null&&numkb==null
                 &&grade[0].equals("0")&&tablet[0].equals("0")&&school==null
-                &&thickless==null&&ramgreater==null&&sizeless==null&&sizegreater==null&&gaseongbi==null) {
+                &&thickless==null&&ramgreater==null&&sizeless==null&&sizegreater==null&&gaseongbi==null&&fast==null
+                &&batterygreater==null&&face==null&&fingerprint==null) {
             System.out.println("pageall");
             notebookPage = notebookDAO.findAll(pageable);
             model.addAttribute("NumberOfElements",notebookPage.getTotalElements());
@@ -69,7 +73,8 @@ public class ResultController {
             Specification<Notebook> notebookSpecification
                     = specifyCondition(brand, memorysize, cpukind, pricerange, sizeinch, weight, searchbrand, searchmodel,
                     searchall, cpurankinggreater, cpurankingless, os, keyboard, disksize, memorysizegreater, gpurankingless,
-                    etc, afterservice, numkb, grade, tablet, school, thickless, ramgreater,sizeless, sizegreater, gaseongbi);
+                    afterservice, numkb, grade, tablet, school, thickless, ramgreater,sizeless, sizegreater, gaseongbi,
+                    fast, batterygreater, face, fingerprint);
             notebookPage = notebookDAO.findAll(notebookSpecification, pageable);
             model.addAttribute("NumberOfElements",notebookPage.getTotalElements());
             rank = notebookPage.getNumber()*6 + notebookPage.getNumberOfElements();
@@ -84,9 +89,10 @@ public class ResultController {
                                                     String[] searchbrand, String[] searchmodel, String[] searchall,
                                                     String cpurankinggreater, String cpurakingless, String[] os,
                                                     String[] keyboard, String[] disksize, String memorysizegreater,
-                                                    String gpurankingless, String[] etc, String afterservice, String numkb,
+                                                    String gpurankingless, String afterservice, String numkb,
                                                     String[] grade, String[] tablet, String school,
-                                                    String thickless, String ramgreater, String sizeless, String sizegreater, String gaseongbi){
+                                                    String thickless, String ramgreater, String sizeless, String sizegreater, String gaseongbi,
+                                                    String fast, String batterygreater, String face, String fingerprint){
         Specification<Notebook> notebookSpecification = Specification.where(NotebookSpecification.returnDefault());
         if(!brand[0].equals("0")) {
             notebookSpecification = Specification.where(NotebookSpecification.searchBrand(brand));
@@ -149,9 +155,6 @@ public class ResultController {
             System.out.println(gpurankingless);
             notebookSpecification = notebookSpecification.and(NotebookSpecification.searchGPURankingLess(Integer.parseInt(gpurankingless)));
         }
-        if(!etc[0].equals("0")){
-            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchETC(etc));
-        }
         if(afterservice != null) {
             notebookSpecification = notebookSpecification.and(NotebookSpecification.searchAS(Integer.parseInt(afterservice)));
         }
@@ -184,6 +187,18 @@ public class ResultController {
         }
         if(gaseongbi != null) {
             notebookSpecification = notebookSpecification.and(NotebookSpecification.searchValue(Integer.parseInt(gaseongbi)));
+        }
+        if(fast != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchFast(Integer.parseInt(fast)));
+        }
+        if(batterygreater != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchBatteryGreater(Float.parseFloat(batterygreater)));
+        }
+        if(face != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchFace(Integer.parseInt(face)));
+        }
+        if(fingerprint != null) {
+            notebookSpecification = notebookSpecification.and(NotebookSpecification.searchFingerprint(Integer.parseInt(fingerprint)));
         }
         return notebookSpecification;
     }
