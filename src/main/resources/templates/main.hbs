@@ -212,28 +212,37 @@
 
                                     if(mycheck > 1)
                                         for(i=0;i<arr.length;i++){
-                                            if(arr[i].indexOf("weight") == -1)
+                                            if(arr[i].indexOf("sort=weight") != -1)
                                                 z++;
-                                            if(arr[i].indexOf("price") == -1)
+                                            if(arr[i].indexOf("sort=price") != -1)
                                                 z++;
-                                            if(arr[i].indexOf("cpuranking") == -1)
+                                            if(arr[i].indexOf("sort=cpuranking") != -1)
                                                 zz++;
                                         }
                                     if(zz==1){
                                         if(z>0){
                                             for(i=0;i<arr.length;i++){
-                                                if(arr[i].indexOf("weight") == -1)
-                                                    arr[i] = "weight=range1";
-                                                if(arr[i].indexOf("price") == -1)
-                                                    arr[i] = "pricerange=range1,range2";
+                                                if(arr[i].indexOf("sort=weight") != -1)
+                                                    if(arr[i].indexOf("weight=") == -1)
+                                                        arr[i] = "weight=range1,range2";
+                                                if(arr[i].indexOf("sort=price") != -1)
+                                                    if(arr[i].indexOf("pricerange=") == -1)
+                                                        arr[i] = "pricerange=range1,range2";
                                             }
                                         }
+                                        else
+                                            ;
                                     }
-                                    else
-                                    if(z==2)
-                                        for(i=0;i<arr.length;i++)
-                                            if(arr[i].indexOf("weight") == -1)
-                                                arr[i] = "weight=range1";
+                                    else{
+                                        if(z==2){
+                                            for(i=0;i<arr.length;i++)
+                                                if(arr[i].indexOf("sort=weight") != -1)
+                                                    if(arr[i].indexOf("weight=") == -1)
+                                                        arr[i] = "weight=range1,range2";
+                                        }
+                                        else
+                                            ;
+                                    }
 
                                     switch(mylevel){
                                         case '0':
@@ -256,7 +265,7 @@
                                     }
 
                                     arr = doubleDelete(arr);
-                                    /*
+
                                     while(true){
                                         var search = arr.indexOf("DELETE");
                                         if(search!=-1){
@@ -265,7 +274,7 @@
                                             break;
                                         }
                                     }
-                                    */
+
 
                                     var str = "";
                                     for(i=0;i<arr.length;i++){
